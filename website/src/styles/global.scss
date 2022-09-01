@@ -9,6 +9,7 @@
 	--c-orange: #ffb7a3;
 	--c-yellow: #ffdace;
 	--c-white: #fff;
+	--c-lgray: #F5F5F5;
 
 	// (f)ont
 	--f-u18: 11.390625em;
@@ -49,7 +50,7 @@
 	--f-d18: 0.0877914951989026em;
 
 	// (t)heme
-	--t-fg: var(--c-black);
+	--t-fg: var(--c-lgray);
 	--t-bg: var(--c-white);
 	--t-subdue: var(--c-gray);
 	--t-active: var(--c-blue);
@@ -61,6 +62,7 @@ body {
 	margin: 0;
 	color: var(--t-fg);
 	font-family: 'Inter', 'system-ui', sans-serif;
+	background-color: var(--c-black);
 }
 
 * {

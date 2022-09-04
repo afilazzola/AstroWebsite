@@ -226,34 +226,31 @@ const featuredProject = projects[0];
         </div>
       </div>
     </header>
-    <main class="wrapper mt4 mb4">
+    <main class="wrapper mt5 mb5">
       <div class="grid">
         <div class="section">
-          <h3 class="sectionTitle">Selected Work</h3>
-          <PortfolioPreview project={featuredProject} />
-          <div class="tac mt4">
-            <a href="/projects">
-              <Button>View All</Button>
-            </a>
+          <h2 class="sectionTitle">About</h2>
+          <p class="desc">
+            I am a data scientist at ApexRMS, where I forecast and model
+            ecological response across time and space. Currently, I'm working on
+            creating an image classifier for alpine snowpack, using anonymized
+            cell phone data to understand how people use greenspaces, and
+            developing a web application for ecological forecasting.
+          </p>
+
+          <a href="/about">
+            <Button>More about me</Button>
+          </a>
+          <h2 class="sectionTitle">Skills</h2>
+          <p class="desc">
+            I am passionate about data science, ecology, and programming. Some
+            of my skill set includes:
+          </p><div
+            class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
+          >
+            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 65%">
+            </div>
           </div>
-        </div>
-        <div class="section">
-          <h3 class="sectionTitle">About me</h3>
-          <p class="bio">
-            <span>Hello!</span> I’m Jeanine, and this is my website. It was made
-            using{" "}
-            <a
-              href="https://github.com/withastro/astro"
-              target="_blank"
-              rel="nofollow"
-            >
-              Astro</a
-            >, a new way to build static sites. This is just an example template
-            for you to modify.
-          </p>
-          <p>
-            <a href="/about">Read more</a>
-          </p>
         </div>
       </div>
     </main>

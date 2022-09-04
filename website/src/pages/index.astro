@@ -4,7 +4,7 @@ import MainHead from "../components/MainHead.astro";
 import Button from "../components/Button/index.jsx";
 import Nav from "../components/Nav/index.jsx";
 import Footer from "../components/Footer/index.jsx";
-import PortfolioPreview from "../components/PortfolioPreview/index.jsx";
+import SkillSets from "../components/SkillSets";
 
 // Data Fetching: List all Markdown posts in the repo.
 const projects = await Astro.glob("./project/**/*.md");
@@ -245,14 +245,10 @@ const featuredProject = projects[0];
           <p class="desc">
             I am passionate about data science, ecology, and programming. Some
             of my skill set includes:
-          </p><div
-            class="w-full bg-gray-200 rounded-full h-2.5 dark:bg-gray-700"
-          >
-            <div class="bg-blue-600 h-2.5 rounded-full" style="width: 65%">
-            </div>
-          </div>
+          </p>
         </div>
       </div>
+      <SkillSets />
     </main>
     <Footer />
   </body>

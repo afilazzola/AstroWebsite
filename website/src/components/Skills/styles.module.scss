@@ -1,0 +1,15 @@
+.column {
+	float: left;
+	width: 33.33%;
+}
+
+.row::after {
+	content: "";
+	clear: both;
+	display: table;
+}
+
+.skillSets .h2 {
+	font-size: 3rem;
+	
+}

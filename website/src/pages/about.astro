@@ -2,6 +2,7 @@
 import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.jsx";
+import Button from "../components/Button/index.jsx";
 ---
 
 <html lang="en">
@@ -19,20 +20,18 @@ import Nav from "../components/Nav/index.jsx";
         img {
           width: 100%;
         }
-
       }
 
-	  .aboutImage{
-		width:70%;
-		height:auto;
-	  }
+      .aboutImage {
+        width: 70%;
+        height: auto;
+      }
 
-	  .subtitle {
+      .subtitle {
         font-weight: 400;
         font-size: var(--f-d6);
         letter-spacing: -0.0625em;
       }
-
 
       .bio {
         font-size: var(--f-u1);
@@ -48,52 +47,84 @@ import Nav from "../components/Nav/index.jsx";
         <img width="1400" height="350" src="./granites.jpg" />
       </div>
       <div class="bio wrapper">
-        <h1>Alessandro Filazzola <small class="subtitle"> Ph.D. B.Sc.</small></h1>
-		<div class="pageRow">
-			<div class="pageColumn">
-        <p>
-			I am a data scientist and quantitative ecologist working at <a href="https://apexrms.com/"> ApexRMS </a>. I enjoy finding new data sources or approaches to improve our ability to manage and conserve biodiversity. My experience is in extreme value theory, machine learning, linear mixed modelling, predictive modelling, and multidimensional analyses. 
-        </p>
-		<p>
-			I recently finished working at the Center for Urban Environments in partnership with local conservation authorities. There I explored how urban biodiversity is impacted by land development and climate change. I have also worked as a data scientist at York University exploring the effects of climate variation on lake ice and water quality. I completed a Killam post-doctoral fellowship in 2019 at University of Alberta examining the effects climate change on alpine butterflies and domestic grazing on native biodiversity. I completed both my PhD (2018) and BSc (2012) at York University testing how desert plants respond to extreme climates.
-		</p>
-	</div>
-	<div class="pageColumn">
-		<img class="aboutImage" src="./AfilazzolaAbout.jpg" height="400">
-	</div>
-	</div>
-        <p>
-
-          Pepper jack cheesy feet cheese slices. Halloumi port-salut queso
-          caerphilly roquefort cheese slices cheesy feet rubber cheese. Cheese
-          slices smelly cheese pecorino macaroni cheese feta blue castello
-          roquefort edam. Babybel pepper jack airedale cheddar fromage frais
-          manchego.
-        </p>
-        <p>
-          Cauliflower cheese lancashire macaroni cheese. Cheeseburger babybel
-          cheese on toast airedale cauliflower cheese who moved my cheese
-          roquefort paneer. Stinking bishop cheddar taleggio port-salut
-          port-salut stinking bishop cheesy grin babybel. Blue castello feta
-          everyone loves brie.
-        </p>
-        <p>
-          Goat squirty cheese cut the cheese. Cheese and wine cheddar fondue
-          airedale cottage cheese camembert de normandie feta babybel. Rubber
-          cheese melted cheese pecorino port-salut fondue gouda cheese on toast
-          cheesy feet. Feta edam everyone loves cheese strings camembert de
-          normandie.
-        </p>
-        <p>
-          Caerphilly monterey jack goat. Squirty cheese cheesy grin hard cheese
-          cheese strings cheese and biscuits croque monsieur smelly cheese
-          danish fontina. Swiss cheese triangles everyone loves mascarpone
-          cheese on toast who moved my cheese lancashire cheeseburger. Fromage
-          frais fromage frais cheese and biscuits stinking bishop cauliflower
-          cheese.
-        </p>
+        <h1>
+          Alessandro Filazzola <small class="subtitle"> Ph.D. B.Sc.</small>
+        </h1>
+        <div class="grid grid-flow-col gap-4">
+          <div>
+            <p>
+              I am a data scientist and quantitative ecologist working at <a
+                href="https://apexrms.com/"
+              >
+                ApexRMS.
+              </a> I enjoy finding new data sources or approaches to improve our
+              ability to manage and conserve biodiversity. My experience is in extreme
+              value theory, machine learning, linear mixed modelling, predictive
+              modelling, and multidimensional analyses.
+            </p>
+            <br />
+            <p>
+              I recently finished working at the <a
+                href="https://www.utm.utoronto.ca/cue/welcome"
+              >
+                Center for Urban Environments</a
+              >
+              in partnership with local conservation authorities. There I explored
+              how urban biodiversity is impacted by land development and climate
+              change. I have also worked as a data scientist at <a
+                href="http://www.yorku.ca/index.html"
+              >
+                York University
+              </a> exploring the effects of climate variation on lake ice and water
+              quality. I completed a Killam post-doctoral fellowship in 2019 at <a
+                href="https://www.ualberta.ca/index.html"
+              >
+                University of Alberta
+              </a> examining the effects climate change on alpine butterflies and
+              domestic grazing on native biodiversity. I received both my PhD (2018)
+              and BSc (2012) at York University testing how desert plants respond
+              to extreme climates.
+            </p>
+          </div>
+          <div>
+            <img class="object-contain w-72" src="./AfilazzolaAbout.jpg" />
+          </div>
+        </div>
+        <br />
+        <div class="grid grid-flow-col gap-4">
+          <div>
+            <img class="object-contain w-96" src="./AfilazzolaAbout2.jpg" />
+          </div>
+          <div>
+            <p>
+              I have worked as a research coordinator with the <a
+                href="https://climateconnections.ca/"
+              >
+                Ontario Climate Consortium (OCC)
+              </a> and <a href="https://www.nature.org/">
+                The Nature Conservancy (TNC)
+              </a>. At the OCC I collaborated with local municipalities to
+              develop an adaptation plan to climate change. My time with the TNC
+              I provided recommendations for the strategic retirement of
+              agricultural land to preserve endangered species in California.
+            </p>
+            <br />
+            <p>
+              Most of my research analysis and workshop resources can be found
+              at <a href="https://github.com/afilazzola"> my GitHub page</a>. If
+              you are working on a project that could benefit from my expertise,
+              especially anything with habitat suitability modelling, land cover
+              classification of aerial images, or anonymized human movement
+              data, please reach out to me to discuss more!
+            </p>
+            <br />
+            <a href="/contact">
+              <Button>Contact</Button>
+            </a>
+          </div>
+        </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </body>
 </html>

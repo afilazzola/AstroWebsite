@@ -163,3 +163,16 @@ $colors: 'black', 'blue', 'white';
 .wrapper__readable {
 	max-width: 50em;
 }
+
+// page template
+.pageRow {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	
+}
+
+.pageColumn {
+	float: left;
+	flex: 45%;
+	padding: 0.5em 2m 0.5em 2em}

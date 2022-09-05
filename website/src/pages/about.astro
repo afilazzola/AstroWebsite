@@ -5,79 +5,95 @@ import Nav from "../components/Nav/index.jsx";
 ---
 
 <html lang="en">
-	<head>
-		<MainHead
-			title="About | Jeanine White"
-			description="About Jeanine White Lorem Ipsum"
-		/>
-		<style lang="scss">
-			.heroImg {
-				max-height: 24rem;
-				object-fit: cover;
-				overflow: hidden;
+  <head>
+    <MainHead
+      title="About | Alessandro Filazzola"
+      description="About Alessandro Filazzola"
+    />
+    <style lang="scss">
+      .heroImg {
+        max-height: 24rem;
+        object-fit: cover;
+        overflow: hidden;
 
-				img {
-					width: 100%;
-				}
-			}
+        img {
+          width: 100%;
+        }
 
-			.bio {
-				font-size: var(--f-u1);
-				line-height: 2;
-			}
-		</style>
-	</head>
-	<body>
-		<Nav />
-		<div class="wrapper">
-			<h1>About Jeanine</h1>
-			<div class="heroImg">
-				<img
-					width="1400"
-					height="350"
-					src="https://images.unsplash.com/photo-1581977012607-4091712d36f9?auto=format&fit=crop&w=1400&h=350&q=75"
-				/>
-			</div>
-			<div class="bio wrapper wrapper__readable mt8">
-				<p>
-					Cream cheese say cheese stinking bishop. Brie fondue hard
-					cheese bocconcini feta camembert de normandie babybel
-					airedale. Red leicester swiss manchego mascarpone pepper
-					jack airedale fromage frais ricotta. Cheese and biscuits
-					cauliflower cheese boursin.
-				</p>
-				<p>
-					Pepper jack cheesy feet cheese slices. Halloumi port-salut
-					queso caerphilly roquefort cheese slices cheesy feet rubber
-					cheese. Cheese slices smelly cheese pecorino macaroni cheese
-					feta blue castello roquefort edam. Babybel pepper jack
-					airedale cheddar fromage frais manchego.
-				</p>
-				<p>
-					Cauliflower cheese lancashire macaroni cheese. Cheeseburger
-					babybel cheese on toast airedale cauliflower cheese who
-					moved my cheese roquefort paneer. Stinking bishop cheddar
-					taleggio port-salut port-salut stinking bishop cheesy grin
-					babybel. Blue castello feta everyone loves brie.
-				</p>
-				<p>
-					Goat squirty cheese cut the cheese. Cheese and wine cheddar
-					fondue airedale cottage cheese camembert de normandie feta
-					babybel. Rubber cheese melted cheese pecorino port-salut
-					fondue gouda cheese on toast cheesy feet. Feta edam everyone
-					loves cheese strings camembert de normandie.
-				</p>
-				<p>
-					Caerphilly monterey jack goat. Squirty cheese cheesy grin
-					hard cheese cheese strings cheese and biscuits croque
-					monsieur smelly cheese danish fontina. Swiss cheese
-					triangles everyone loves mascarpone cheese on toast who
-					moved my cheese lancashire cheeseburger. Fromage frais
-					fromage frais cheese and biscuits stinking bishop
-					cauliflower cheese.
-				</p>
-			</div>
-		</div>
-		<Footer />
-	</body>
+      }
+
+	  .aboutImage{
+		width:70%;
+		height:auto;
+	  }
+
+	  .subtitle {
+        font-weight: 400;
+        font-size: var(--f-d6);
+        letter-spacing: -0.0625em;
+      }
+
+
+      .bio {
+        font-size: var(--f-u1);
+        line-height: 2;
+      }
+    </style>
+  </head>
+  <body>
+    <Nav />
+    <div class="wrapper">
+      <h1>About</h1>
+      <div class="heroImg">
+        <img width="1400" height="350" src="./granites.jpg" />
+      </div>
+      <div class="bio wrapper">
+        <h1>Alessandro Filazzola <small class="subtitle"> Ph.D. B.Sc.</small></h1>
+		<div class="pageRow">
+			<div class="pageColumn">
+        <p>
+			I am a data scientist and quantitative ecologist working at <a href="https://apexrms.com/"> ApexRMS </a>. I enjoy finding new data sources or approaches to improve our ability to manage and conserve biodiversity. My experience is in extreme value theory, machine learning, linear mixed modelling, predictive modelling, and multidimensional analyses. 
+        </p>
+		<p>
+			I recently finished working at the Center for Urban Environments in partnership with local conservation authorities. There I explored how urban biodiversity is impacted by land development and climate change. I have also worked as a data scientist at York University exploring the effects of climate variation on lake ice and water quality. I completed a Killam post-doctoral fellowship in 2019 at University of Alberta examining the effects climate change on alpine butterflies and domestic grazing on native biodiversity. I completed both my PhD (2018) and BSc (2012) at York University testing how desert plants respond to extreme climates.
+		</p>
+	</div>
+	<div class="pageColumn">
+		<img class="aboutImage" src="./AfilazzolaAbout.jpg" height="400">
+	</div>
+	</div>
+        <p>
+
+          Pepper jack cheesy feet cheese slices. Halloumi port-salut queso
+          caerphilly roquefort cheese slices cheesy feet rubber cheese. Cheese
+          slices smelly cheese pecorino macaroni cheese feta blue castello
+          roquefort edam. Babybel pepper jack airedale cheddar fromage frais
+          manchego.
+        </p>
+        <p>
+          Cauliflower cheese lancashire macaroni cheese. Cheeseburger babybel
+          cheese on toast airedale cauliflower cheese who moved my cheese
+          roquefort paneer. Stinking bishop cheddar taleggio port-salut
+          port-salut stinking bishop cheesy grin babybel. Blue castello feta
+          everyone loves brie.
+        </p>
+        <p>
+          Goat squirty cheese cut the cheese. Cheese and wine cheddar fondue
+          airedale cottage cheese camembert de normandie feta babybel. Rubber
+          cheese melted cheese pecorino port-salut fondue gouda cheese on toast
+          cheesy feet. Feta edam everyone loves cheese strings camembert de
+          normandie.
+        </p>
+        <p>
+          Caerphilly monterey jack goat. Squirty cheese cheesy grin hard cheese
+          cheese strings cheese and biscuits croque monsieur smelly cheese
+          danish fontina. Swiss cheese triangles everyone loves mascarpone
+          cheese on toast who moved my cheese lancashire cheeseburger. Fromage
+          frais fromage frais cheese and biscuits stinking bishop cauliflower
+          cheese.
+        </p>
+      </div>
+    </div>
+    <Footer />
+  </body>
 </html>

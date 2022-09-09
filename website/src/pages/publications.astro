@@ -26,6 +26,10 @@ import CitationsFormatted from "../components/Citations";
         width: 70%;
         height: auto;
       }
+      .bio {
+        font-size: var(--f-u1);
+        line-height: 2;
+      }
     </style>
   </head>
   <body>
@@ -36,8 +40,13 @@ import CitationsFormatted from "../components/Citations";
         <div class="heroImg">
           <img width="1400" height="350" src="./granites.jpg" />
         </div>
+
+        <div class="bio wrapper">
+          <div class="grid grid-flow-col gap-4">
+            <div><CitationsFormatted /></div>
+          </div>
+        </div>
       </div>
-      <div><CitationsFormatted /></div>
       <Footer />
     </div>
   </body>

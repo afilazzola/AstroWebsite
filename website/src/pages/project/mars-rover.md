@@ -3,21 +3,17 @@ layout: ../../layouts/project.astro
 title: Image classifier for alpine snowpack
 client: Self
 publishDate: 2022-09-11 00:00:00
-img: PortfolioAlpine.jpg
+img: https://images.unsplash.com/photo-1476400424721-e25994a9f0ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1047&q=80
 description: |
-  We built an unofficial Mars Rover Landing site in celebration of NASA’s Perseverance Rover.
+  I'm working on building an image classifier for alpine snowpack
 tags:
-  - design
-  - dev
-  - branding
+  - machine learning
+  - web dev
+  - gis
 ---
 
-Rubber cheese mascarpone cut the cheese. Jarlsberg parmesan cheesy grin cream cheese port-salut stinking bishop ricotta brie. Roquefort when the cheese comes out everybody's happy goat cheese triangles stilton cheese and biscuits goat babybel. Bocconcini roquefort queso danish fontina pecorino.
+Landscape are complex with features that including vegetation, abiotic (e.g., snow, rocks), or human-made. Quantifying these features is important to understand the characteristics of the landscape that species use. However, ground surveys can be costly, subjective, and inaccessible.
 
-Smelly cheese stinking bishop roquefort. Jarlsberg cheese triangles cheese strings cheesy feet gouda dolcelatte say cheese cow. Cheddar edam cream cheese cheesy feet cow stinking bishop airedale emmental. Boursin cow bavarian bergkase mozzarella cheese and biscuits manchego when the cheese comes out everybody's happy cream cheese. Cheese on toast st. agur blue cheese croque monsieur halloumi.
+Currently, I am developing an image classifier that can be used to convert aerial imagery into snow cover for alpine meadows. Quantifying snow using remote sensing is not particularly challenge when on flat ground (e.g., the arctic) or over large spatial scales. But the alpine is particularly challenging because there are extreme topographical variation in small areas, creating shadows and other visual artifiacts that limit remote sensing. Classifying aerial images can work around these limitations to more accurately estiamte snow cover. I am creating training data to be integrated into a neural net for classification.
 
-Fromage frais jarlsberg st. agur blue cheese. Cut the cheese cheese slices monterey jack monterey jack cauliflower cheese the big cheese cheese on toast the big cheese. Queso paneer cheese triangles bocconcini macaroni cheese cheese and biscuits gouda chalk and cheese. Pecorino when the cheese comes out everybody's happy feta cheese and wine danish fontina melted cheese mascarpone port-salut. When the cheese comes out everybody's happy pecorino cottage cheese.
-
-Caerphilly parmesan manchego. Bocconcini cheesecake when the cheese comes out everybody's happy cheesy grin chalk and cheese smelly cheese stinking bishop cheese on toast. Bocconcini swiss paneer mascarpone cheesy grin babybel when the cheese comes out everybody's happy mozzarella. Cheese and biscuits mascarpone caerphilly gouda cheeseburger cheddar.
-
-Cheese and biscuits cheesy grin roquefort. Ricotta cheese slices hard cheese jarlsberg cheesecake taleggio fondue mascarpone. Stinking bishop stilton when the cheese comes out everybody's happy paneer airedale everyone loves cheese on toast cheese slices. Ricotta cut the cheese cheese triangles babybel cream cheese ricotta.
+Snowpack is crucial for overwintering species in the alpine and quantifying its cover will be an important step for managing biodiversity loss with climate change. Populations of the Rocky Mountain apollo butterfly ([_Parnassius smintheus_](https://en.wikipedia.org/wiki/Parnassius_smintheus)) has been monitored since 1995 in a network of alpine meadows in Kananaskis, Alberta. We have [shown](https://onlinelibrary.wiley.com/doi/abs/10.1111/ecog.05407) that snow cover, especially in the fall, is important for overwintering egg survival in the harsh alpine winter. In the previous work, we visually estimated snow cover in November of five separate years. In my current project, I plan on extending this work to use the classifier to quantify snow cover more accurately, across more time periods, and across more meadows.

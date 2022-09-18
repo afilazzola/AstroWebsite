@@ -1,7 +1,7 @@
 import {useRef, useEffect, useState} from 'preact/hooks';
-import Styles from "./styles.module.scss";
 
-export default function FadeInSection() {
+
+export default function FadeInSection(props: any) {
 	const [elementInView, setElementInView] = useState(true);
 	const domRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 
@@ -22,8 +22,7 @@ export default function FadeInSection() {
 		style={ elementInView ? {opacity: 1, transition: "all 1s"} : {opacity: 0} }
 		ref={domRef}
 	  >
-		Yes
-		{/* {props.children} */}
+		{props.children}
 	  </div>
 	);
   }

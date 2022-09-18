@@ -228,30 +228,34 @@ const featuredProject = projects[0];
       </div>
     </header>
     <main class="wrapper mt5 mb5">
-      <div class="grid grid-cols-5 gap-3">
-        <div class="col-span-3">
-          <h2 class="sectionTitle">About</h2>
-          <p class="desc">
-            I am a data scientist at ApexRMS, where I forecast and model
-            ecological responses across time and space. Currently, I'm working
-            on creating an image classifier for alpine snowpack, using
-            anonymized cell phone data to understand how people use greenspaces,
-            and developing a web application for ecological forecasting.
-          </p>
+      <FadeInSection client:load>
+        <div class="grid grid-cols-5 gap-3">
+          <div class="col-span-3">
+            <h2 class="sectionTitle">About</h2>
+            <p class="desc">
+              I am a data scientist at ApexRMS, where I forecast and model
+              ecological responses across time and space. Currently, I'm working
+              on creating an image classifier for alpine snowpack, using
+              anonymized cell phone data to understand how people use
+              greenspaces, and developing a web application for ecological
+              forecasting.
+            </p>
+          </div>
+
+          <div class="col-span-2" style={{ position: "relative" }}>
+            <img
+              class="w-72"
+              style={{ position: "absolute", bottom: "0" }}
+              src="./AfilazzolaHome.jpg"
+            />
+          </div>
         </div>
-        <div class="col-span-2" style={{ position: "relative" }}>
-          <img
-            class="w-72"
-            style={{ position: "absolute", bottom: "0" }}
-            src="./AfilazzolaHome.jpg"
-          />
+        <div style="padding: 2em 0em 2em">
+          <a href="/about">
+            <Button>More about me</Button>
+          </a>
         </div>
-      </div>
-      <div style="padding: 2em 0em 2em">
-        <a href="/about">
-          <Button>More about me</Button>
-        </a>
-      </div>
+      </FadeInSection>
       <FadeInSection client:load>
         <h2 class="sectionTitle">Skills</h2>
         <p class="desc">

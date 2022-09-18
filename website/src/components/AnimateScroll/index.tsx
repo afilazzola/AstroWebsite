@@ -19,7 +19,9 @@ export default function FadeInSection(props: any) {
 	return (	
 		
 	  <div
-		style={ elementInView ? {opacity: 1, transition: "all 1s"} : {opacity: 0} }
+		style={ elementInView ? 
+			{opacity: 1, transition: "all 1s"} : 
+			{opacity: 0, transform: "translateX(-100%", filter: "blur(5px)"} }
 		ref={domRef}
 	  >
 		{props.children}

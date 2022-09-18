@@ -6,6 +6,7 @@ import Nav from "../components/Nav/index.jsx";
 import Footer from "../components/Footer/index.jsx";
 import SkillSets from "../components/Skills/index.jsx";
 import FadeInSection from "../components/AnimateScroll";
+import PortfolioPreview from "../components/PortfolioPreview";
 
 // Data Fetching: List all Markdown posts in the repo.
 const projects = await Astro.glob("./project/**/*.md");
@@ -264,6 +265,10 @@ const featuredProject = projects[0];
         </p>
 
         <SkillSets />
+      </FadeInSection>
+      <FadeInSection client:load>
+        <h2 class="sectionTitle">Projects</h2>
+        <PortfolioPreview project={featuredProject} />
         <div style="padding: 2em 0em 2em">
           <a href="/projects">
             <Button>Current projects</Button>

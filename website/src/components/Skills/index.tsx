@@ -5,7 +5,7 @@ export default function SkillSets() {
 
 	const allSkills = [
 		"R","Git","Bash","Python","SQL",
-		"JS/TS","HTML/CSS","Node","Astro","React",
+		"JS/TS","HTML/CSS","NodeJS","Astro","React",
 		"GIS","GLMMs","Data Viz","Ordinations","Machine Learning"]
 
 	const skillLevels = [

@@ -5,7 +5,7 @@ client: Self
 publishDate: 2022-09-11 00:00:00
 img: https://images.unsplash.com/photo-1476400424721-e25994a9f0ff?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1047&q=80
 description: |
-  I'm working on building an image classifier for alpine snowpack
+  An image classifier for quantifying alpine snowpack from aerial images
 tags:
   - machine learning
   - web dev

@@ -3,7 +3,7 @@ layout: ../../../layouts/project.astro
 title: Syncrosim Cloud
 client: Self
 publishDate: 2020-03-04 00:00:00
-img: https://syncrosim.com/wp-content/uploads/2018/07/iStock-802184024.jpg
+img: https://images.pexels.com/photos/13573321/pexels-photo-13573321.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1
 description: |
   An online portal for facilitating spatial forecasting by decision makers.
 tags:
@@ -13,12 +13,8 @@ tags:
   - GIS
 ---
 
-Rubber cheese mascarpone cut the cheese. Jarlsberg parmesan cheesy grin cream cheese port-salut stinking bishop ricotta brie. Roquefort when the cheese comes out everybody's happy goat cheese triangles stilton cheese and biscuits goat babybel. Bocconcini roquefort queso danish fontina pecorino.
+Decision makers need access to spatial models, especially those that predict changes in the future. Delivering those models to decision makers in a way that is accessible is a major barrier to implementation. [Syncrosim](https://syncrosim.com/) is a desktop software designed to streamline the process of delivering map-based forecasting models to users without the requirement of being a data scientist or having extensive computing expertise. However, desktop application are still are limiting, often requiring install permissions and upkeep for IT services.
 
-Smelly cheese stinking bishop roquefort. Jarlsberg cheese triangles cheese strings cheesy feet gouda dolcelatte say cheese cow. Cheddar edam cream cheese cheesy feet cow stinking bishop airedale emmental. Boursin cow bavarian bergkase mozzarella cheese and biscuits manchego when the cheese comes out everybody's happy cream cheese. Cheese on toast st. agur blue cheese croque monsieur halloumi.
+I am currently working with the team at [ApexRMS](https://apexrms.com/) to design a web based version of Syncrosim. The web based application will allow users to upload spatial data and run different forecasting models without the need to understand parallel and cloud computing or requiring high-performance computing resources. We are currently in beta, but once released the app will be available to anyone interested in conducting spatial forecasting.
 
-Fromage frais jarlsberg st. agur blue cheese. Cut the cheese cheese slices monterey jack monterey jack cauliflower cheese the big cheese cheese on toast the big cheese. Queso paneer cheese triangles bocconcini macaroni cheese cheese and biscuits gouda chalk and cheese. Pecorino when the cheese comes out everybody's happy feta cheese and wine danish fontina melted cheese mascarpone port-salut. When the cheese comes out everybody's happy pecorino cottage cheese.
-
-Caerphilly parmesan manchego. Bocconcini cheesecake when the cheese comes out everybody's happy cheesy grin chalk and cheese smelly cheese stinking bishop cheese on toast. Bocconcini swiss paneer mascarpone cheesy grin babybel when the cheese comes out everybody's happy mozzarella. Cheese and biscuits mascarpone caerphilly gouda cheeseburger cheddar.
-
-Cheese and biscuits cheesy grin roquefort. Ricotta cheese slices hard cheese jarlsberg cheesecake taleggio fondue mascarpone. Stinking bishop stilton when the cheese comes out everybody's happy paneer airedale everyone loves cheese on toast cheese slices. Ricotta cut the cheese cheese triangles babybel cream cheese ricotta.
+We built the app using React and NodeJS on AWS.

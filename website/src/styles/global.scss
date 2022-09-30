@@ -173,5 +173,7 @@ $colors: 'black', 'blue', 'white';
 	grid-auto-rows: 50%;
 }
 
-
-  
+.text-wide {
+	grid-column: span 2/ auto;
+	display: inline-block
+}

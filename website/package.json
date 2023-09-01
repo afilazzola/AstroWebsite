@@ -17,6 +17,7 @@
   },
   "dependencies": {
     "@types/react": "^18.0.18",
+    "astro-navbar": "^2.0.1",
     "preact": "^10.7.3"
   }
 }

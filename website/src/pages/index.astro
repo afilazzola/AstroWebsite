@@ -41,8 +41,8 @@ const featuredProject = projects[0];
       }
 
       .gradient {
-        background: var(--c-gray);
-        opacity: 0.6;
+        background: var(--c-black);
+        opacity: 0.5;
         background-size: cover;
         pointer-events: none;
         mix-blend-mode: screen;
@@ -74,10 +74,10 @@ const featuredProject = projects[0];
 
       .title {
         font-weight: 900;
-        font-size: var(--f-u8);
+        font-size: var(--f-u6);
         margin-bottom: 0.5rem;
         margin-top: 0;
-        color: var(--c-black);
+        color: var(--c-orange);
 
         @media (min-width: $w-s) {
           font-size: var(--f-u12);
@@ -158,9 +158,10 @@ const featuredProject = projects[0];
 
       .subtitle {
         display: block;
-        font-weight: 400;
-        font-size: var(--f-d6);
+        font-weight: 600;
+        font-size: var(--f-d4);
         letter-spacing: -0.0625em;
+        color: var(--c-lgray);
       }
 
       .bio {
@@ -193,22 +194,18 @@ const featuredProject = projects[0];
       </video>
       <div class="gradient"></div>
       <div class="overlay">
-        <h1 class="title">
-          Alessandro Filazzola <small class="subtitle"
-            >Data Scientist at ApexRMS</small
-          >
-        </h1>
+        <h1 class="title">Alessandro Filazzola</h1>
 
         <div>
           <span class="role">
-            Analytics <span class="invert"> Analytics</span>
+            Data Science <span class="invert"> Data Science</span>
           </span>
           &nbsp;
           <span class="role">
             Ecology <span class="invert"> Ecology</span>
           </span>
           <span class="role">
-            Programming <span class="invert"> Programming</span>
+            Web Development <span class="invert"> Web Development</span>
           </span>&nbsp;
         </div>
       </div>
@@ -218,13 +215,18 @@ const featuredProject = projects[0];
         <h2 class="sectionTitle">About</h2>
         <div class="index-about">
           <p class="desc">
-            I am a data scientist at ApexRMS, where I forecast and model
-            ecological responses across time and space. Currently, I'm working
-            on creating an image classifier for alpine snowpack, using
-            anonymized cell phone data to understand how people use greenspaces,
-            and developing a web application for ecological forecasting.
+            I am a data scientist and full-stack engineer at <a
+              href="https://www.apexrms.com">ApexRMS</a
+            >, and Adjunct Faculty in Biology at <a
+              href="https://www.uwo.ca/index.html">Western University</a
+            >. My work is focused on forecasting ecological responses across
+            time and space with a specific interest in extreme climate events
+            and sustainable development. Currently, I'm working on creating an
+            image classifier for alpine snowpack, using anonymized cell phone
+            data to understand how people use urban parks, and developing a web
+            application for ecological forecasting.
           </p>
-          <img class="w-72 mx-auto" src="./AfilazzolaHome.jpg" />
+          <img class="w-72 mx-auto pt-4" src="./AfilazzolaHome.jpg" />
         </div>
 
         <div style="padding: 2em 0em 2em">

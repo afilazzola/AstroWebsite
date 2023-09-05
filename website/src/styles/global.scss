@@ -8,7 +8,7 @@
 	--c-lgray: #F5F5F5;
 	--c-green: #9ef2cb;
 	--c-pink: #ffb8d9;
-	--c-orange: #ffb7a3;
+	--c-orange: #FFA500;
 	--c-yellow: #ffdace;
 	--c-white: #fff;
 
@@ -78,6 +78,10 @@ img {
 
 a {
 	color: var(--t-active);
+}
+
+a:hover {
+	color: var(--c-white);
 }
 
 h1 {

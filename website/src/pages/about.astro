@@ -6,39 +6,28 @@ import Button from "../components/Button/index.jsx";
 ---
 
 <html lang="en">
-  <head>
-    <MainHead
-      title="About | Alessandro Filazzola"
-      description="About Alessandro Filazzola"
-    />
-    <style lang="scss">
-      .heroImg {
-        max-height: 24rem;
-        object-fit: cover;
-        overflow: hidden;
+  <meta charset="UTF-8" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
 
-        img {
-          width: 100%;
-        }
-      }
+  <MainHead
+    title="About | Alessandro Filazzola"
+    description="About Alessandro Filazzola"
+  />
+  <style lang="scss">
+    .heroImg {
+      max-height: 24rem;
+      object-fit: cover;
+      overflow: hidden;
 
-      .aboutImage {
-        width: 70%;
-        height: auto;
+      img {
+        width: 100%;
       }
+    }
+  </style>
 
-      .subtitle {
-        font-weight: 400;
-        font-size: var(--f-d6);
-        letter-spacing: -0.0625em;
-      }
-
-      .bio {
-        font-size: var(--f-u1);
-        line-height: 2;
-      }
-    </style>
-  </head>
   <body>
     <Nav />
     <div class="wrapper">
@@ -46,25 +35,32 @@ import Button from "../components/Button/index.jsx";
       <div class="heroImg">
         <img width="1400" height="350" src="./granites.jpg" />
       </div>
-      <div class="bio wrapper">
-        <h1>
+      <div
+        class="max-w-md mx-auto overflow-hidden md:max-w-4xl my-4 md:text-xl small-screen-padding text-2xl"
+      >
+        <h1 class="page-title py-12 mx-auto text-5xl md:text-6xl">
           Alessandro Filazzola <small class="subtitle"> Ph.D. B.Sc.</small>
         </h1>
-        <div class="index-about">
-          <div class="text-wide">
+        <div class="md:flex my-4 md:space-x-4">
+          <div class="md:w-3/5">
             <p>
-              I am a data scientist and quantitative ecologist working at <a
+              I am a data scientist and full-stack engineer working at <a
                 href="https://apexrms.com/"
               >
-                ApexRMS.
-              </a> I enjoy finding new data sources or approaches to improve our
-              ability to manage and conserve biodiversity. My experience is in extreme
-              value theory, machine learning, linear mixed modelling, predictive
-              modelling, and multidimensional analyses.
+                ApexRMS. I am also an Adjunct Faculty at Western University in
+                the
+              </a><a
+                href="https://www.uwo.ca/biology//people/crossappointed-adjunct-and-sessional-faculty.html"
+              >
+                Biology Department
+              </a>. I enjoy finding new data sources or approaches to improve
+              our ability to manage and conserve biodiversity. My experience is
+              in extreme value theory, machine learning, linear mixed modelling,
+              predictive modelling, and multidimensional analyses.
             </p>
             <br />
             <p>
-              I recently finished working at the <a
+              Previously, I have worked at the <a
                 href="https://www.utm.utoronto.ca/cue/welcome"
               >
                 Center for Urban Environments</a
@@ -76,7 +72,7 @@ import Button from "../components/Button/index.jsx";
               >
                 York University
               </a> exploring the effects of climate variation on lake ice and water
-              quality. I completed a Killam post-doctoral fellowship in 2019 at <a
+              quality. I completed a Killam post-doctoral fellowship in 2020 at <a
                 href="https://www.ualberta.ca/index.html"
               >
                 University of Alberta
@@ -87,22 +83,22 @@ import Button from "../components/Button/index.jsx";
             </p>
           </div>
 
-          <div class="w-full h-[70vh] mx-auto">
+          <div class="md:w-2/5 my-4">
             <img
-              class="max-h-full max-w-full min-w-0 min-h-0"
+              class="w-72 md:w-full object-cover md:h-full mx-auto"
               src="./AfilazzolaAbout.jpg"
             />
           </div>
         </div>
         <br />
-        <div class="index-about">
-          <div class="w-full h-[60vh] mx-auto">
+        <div class="md:flex my-4 md:space-x-4">
+          <div class="md:w-2/5 my-4">
             <img
-              class="max-h-full max-w-full min-w-0 min-h-0"
+              class="w-72 md:w-full object-cover md:h-full mx-auto"
               src="./AfilazzolaAbout2.jpg"
             />
           </div>
-          <div class="text-wide">
+          <div class="md:w-3/5">
             <p>
               I have worked as a research coordinator with the <a
                 href="https://climateconnections.ca/"
@@ -133,6 +129,5 @@ import Button from "../components/Button/index.jsx";
       </div>
       <Footer />
     </div>
-
-    ../components/Nav/astro.js</body>
+  </body>
 </html>

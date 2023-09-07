@@ -5,7 +5,7 @@ import Button from "../components/Button/index.jsx";
 import Nav from "../components/Nav/index.astro";
 import Footer from "../components/Footer/index.jsx";
 import SkillSets from "../components/Skills/index.jsx";
-import FadeInSection from "../components/AnimateScroll";
+import ScrollInSection from "../components/AnimateScroll";
 import PortfolioPreview from "../components/PortfolioPreview";
 
 // Data Fetching: List all Markdown posts in the repo.
@@ -211,7 +211,7 @@ const featuredProject = projects[0];
       </div>
     </header>
     <main class="wrapper mt5 mb5">
-      <FadeInSection client:load>
+      <ScrollInSection client:load>
         <h2 class="sectionTitle">About</h2>
         <div class="index-about">
           <p class="desc">
@@ -234,8 +234,8 @@ const featuredProject = projects[0];
             <Button>More about me</Button>
           </a>
         </div>
-      </FadeInSection>
-      <FadeInSection client:load>
+      </ScrollInSection>
+      <ScrollInSection client:load>
         <h2 class="sectionTitle">Skills</h2>
         <p class="desc">
           I am passionate about data science, ecology, and programming
@@ -243,8 +243,8 @@ const featuredProject = projects[0];
         </p>
 
         <SkillSets />
-      </FadeInSection>
-      <FadeInSection client:load>
+      </ScrollInSection>
+      <ScrollInSection client:load>
         <h2 class="sectionTitle">Projects</h2>
         <PortfolioPreview project={featuredProject} />
         <div style="padding: 2em 0em 2em">
@@ -252,7 +252,7 @@ const featuredProject = projects[0];
             <Button>Current projects</Button>
           </a>
         </div>
-      </FadeInSection>
+      </ScrollInSection>
     </main>
     <Footer />
   </body>

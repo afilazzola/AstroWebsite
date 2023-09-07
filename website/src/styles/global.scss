@@ -182,3 +182,23 @@ $colors: 'black', 'blue', 'white';
 	grid-column: span 2/ auto;
 	display: inline-block
 }
+
+.fade-in {
+	opacity: 0;
+	transform: translateY(-5%);
+	filter: blur(5px);
+	animation: fadeInUp 2s forwards;
+  }
+  
+  @keyframes fadeInUp {
+	0% {
+	  opacity: 0;
+	  transform: translateY(-5%);
+	  filter: blur(5px);
+	}
+	100% {
+	  opacity: 1;
+	  transform: translateY(0);
+	  filter: blur(0);
+	}
+  }

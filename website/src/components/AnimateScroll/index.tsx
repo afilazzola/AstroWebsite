@@ -1,7 +1,7 @@
 import {useRef, useEffect, useState} from 'preact/hooks';
 
 
-export default function FadeInSection(props: any) {
+export default function ScrollInSection(props: any) {
 	const [elementInView, setElementInView] = useState(true);
 	const domRef = useRef() as React.MutableRefObject<HTMLInputElement>;
 

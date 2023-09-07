@@ -50,6 +50,15 @@ const { content } = Astro.props;
         letter-spacing: 0.0625em;
       }
 
+      @media (max-width: 600px) {
+        .hero {
+          padding: 4rem;
+        }
+        .title {
+          font-size: var(--f-u8);
+        }
+      }
+
       .leadIn {
         color: var(--t-bg);
         background-color: var(--c-dblue);
@@ -87,6 +96,5 @@ const { content } = Astro.props;
       </a>
     </footer>
     <Footer />
-
-    ../components/Nav/astro.js</body>
+  </body>
 </html>

@@ -3,7 +3,8 @@
 	// (c)olor
 	--c-black: #05091e;
 	--c-blue: #46b4ff;
-	--c-dblue: #0d1850;
+	--c-dblue: #060b24;
+	--c-mblue: #0d1850;
 	--c-gray: #90aab7;
 	--c-lgray: #F5F5F5;
 	--c-green: #9ef2cb;
@@ -64,9 +65,9 @@ body {
 	margin: 0;
 	color: var(--t-fg);
 	font-family: 'Inter', 'system-ui', sans-serif;
-	background-color: var(--c-black);
+	background-image: linear-gradient(var(--c-dblue), var(--c-mblue) 60%);
 }
-
+--c-dblue
 * {
 	box-sizing: content-box;
 }

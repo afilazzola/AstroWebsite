@@ -3,6 +3,7 @@ import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.astro";
 import PortfolioPreview from "../components/PortfolioPreview/index.jsx";
+import { SEO } from "astro-seo";
 
 const projects = (await Astro.glob("./project/**/*.md"))
   .filter(({ frontmatter }) => !!frontmatter.publishDate)
@@ -19,6 +20,17 @@ const projects = (await Astro.glob("./project/**/*.md"))
       title="All Projects | Alessandro Filazzola"
       description="Most recent projects led by Alessandro Filazzola"
     />
+    <SEO
+    title="Alessandro Filazzola - Projects"
+    description="Projects that Alessandro Filazzola is currently working on including an image classifier for alpine snowpack, using anonymized cell data for park management, and creating Syncrosim Cloud - a web application to support decision makers in spatial modelling"
+    openGraph={{
+      basic: {
+        title: "Alessandro Filazzola - Projects",
+        type: "website",
+        image: "/AfilazzolaHome.jpg",
+      },
+    }}
+  />
     <style lang="scss">
       .grid {
         display: grid;

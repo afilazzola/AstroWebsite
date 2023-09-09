@@ -3,32 +3,46 @@ import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.astro";
 import Button from "../components/Button/index.jsx";
+import { SEO } from "astro-seo";
 import "../styles/global.scss";
 ---
 
+<!DOCTYPE html>
 <html lang="en">
-  <meta charset="UTF-8" />
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1, shrink-to-fit=no"
-  />
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <SEO
+      title="Alessandro Filazzola - About Me"
+      description="Alessandro Filazzola is a data scientist, quantitative ecologist, and web developer. He currently works at ApexRMS and is an Adjunct Faculty at Western University in Canada."
+      openGraph={{
+        basic: {
+          title: "Alessandro Filazzola - About Me",
+          type: "website",
+          image: "/AfilazzolaAbout.jpg",
+        },
+      }}
+    />
 
-  <MainHead
-    title="About | Alessandro Filazzola"
-    description="About Alessandro Filazzola"
-  />
-  <style lang="scss">
-    .heroImg {
-      max-height: 24rem;
-      object-fit: cover;
-      overflow: hidden;
+    <MainHead
+      title="About | Alessandro Filazzola"
+      description="About Alessandro Filazzola"
+    />
+    <style lang="scss">
+      .heroImg {
+        max-height: 24rem;
+        object-fit: cover;
+        overflow: hidden;
 
-      img {
-        width: 100%;
+        img {
+          width: 100%;
+        }
       }
-    }
-  </style>
-
+    </style>
+  </head>
   <body>
     <Nav />
     <div class="wrapper">
@@ -87,7 +101,7 @@ import "../styles/global.scss";
           <div class="md:w-2/5 my-4">
             <img
               class="w-72 md:w-full object-cover md:h-full mx-auto"
-              src="./AfilazzolaAbout.jpg"
+              src="/AfilazzolaAbout.jpg"
             />
           </div>
         </div>
@@ -96,7 +110,7 @@ import "../styles/global.scss";
           <div class="md:w-2/5 my-4">
             <img
               class="w-72 md:w-full object-cover md:h-full mx-auto"
-              src="./AfilazzolaAbout2.jpg"
+              src="/AfilazzolaAbout2.jpg"
             />
           </div>
           <div class="md:w-3/5">

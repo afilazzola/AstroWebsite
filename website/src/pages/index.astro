@@ -44,64 +44,98 @@ const featuredProject = projects[0];
       $w-s: 750px;
 
       .hero {
-        position: relative;
-        overflow: hidden;
+  position: relative;
+  overflow: hidden;
+  height: 100vh; /* Full viewport height */
+}
 
-        @media (min-width: $w-s) {
-          height: 45vw;
-        }
-      }
+.myVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
+.gradient {
+  background: var(--c-black);
+  opacity: 0.5;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding-left: 2rem;
+  color: var(--c-orange);
+}
+
+.title {
+  font-weight: 900;
+  font-size: var(--f-u9);
+  margin-bottom: 0.5rem;
+  margin-top: 0;
+
+  @media (max-width: 640px) {
+    font-weight: 800;
+  font-size: var(--f-u4);
+  }
+}
+
+.roles {
+  display: flex;
+}
+
+.role {
+  font-weight: 900;
+  color: var(--c-lgray);
+  background-color: var(--c-black);
+  padding: 0.25em 0.5em;
+  border-radius: 5px;
+  margin-right: 1em;
+  font-size: var(--f-u2);
+  transition: background-color 0.3s ease-in-out;
+}
+
+.role:hover {
+  background-color: var(--c-orange);
+}
+
+.invert {
+  position: absolute;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
+  transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
+}
       .img {
         display: block;
         width: 100%;
         height: auto;
       }
 
-      .gradient {
-        background: var(--c-black);
-        opacity: 0.5;
-        background-size: cover;
-        pointer-events: none;
-        mix-blend-mode: screen;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 2;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 10;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding-left: 2rem;
-
-        @media (min-width: $w-s) {
-          padding-left: 4rem;
-        }
-      }
-
-      .title {
-        font-weight: 900;
-        font-size: var(--f-u6);
-        margin-bottom: 0.5rem;
-        margin-top: 0;
-        color: var(--c-orange);
-
-        @media (min-width: $w-s) {
-          font-size: var(--f-u12);
-        }
-      }
-
+      
       .sectionTitle {
         font-weight: 700;
         font-size: var(--f-u8);
@@ -109,64 +143,7 @@ const featuredProject = projects[0];
         margin-bottom: 2rem;
       }
 
-      .role {
-        position: relative;
-        display: inline-block;
-        font-weight: 900;
-        color: var(--c-lgray);
-        background-color: var(--c-black);
-        padding: 0.25em 0.5em;
-        z-index: 2;
-
-        @media (min-width: $w-s) {
-          font-size: var(--f-u3);
-        }
-
-        + .role {
-          margin-left: 1em;
-        }
-
-        &:nth-of-type(1) {
-          .invert {
-            background-color: var(--c-blue);
-            color: var(--c-black);
-          }
-        }
-
-        &:nth-of-type(2) {
-          .invert {
-            background-color: var(--c-pink);
-            color: var(--c-black);
-          }
-        }
-
-        &:nth-of-type(3) {
-          .invert {
-            background-color: var(--c-orange);
-            color: var(--c-black);
-          }
-        }
-
-        &:hover {
-          .invert {
-            clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
-          }
-        }
-      }
-
-      .invert {
-        position: absolute;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-        transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-      }
+      
 
       .desc {
         font-size: var(--f-u2);
@@ -195,44 +172,30 @@ const featuredProject = projects[0];
         }
       }
 
-      .myVideo {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        min-width: 100%;
-        min-height: 100%;
-      }
+
     </style>
   </head>
   <body>
     <Nav />
     <header class="hero">
-      <video autoplay muted loop id="myVideo">
+      <video autoplay muted loop id="myVideo" class="myVideo">
         <source src="alpineGrassland.mp4" type="video/mp4" />
       </video>
       <div class="gradient"></div>
       <div class="overlay">
         <h1 class="title">Alessandro Filazzola</h1>
-
-        <div>
-          <span class="role">
-            Data Science <span class="invert"> Data Science</span>
-          </span>
-          &nbsp;
-          <span class="role">
-            Ecology <span class="invert"> Ecology</span>
-          </span>
-          <span class="role">
-            Web Development <span class="invert"> Web Development</span>
-          </span>&nbsp;
+        <div class="roles">
+          <span class="role">Data Science</span>
+          <span class="role">Ecology</span>
+          <span class="role">Web Development</span>
         </div>
       </div>
     </header>
     <main class="wrapper mt5 mb5">
       <ScrollInSection client:load>
         <h2 class="sectionTitle">About</h2>
-        <div class="index-about">
-          <p class="desc">
+        <div class="index-about ">
+          <p class="desc md:py-12 lg:py-0">
             I am a data scientist and full-stack engineer at <a
               href="https://www.apexrms.com">ApexRMS</a
             >, and Adjunct Faculty in Biology at <a

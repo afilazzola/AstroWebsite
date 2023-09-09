@@ -44,106 +44,103 @@ const featuredProject = projects[0];
       $w-s: 750px;
 
       .hero {
-  position: relative;
-  overflow: hidden;
-  height: 100vh; /* Full viewport height */
-}
+        position: relative;
+        overflow: hidden;
+        height: 100vh; /* Full viewport height */
+      }
 
-.myVideo {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
+      .myVideo {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
 
-.gradient {
-  background: var(--c-black);
-  opacity: 0.5;
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 2;
-}
+      .gradient {
+        background: var(--c-black);
+        opacity: 0.3;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+      }
 
-.overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 3;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  padding-left: 2rem;
-  color: var(--c-orange);
-}
+      .overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 3;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
+        padding-left: 2rem;
+        color: var(--c-orange);
+      }
 
-.title {
-  font-weight: 900;
-  font-size: var(--f-u9);
-  margin-bottom: 0.5rem;
-  margin-top: 0;
+      .title {
+        font-weight: 900;
+        font-size: var(--f-u10);
+        margin-bottom: 0.5rem;
+        margin-top: 0;
 
-  @media (max-width: 640px) {
-    font-weight: 800;
-  font-size: var(--f-u4);
-  }
-}
+        @media (max-width: 640px) {
+          font-weight: 800;
+          font-size: var(--f-u7);
+        }
+      }
 
-.roles {
-  display: flex;
-}
+      .roles {
+        display: flex;
+      }
 
-.role {
-  font-weight: 900;
-  color: var(--c-lgray);
-  background-color: var(--c-black);
-  padding: 0.25em 0.5em;
-  border-radius: 5px;
-  margin-right: 1em;
-  font-size: var(--f-u2);
-  transition: background-color 0.3s ease-in-out;
-}
+      .role {
+        font-weight: 900;
+        color: var(--c-lgray);
+        background-color: var(--c-black);
+        padding: 0.25em 0.5em;
+        border-radius: 5px;
+        margin-right: 1em;
+        font-size: var(--f-u2);
+        transition: background-color 0.3s ease-in-out;
+      }
 
-.role:hover {
-  background-color: var(--c-orange);
-}
+      .role:hover {
+        background-color: var(--c-orange);
+      }
 
-.invert {
-  position: absolute;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 5px;
-  width: 100%;
-  height: 100%;
-  top: 0;
-  left: 0;
-  pointer-events: none;
-  clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-  transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-}
+      .invert {
+        position: absolute;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        pointer-events: none;
+        clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
+        transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
+      }
       .img {
         display: block;
         width: 100%;
         height: auto;
       }
 
-      
       .sectionTitle {
         font-weight: 700;
         font-size: var(--f-u8);
         margin-top: 4rem;
         margin-bottom: 2rem;
       }
-
-      
 
       .desc {
         font-size: var(--f-u2);
@@ -171,8 +168,6 @@ const featuredProject = projects[0];
           font-size: var(--f-u4);
         }
       }
-
-
     </style>
   </head>
   <body>
@@ -184,9 +179,9 @@ const featuredProject = projects[0];
       <div class="gradient"></div>
       <div class="overlay">
         <h1 class="title">Alessandro Filazzola</h1>
-        <div class="roles">
+        <div class="flex flex-col lg:flex-row lg:gap-5 gap-y-5 mt-4">
           <span class="role">Data Science</span>
-          <span class="role">Ecology</span>
+          <span class="role">Quantitative Ecology</span>
           <span class="role">Web Development</span>
         </div>
       </div>
@@ -194,7 +189,7 @@ const featuredProject = projects[0];
     <main class="wrapper mt5 mb5">
       <ScrollInSection client:load>
         <h2 class="sectionTitle">About</h2>
-        <div class="index-about ">
+        <div class="index-about">
           <p class="desc md:py-12 lg:py-0">
             I am a data scientist and full-stack engineer at <a
               href="https://www.apexrms.com">ApexRMS</a
@@ -207,7 +202,10 @@ const featuredProject = projects[0];
             data to understand how people use urban parks, and developing a web
             application for ecological forecasting.
           </p>
-          <img class="w-72 mx-auto pt-4" src="./AfilazzolaHome.jpg" />
+          <img
+            class="w-72 mx-auto md:py-12 lg:py-4"
+            src="./AfilazzolaHome.jpg"
+          />
         </div>
 
         <div style="padding: 2em 0em 2em">

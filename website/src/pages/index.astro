@@ -231,7 +231,9 @@ const featuredProject = projects[0];
       </ScrollInSection>
       <ScrollInSection client:load>
         <h2 class="sectionTitle">Projects</h2>
-        <PortfolioPreview project={featuredProject} />
+        <div class="md:text-base">
+          <PortfolioPreview project={featuredProject} />
+        </div>
         <div style="padding: 2em 0em 2em">
           <a href="/projects">
             <Button>Current projects</Button>

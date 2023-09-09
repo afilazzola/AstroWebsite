@@ -3,6 +3,7 @@ import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.astro";
 import CitationsFormatted from "../components/Citations";
+import { SEO } from "astro-seo";
 ---
 
 <html lang="en">
@@ -10,6 +11,17 @@ import CitationsFormatted from "../components/Citations";
     <MainHead
       title="Publications"
       description="Publications by Alessandro Filazzola"
+    />
+    <SEO
+      title="Alessandro Filazzola - Publications"
+      description="A list of all recent publications by Alessandro Filazzola along with relevant citations and links."
+      openGraph={{
+        basic: {
+          title: "Alessandro Filazzola - Publications",
+          type: "website",
+          image: "/Butterfly.jpg",
+        },
+      }}
     />
     <style lang="scss">
       .heroImg {

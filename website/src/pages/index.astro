@@ -186,26 +186,32 @@ const featuredProject = projects[0];
         </div>
       </div>
     </header>
-    <main class="wrapper mt5 mb5">
+    <main
+      class="max-w-md mx-auto overflow-hidden md:max-w-4xl my-4 md:text-md small-screen-padding text-xl"
+    >
       <ScrollInSection client:load>
         <h2 class="sectionTitle">About</h2>
-        <div class="index-about">
-          <p class="desc md:py-12 lg:py-0">
-            I am a data scientist and full-stack engineer at <a
-              href="https://www.apexrms.com">ApexRMS</a
-            >, and Adjunct Faculty in Biology at <a
-              href="https://www.uwo.ca/index.html">Western University</a
-            >. My work is focused on forecasting ecological responses across
-            time and space with a specific interest in extreme climate events
-            and sustainable development. Currently, I'm working on creating an
-            image classifier for alpine snowpack, using anonymized cell phone
-            data to understand how people use urban parks, and developing a web
-            application for ecological forecasting.
-          </p>
-          <img
-            class="w-72 mx-auto md:py-12 lg:py-4"
-            src="./AfilazzolaHome.jpg"
-          />
+        <div class="md:flex my-4 md:space-x-4">
+          <div class="md:w-3/5">
+            <p class="desc md:py-12 lg:py-0">
+              I am a data scientist and full-stack engineer at <a
+                href="https://www.apexrms.com">ApexRMS</a
+              >, and Adjunct Faculty in Biology at <a
+                href="https://www.uwo.ca/index.html">Western University</a
+              >. My work is focused on forecasting ecological responses across
+              time and space with a specific interest in extreme climate events
+              and sustainable development. Currently, I'm working on creating an
+              image classifier for alpine snowpack, using anonymized cell phone
+              data to understand how people use urban parks, and developing a
+              web application for ecological forecasting.
+            </p>
+          </div>
+          <div class="md:w-2/5 my-4">
+            <img
+              class="w-72 md:w-full object-cover md:h-full mx-auto"
+              src="./AfilazzolaHome.jpg"
+            />
+          </div>
         </div>
 
         <div style="padding: 2em 0em 2em">

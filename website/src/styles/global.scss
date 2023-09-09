@@ -202,3 +202,9 @@ $colors: 'black', 'blue', 'white';
 	  filter: blur(0);
 	}
   }
+
+  @media (max-width: 640px) {
+	.small-screen-padding {
+	  padding: 1rem 2rem; /* Adding padding on small screens */
+	}
+  }

@@ -82,17 +82,19 @@ const featuredProject = projects[0];
         justify-content: center;
         padding-left: 2rem;
         color: var(--c-orange);
+        margin-top: -2rem;
       }
 
       .title {
         font-weight: 900;
-        font-size: var(--f-u10);
+        font-size: var(--f-u11);
         margin-bottom: 0.5rem;
         margin-top: 0;
+        text-shadow: 2px 2px #000000;
 
         @media (max-width: 640px) {
           font-weight: 800;
-          font-size: var(--f-u7);
+          font-size: var(--f-u8);
         }
       }
 
@@ -103,12 +105,16 @@ const featuredProject = projects[0];
       .role {
         font-weight: 900;
         color: var(--c-lgray);
+        font-size: var(--f-u3);
         background-color: var(--c-black);
         padding: 0.25em 0.5em;
         border-radius: 5px;
         margin-right: 1em;
-        font-size: var(--f-u2);
         transition: background-color 0.3s ease-in-out;
+
+        @media (max-width: 640px) {
+          font-size: var(--f-u2);
+        }
       }
 
       .role:hover {
@@ -135,15 +141,7 @@ const featuredProject = projects[0];
         height: auto;
       }
 
-      .sectionTitle {
-        font-weight: 700;
-        font-size: var(--f-u8);
-        margin-top: 4rem;
-        margin-bottom: 2rem;
-      }
-
       .desc {
-        font-size: var(--f-u2);
         margin-top: 1.5rem;
         margin-bottom: 0;
       }
@@ -187,13 +185,13 @@ const featuredProject = projects[0];
       </div>
     </header>
     <main
-      class="max-w-md mx-auto overflow-hidden md:max-w-4xl my-4 md:text-md small-screen-padding text-xl"
+      class="max-w-md mx-auto overflow-hidden md:max-w-4xl my-4 small-screen-padding md:text-2xl text-xl"
     >
       <ScrollInSection client:load>
-        <h2 class="sectionTitle">About</h2>
+        <h2 class="py-6 mx-auto text-4xl md:text-6xl font-semibold">About</h2>
         <div class="md:flex my-4 md:space-x-4">
           <div class="md:w-3/5">
-            <p class="desc md:py-12 lg:py-0">
+            <p class="desc md:py-6 lg:py-0">
               I am a data scientist and full-stack engineer at <a
                 href="https://www.apexrms.com">ApexRMS</a
               >, and Adjunct Faculty in Biology at <a
@@ -206,7 +204,7 @@ const featuredProject = projects[0];
               web application for ecological forecasting.
             </p>
           </div>
-          <div class="md:w-2/5 my-4">
+          <div class="md:w-2/5 pt-6 md:pt-4">
             <img
               class="w-72 md:w-full object-cover md:h-full mx-auto"
               src="./AfilazzolaHome.jpg"
@@ -221,7 +219,7 @@ const featuredProject = projects[0];
         </div>
       </ScrollInSection>
       <ScrollInSection client:load>
-        <h2 class="sectionTitle">Skills</h2>
+        <h2 class="text-4xl md:text-6xl font-semibold">Skills</h2>
         <p class="desc">
           I am passionate about data science, ecology, and programming
           including:

@@ -14,21 +14,20 @@ const currentPath = Astro.url.pathname;
         <MenuIcon class="w-6 h-6 color: '#f7f3ed' m-2" />
       </div>
       <MenuItems class="hidden lg:flex pt-2.5">
-        <ul class="flex flex-col lg:flex-row lg:gap-5">
-          <li>
+        <ul class="flex flex-col lg:flex-row lg:gap-5 lg:items-center">
+          <li class={Styles.navItem}>
             <a href="/" class={currentPath === "/" ? Styles.active : ""}>Home</a>
           </li>
-          <li>
+          <li class={Styles.navItem}>
             <a href="/about" class={currentPath === "/about" ? Styles.active : ""}>About me</a>
           </li>
-          <li>
+          <li class={Styles.navItem}>
             <a href="/publications" class={currentPath === "/publications" ? Styles.active : ""}>Publications</a>
           </li>
-
-          <li>
+          <li class={Styles.navItem}>
             <a href="/projects" class={currentPath === "/projects" ? Styles.active : ""}>Projects</a>
           </li>
-          <li>
+          <li class={Styles.navItem}>
             <a href="/contact" class={currentPath === "/contact" ? Styles.active : ""}>Contact</a>
           </li>
         </ul>

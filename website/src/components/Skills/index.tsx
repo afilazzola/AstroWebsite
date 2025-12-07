@@ -24,9 +24,9 @@ export default function SkillSets() {
 	];
   
 	return (
-	  <div className="flex flex-wrap">
+	  <div className="flex flex-wrap -mx-4">
 		{skillsByCategory.map((categorySkills, categoryIndex) => (
-		  <div className="w-full sm:w-1/2 md:w-1/3 lg:w-1/3 xl:w-1/3 px-4 mb-8" key={categoryIndex}>
+		  <div className="w-full md:w-1/3 px-4 mb-8" key={categoryIndex}>
 			<h2 className="text-xl font-bold py-4">
 			  {["Data Science", "Web Dev", "Analytics"][categoryIndex]}
 			</h2>

@@ -2,7 +2,6 @@
 import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.astro";
-import CitationsFormatted from "../components/Citations";
 import { SEO } from "astro-seo";
 ---
 
@@ -10,11 +9,11 @@ import { SEO } from "astro-seo";
   <head>
     <MainHead
       title="Publications"
-      description="Publications by Alessandro Filazzola"
+      description="Research on climate change, lake ecosystems, plant ecology, biodiversity conservation, and ecological data science by Alessandro Filazzola"
     />
     <SEO
       title="Alessandro Filazzola - Publications"
-      description="A list of all recent publications by Alessandro Filazzola along with relevant citations and links."
+      description="Explore featured research on climate change impacts on lakes, plant facilitation ecology, biodiversity conservation, and ecological data science methods. View full publication list on Google Scholar."
       openGraph={{
         basic: {
           title: "Alessandro Filazzola - Publications",
@@ -34,13 +33,118 @@ import { SEO } from "astro-seo";
         }
       }
 
-      .aboutImage {
-        width: 70%;
-        height: auto;
-      }
-      .bio {
+      .publications-intro {
         font-size: var(--f-u1);
-        line-height: 2;
+        line-height: 1.8;
+        margin: 2rem 0;
+
+        p {
+          color: #f5f5f5;
+          margin-bottom: 1.5rem;
+        }
+      }
+
+      .scholar-link-container {
+        text-align: center;
+        margin: 3rem 0;
+      }
+
+      .scholar-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.75rem 1.5rem;
+        background: var(--c-blue);
+        color: white;
+        border-radius: 8px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: var(--c-blue-dark, #1e40af);
+          transform: translateY(-2px);
+          box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+      }
+
+      .research-themes {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 1.5rem;
+        margin: 3rem 0;
+
+        @media (min-width: 1200px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+
+        @media (min-width: 768px) and (max-width: 1199px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (max-width: 767px) {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .theme-card {
+        background: white;
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        border-left: 4px solid var(--c-blue);
+
+        &:hover {
+          transform: translateY(-4px);
+          box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+        }
+
+        h3 {
+          color: var(--c-blue);
+          margin-bottom: 0.75rem;
+          font-size: 1.5rem;
+        }
+
+        .theme-description {
+          color: #666;
+          margin-bottom: 1.5rem;
+          font-size: 0.95rem;
+          line-height: 1.6;
+        }
+
+        .key-papers {
+          list-style-type: disc;
+          padding-left: 1.5rem;
+          margin: 0;
+
+          li {
+            margin-bottom: 1rem;
+
+            &::marker {
+              color: var(--c-blue);
+            }
+
+            a {
+              color: #333;
+              text-decoration: none;
+              font-size: 0.9rem;
+              line-height: 1.5;
+              display: inline;
+
+              &:hover {
+                color: var(--c-blue);
+                text-decoration: underline;
+              }
+            }
+
+            .journal {
+              font-style: italic;
+              color: #777;
+              font-size: 0.85rem;
+            }
+          }
+        }
       }
     </style>
   </head>
@@ -50,17 +154,279 @@ import { SEO } from "astro-seo";
       <div class="wrapper">
         <h1>Publications</h1>
         <div class="heroImg">
-          <img width="1400" height="350" src="/granites.jpg" />
+          <img
+            width="1400"
+            height="350"
+            src="/granites.jpg"
+            alt="Granite rock formations"
+            loading="eager"
+          />
         </div>
 
-        <div class="bio wrapper fade-in">
-          <div class="grid grid-flow-col gap-4">
-            <div><CitationsFormatted /></div>
+        <div class="publications-intro fade-in">
+          <p>
+            My research addressed critical questions in ecology and
+            environmental science across multiple scales and systems. I studied
+            how climate change transformed freshwater lake ecosystems through
+            altered ice dynamics and water quality patterns. My work in plant
+            ecology examined facilitation mechanisms and species interactions in
+            harsh environments, with direct applications for restoration and
+            conservation. Through quantitative synthesis and meta-analysis, I
+            investigated biodiversity patterns, urban green infrastructure
+            effectiveness, and multi-trophic responses to environmental change.
+          </p>
+          <p>
+            I am dedicated to advancing ecological data science by strengthening
+            reproducibility, improving code quality, and creating robust
+            workflow practices. These efforts are part of my broader commitment
+            to building a more reliable and transparent foundation for
+            ecological research. While I am publishing less in my current data
+            science role, I continue to support the scientific community by
+            creating tools and software that lower barriers to participation and
+            make ecological research more accessible to everyone.
+          </p>
+        </div>
+
+        <div class="research-themes fade-in">
+          <div class="theme-card">
+            <h3>Climate Change & Lake Ecosystems</h3>
+            <p class="theme-description">
+              Examining how climate change affects lake ice dynamics, water
+              quality, and ecosystem functioning across the Northern Hemisphere.
+            </p>
+            <ul class="key-papers">
+              <li>
+                <a
+                  href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2020GL091108"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Forecasting the permanent loss of lake ice within the 21st
+                  century
+                </a>
+                <div class="journal">Geophysical Research Letters (2021)</div>
+              </li>
+              <li>
+                <a
+                  href="https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2020GL089608"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Climate change drives increases in extreme events for lake ice
+                  in the Northern Hemisphere
+                </a>
+                <div class="journal">Geophysical Research Letters (2020)</div>
+              </li>
+              <li>
+                <a
+                  href="https://aslopubs.onlinelibrary.wiley.com/doi/full/10.1002/lno.11611"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Relationships of total phosphorus and chlorophyll in lakes
+                  worldwide
+                </a>
+                <div class="journal">Limnology and Oceanography (2020)</div>
+              </li>
+              <li>
+                <a
+                  href="https://www.nature.com/articles/s41597-020-00648-2"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  A database of chlorophyll and water chemistry in freshwater
+                  lakes
+                </a>
+                <div class="journal">Nature Scientific Data (2020)</div>
+              </li>
+            </ul>
           </div>
+
+          <div class="theme-card">
+            <h3>Plant Ecology & Facilitation</h3>
+            <p class="theme-description">
+              Understanding how plants interact and facilitate each other in
+              harsh environments, with implications for restoration and
+              conservation.
+            </p>
+            <ul class="key-papers">
+              <li>
+                <a
+                  href="https://onlinelibrary.wiley.com/doi/abs/10.1111/geb.12202"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  A systematic review and conceptual framework for the
+                  mechanistic pathways of nurse plants
+                </a>
+                <div class="journal">
+                  Global Ecology and Biogeography (2014)
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://nph.onlinelibrary.wiley.com/doi/abs/10.1111/nph.14778"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  The effect of consumer pressure and abiotic stress on positive
+                  plant interactions are mediated by extreme climatic events
+                </a>
+                <div class="journal">New Phytologist (2018)</div>
+              </li>
+              <li>
+                <a
+                  href="https://onlinelibrary.wiley.com/doi/abs/10.1111/jvs.12909"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Species-specificity challenges the predictability of
+                  facilitation along a regional desert gradient
+                </a>
+                <div class="journal">Journal of Vegetation Science (2020)</div>
+              </li>
+              <li>
+                <a
+                  href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0215988"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Shrubs indirectly increase desert seedbanks through
+                  facilitation of the plant community
+                </a>
+                <div class="journal">PLoS ONE (2019)</div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="theme-card">
+            <h3>Ecological Data Science & Methods</h3>
+            <p class="theme-description">
+              Advancing reproducibility, code quality, and methodological rigor
+              in ecological research through better data management and
+              analytical practices.
+            </p>
+            <ul class="key-papers">
+              <li>
+                <a
+                  href="https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13961"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  A call for clean code to effectively communicate science
+                </a>
+                <div class="journal">
+                  Methods in Ecology and Evolution (2022)
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/2041-210X.13657"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Replication in field ecology: identifying challenges and
+                  proposing solutions
+                </a>
+                <div class="journal">
+                  Methods in Ecology and Evolution (2021)
+                </div>
+              </li>
+              <li>
+                <a
+                  href="https://onlinelibrary.wiley.com/doi/abs/10.1002/ece3.5970"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  A checklist for choosing between R packages in ecology and
+                  evolution
+                </a>
+                <div class="journal">Ecology and Evolution (2020)</div>
+              </li>
+              <li>
+                <a
+                  href="https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/2041-210X.14113"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Improving ecological data science with workflow management
+                  software
+                </a>
+                <div class="journal">
+                  Methods in Ecology and Evolution (2023)
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <div class="theme-card">
+            <h3>Biodiversity & Conservation</h3>
+            <p class="theme-description">
+              Quantifying biodiversity patterns across ecosystems and
+              understanding how human activities and climate change affect
+              species interactions and conservation outcomes.
+            </p>
+            <ul class="key-papers">
+              <li>
+                <a
+                  href="https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/1365-2664.13475"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  The contribution of constructed green infrastructure to urban
+                  biodiversity: A synthesis and meta-analysis
+                </a>
+                <div class="journal">Journal of Applied Ecology (2019)</div>
+              </li>
+              <li>
+                <a
+                  href="https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13527"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Grazing effects on biodiversity is multi-trophic: a
+                  meta-analysis
+                </a>
+                <div class="journal">Ecology Letters (2020)</div>
+              </li>
+              <li>
+                <a
+                  href="https://onlinelibrary.wiley.com/doi/abs/10.1111/gcb.15068"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Inclusion of trophic interactions increases the vulnerability
+                  of an alpine butterfly species to climate change
+                </a>
+                <div class="journal">Global Change Biology (2020)</div>
+              </li>
+              <li>
+                <a
+                  href="https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1010725"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Using smartphone-GPS data to quantify human activity in green
+                  spaces
+                </a>
+                <div class="journal">PLoS Computational Biology (2022)</div>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="scholar-link-container fade-in">
+          <a
+            href="https://scholar.google.ca/citations?user=mKvIMTYAAAAJ&hl=en&oi=ao"
+            class="scholar-link"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            View Full Publication List on Google Scholar
+          </a>
         </div>
       </div>
       <Footer />
     </div>
-
-    ../components/Nav/astro.js</body>
+  </body>
 </html>

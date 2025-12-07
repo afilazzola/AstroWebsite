@@ -81,9 +81,8 @@ const featuredProject = projects[0];
         flex-direction: column;
         align-items: flex-start;
         justify-content: center;
-        padding-left: 2rem;
+        padding: 0 2rem;
         color: var(--c-orange);
-        margin-top: -2rem;
       }
 
       .title {
@@ -91,11 +90,20 @@ const featuredProject = projects[0];
         font-size: var(--f-u11);
         margin-bottom: 0.5rem;
         margin-top: 0;
-        text-shadow: 1px 1px #000000;
+        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
 
         @media (max-width: 640px) {
           font-weight: 800;
           font-size: var(--f-u8);
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .myVideo {
+          display: none;
+        }
+        .hero {
+          background: linear-gradient(135deg, var(--c-dblue) 0%, var(--c-mblue) 100%);
         }
       }
 
@@ -172,8 +180,18 @@ const featuredProject = projects[0];
   <body>
     <Nav />
     <header class="hero">
-      <video autoplay muted loop id="myVideo" class="myVideo">
+      <video
+        autoplay
+        muted
+        loop
+        playsinline
+        preload="metadata"
+        id="myVideo"
+        class="myVideo"
+        aria-label="Background video of alpine grassland"
+      >
         <source src="alpineGrassland.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
       </video>
       <div class="gradient"></div>
       <div class="overlay">
@@ -209,11 +227,13 @@ const featuredProject = projects[0];
             <img
               class="w-72 md:w-4/5 object-cover md:h-full mx-auto"
               src="./AfilazzolaHome.jpg"
+              alt="Alessandro Filazzola in the field"
+              loading="lazy"
             />
           </div>
         </div>
 
-        <div style="padding: 2em 0em 2em">
+        <div class="py-8">
           <a href="/about">
             <Button>More about me</Button>
           </a>
@@ -233,7 +253,7 @@ const featuredProject = projects[0];
         <div class="md:text-base">
           <PortfolioPreview project={featuredProject} />
         </div>
-        <div style="padding: 2em 0em 2em">
+        <div class="py-8">
           <a href="/projects">
             <Button>Current projects</Button>
           </a>

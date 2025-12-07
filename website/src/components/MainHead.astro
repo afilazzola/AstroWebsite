@@ -1,13 +1,21 @@
 ---
 import "../styles/global.scss";
-import GoogleAnalytics from "./Analytics";
 const {
   title = "Alessandro Filazzola",
   description = "Alessandro Filazzola: Data scientist at ApexRMS",
 } = Astro.props;
 ---
 
-<GoogleAnalytics client:load />
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WY3MGM0JN2"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WY3MGM0JN2');
+</script>
+
 <meta charset="UTF-8" />
 <meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />

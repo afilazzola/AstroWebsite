@@ -14,7 +14,20 @@
 	--c-white: #fff;
 
 
-	// (f)ont
+	// Modern simplified typography scale (recommended)
+	--text-xs: 0.75rem;     // 12px
+	--text-sm: 0.875rem;    // 14px
+	--text-base: 1rem;      // 16px
+	--text-lg: 1.125rem;    // 18px
+	--text-xl: 1.25rem;     // 20px
+	--text-2xl: 1.5rem;     // 24px
+	--text-3xl: 1.875rem;   // 30px
+	--text-4xl: 2.25rem;    // 36px
+	--text-5xl: 3rem;       // 48px
+	--text-6xl: 3.75rem;    // 60px
+	--text-7xl: 4.5rem;     // 72px
+
+	// Legacy font scale (kept for backward compatibility - consider migrating to modern scale above)
 	--f-u18: 11.390625em;
 	--f-u17: 9.950627481136905em;
 	--f-u16: 8.692673779389363em;
@@ -63,13 +76,19 @@
 
 body {
 	margin: 0;
+	padding: 0;
 	color: var(--t-fg);
 	font-family: 'Roboto', 'Source Code Pro', sans-serif;
 	background-image: linear-gradient(var(--c-dblue), var(--c-mblue) 60%);
+	overflow-x: hidden;
 }
---c-dblue
+
+html {
+	overflow-x: hidden;
+}
+
 * {
-	box-sizing: content-box;
+	box-sizing: border-box;
 }
 
 img {
@@ -79,10 +98,25 @@ img {
 
 a {
 	color: var(--t-active);
+	text-decoration: none;
+	transition: color 200ms ease;
 }
 
 a:hover {
 	color: var(--c-white);
+}
+
+// Focus styles for accessibility
+*:focus-visible {
+	outline: 2px solid var(--c-orange);
+	outline-offset: 2px;
+	border-radius: 2px;
+}
+
+button:focus-visible,
+a:focus-visible {
+	outline: 2px solid var(--c-orange);
+	outline-offset: 4px;
 }
 
 h1 {

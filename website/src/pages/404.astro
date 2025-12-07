@@ -2,18 +2,54 @@
 import MainHead from "../components/MainHead.astro";
 import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.astro";
+import Button from "../components/Button/index.jsx";
 ---
 
 <html lang="en">
   <head>
-    <MainHead title="Not Found" />
+    <MainHead title="404 - Page Not Found | Alessandro Filazzola" />
+    <style>
+      .error-container {
+        min-height: 60vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+      }
+      .error-code {
+        font-size: 6rem;
+        font-weight: 900;
+        color: var(--c-orange);
+        margin-bottom: 1rem;
+      }
+      @media (max-width: 640px) {
+        .error-code {
+          font-size: 4rem;
+        }
+      }
+    </style>
   </head>
   <body>
-    <nav></nav>
-    <div class="wrapper mt4 mb4">
-      <h1>Page Not Found</h1>
-      <p>Not found</p>
+    <Nav />
+    <div class="wrapper error-container">
+      <h1 class="error-code">404</h1>
+      <h2 class="text-3xl md:text-4xl mb-4">Page Not Found</h2>
+      <p class="text-xl mb-8 max-w-md">
+        Sorry, we couldn't find the page you're looking for. It may have been moved or deleted.
+      </p>
+      <div class="flex gap-4 flex-wrap justify-center">
+        <a href="/">
+          <Button>Go Home</Button>
+        </a>
+        <a href="/projects">
+          <Button>View Projects</Button>
+        </a>
+        <a href="/contact">
+          <Button>Contact Me</Button>
+        </a>
+      </div>
     </div>
-    <footer></footer>
+    <Footer />
   </body>
 </html>

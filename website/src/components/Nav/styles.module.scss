@@ -15,7 +15,7 @@
 	transition: fill 200ms ease, transform 200ms ease;
 
 	&:hover {
-		fill: var(--t-active);
+		fill: var(--color-secondary);
 		transform: translateY(-2px);
 	}
 }
@@ -38,7 +38,7 @@
 }
 
 .active {
-	color: var(--c-orange) !important;
+	color: var(--color-accent) !important;
 	position: relative;
 
 	&::after {
@@ -48,7 +48,7 @@
 		left: 0;
 		right: 0;
 		height: 2px;
-		background-color: var(--c-orange);
+		background-color: var(--color-accent);
 
 		@media (max-width: 1024px) {
 			display: none;
@@ -56,7 +56,69 @@
 	}
 
 	@media (max-width: 1024px) {
-		background-color: rgba(255, 165, 0, 0.15);
+		background-color: rgba(249, 115, 22, 0.15);
 		border-radius: 6px;
+	}
+}
+
+.availableBadge {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.5rem 1rem;
+	background: rgba(34, 197, 94, 0.1);
+	border: 1px solid rgba(34, 197, 94, 0.3);
+	border-radius: 9999px;
+	color: var(--color-available);
+	font-size: 0.875rem;
+	font-weight: 600;
+	text-decoration: none;
+	transition: all 0.3s ease;
+
+	&:hover {
+		background: rgba(34, 197, 94, 0.2);
+		border-color: var(--color-available);
+		transform: translateY(-1px);
+		color: var(--color-available);
+	}
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+}
+
+.pulseDot {
+	position: relative;
+	width: 8px;
+	height: 8px;
+	background: var(--color-available);
+	border-radius: 50%;
+
+	&::before {
+		content: '';
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: 100%;
+		height: 100%;
+		background: var(--color-available);
+		border-radius: 50%;
+		animation: pulse 2s infinite;
+	}
+}
+
+@keyframes pulse {
+	0% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 1;
+	}
+	70% {
+		transform: translate(-50%, -50%) scale(2.5);
+		opacity: 0;
+	}
+	100% {
+		transform: translate(-50%, -50%) scale(1);
+		opacity: 0;
 	}
 }

@@ -1,20 +1,34 @@
 // Tokens
 :root {
-	// (c)olor
-	--c-black: #05091e;
-	--c-blue: #46b4ff;
-	--c-dblue: #060b24;
-	--c-mblue: #0d1850;
-	--c-gray: #90aab7;
-	--c-lgray: #F5F5F5;
-	--c-green: #9ef2cb;
-	--c-pink: #ffb8d9;
-	--c-orange: #FFA500;
-	--c-yellow: #ffdace;
+	// New Design System Colors - Earthy Teal Palette
+	--color-bg-dark: #0a0a0f;        // Near-black background
+	--color-bg-card: #141420;        // Card backgrounds
+	--color-primary: #0d9488;        // Teal 600 - nature/ocean feel
+	--color-secondary: #64748b;      // Slate 500 - rocky/earthy
+	--color-accent: #f97316;         // Orange CTAs
+	--color-available: #22c55e;      // Green "available" indicator
+	--color-gradient-mid: #134e4a;   // Teal 900 - for gradients
+
+	// Legacy colors (kept for backward compatibility)
+	--c-black: #0a0a0f;
+	--c-blue: #64748b;
+	--c-dblue: #0a0a0f;
+	--c-mblue: #141420;
+	--c-gray: #94a3b8;
+	--c-lgray: #f1f5f9;
+	--c-green: #22c55e;
+	--c-pink: #ec4899;
+	--c-orange: #f97316;
+	--c-yellow: #fbbf24;
 	--c-white: #fff;
+	--c-indigo: #0d9488;
+	--c-cyan: #64748b;
 
+	// Typography
+	--font-display: 'Sora', sans-serif;
+	--font-body: 'Inter', sans-serif;
 
-	// Modern simplified typography scale (recommended)
+	// Modern simplified typography scale
 	--text-xs: 0.75rem;     // 12px
 	--text-sm: 0.875rem;    // 14px
 	--text-base: 1rem;      // 16px
@@ -27,7 +41,7 @@
 	--text-6xl: 3.75rem;    // 60px
 	--text-7xl: 4.5rem;     // 72px
 
-	// Legacy font scale (kept for backward compatibility - consider migrating to modern scale above)
+	// Legacy font scale (kept for backward compatibility)
 	--f-u18: 11.390625em;
 	--f-u17: 9.950627481136905em;
 	--f-u16: 8.692673779389363em;
@@ -65,34 +79,32 @@
 	--f-d17: 0.10049617492923625em;
 	--f-d18: 0.0877914951989026em;
 
-	// (t)heme colors (legacy - prefer semantic tokens below)
+	// Theme colors
 	--t-fg: var(--c-white);
 	--t-bg: var(--c-white);
-	--t-subdue: #b0c4ce;
-	--t-active: #5ac0ff;
+	--t-subdue: #94a3b8;
+	--t-active: var(--color-secondary);
 
-	// Semantic color tokens (recommended)
-	--color-primary: var(--c-orange);
-	--color-primary-hover: #ff8c00;
-	--color-secondary: #5ac0ff;
-	--color-secondary-hover: #7dd3ff;
+	// Semantic color tokens
+	--color-primary-hover: #0f766e;   // Teal 700
+	--color-secondary-hover: #475569; // Slate 600
+	--color-accent-hover: #ea580c;
 
 	--color-text-primary: var(--c-white);
-	--color-text-secondary: #b0c4ce;
-	--color-text-muted: var(--c-gray);
+	--color-text-secondary: #94a3b8;
+	--color-text-muted: #64748b;
 
-	--color-bg-primary: var(--c-dblue);
-	--color-bg-secondary: var(--c-mblue);
-	--color-bg-card: var(--c-black);
-	--color-bg-overlay: rgba(0, 0, 0, 0.4);
+	--color-bg-primary: var(--color-bg-dark);
+	--color-bg-secondary: var(--color-bg-card);
+	--color-bg-overlay: rgba(0, 0, 0, 0.6);
 
-	--color-border: #e5e7eb;
-	--color-border-light: #f0f0f0;
+	--color-border: rgba(255, 255, 255, 0.1);
+	--color-border-light: rgba(255, 255, 255, 0.05);
 
 	--color-success: var(--c-green);
 	--color-warning: var(--c-yellow);
-	--color-error: #ff6b6b;
-	--color-info: var(--c-blue);
+	--color-error: #ef4444;
+	--color-info: var(--color-secondary);
 }
 
 // Base
@@ -101,9 +113,14 @@ body {
 	margin: 0;
 	padding: 0;
 	color: var(--c-white);
-	font-family: 'Roboto', 'Source Code Pro', sans-serif;
-	background-image: linear-gradient(var(--c-dblue), var(--c-mblue) 60%);
+	font-family: var(--font-body);
+	background: var(--color-bg-dark);
 	overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	font-family: var(--font-display);
+	font-weight: 700;
 }
 
 html {
@@ -120,26 +137,109 @@ img {
 }
 
 a {
-	color: #5ac0ff;
+	color: var(--color-secondary);
 	text-decoration: none;
 	transition: color 200ms ease;
 }
 
 a:hover {
-	color: #7dd3ff;
+	color: var(--color-secondary-hover);
 }
 
 // Focus styles for accessibility
 *:focus-visible {
-	outline: 2px solid var(--c-orange);
+	outline: 2px solid var(--color-accent);
 	outline-offset: 2px;
 	border-radius: 2px;
 }
 
 button:focus-visible,
 a:focus-visible {
-	outline: 2px solid var(--c-orange);
+	outline: 2px solid var(--color-accent);
 	outline-offset: 4px;
+}
+
+// Primary CTA button
+.btn-primary {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.875rem 2rem;
+	background: var(--color-accent);
+	color: white;
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	transition: all 0.3s ease;
+	border: none;
+	cursor: pointer;
+
+	&:hover {
+		background: var(--color-accent-hover);
+		transform: translateY(-2px);
+		box-shadow: 0 4px 12px rgba(249, 115, 22, 0.3);
+		color: white;
+	}
+}
+
+// Secondary button
+.btn-secondary {
+	display: inline-flex;
+	align-items: center;
+	gap: 0.5rem;
+	padding: 0.875rem 2rem;
+	background: transparent;
+	color: var(--c-white);
+	border: 2px solid var(--color-border);
+	border-radius: 8px;
+	text-decoration: none;
+	font-weight: 600;
+	font-size: 1.1rem;
+	transition: all 0.3s ease;
+	cursor: pointer;
+
+	&:hover {
+		border-color: var(--color-secondary);
+		color: var(--color-secondary);
+		transform: translateY(-2px);
+	}
+}
+
+// Modern card styling
+.card {
+	background: var(--color-bg-card);
+	border: 1px solid var(--color-border);
+	border-radius: 12px;
+	padding: 1.5rem;
+	transition: all 0.3s ease;
+
+	&:hover {
+		border-color: rgba(255, 255, 255, 0.2);
+		transform: translateY(-4px);
+		box-shadow: 0 8px 30px rgba(0, 0, 0, 0.3);
+	}
+}
+
+// Section styling
+.section {
+	padding: 5rem 0;
+}
+
+.section-title {
+	font-size: var(--text-4xl);
+	font-weight: 700;
+	margin-bottom: 1rem;
+
+	@media (min-width: 768px) {
+		font-size: var(--text-5xl);
+	}
+}
+
+.section-subtitle {
+	font-size: var(--text-lg);
+	color: var(--color-text-secondary);
+	max-width: 600px;
 }
 
 h1 {

@@ -1,0 +1,365 @@
+---
+import MainHead from "../../components/MainHead.astro";
+import Nav from "../../components/Nav/index.astro";
+import Footer from "../../components/Footer/index.jsx";
+import { SEO } from "astro-seo";
+
+const portfolioSites = [
+  {
+    title: "La Poche",
+    url: "https://lapoche.ca/",
+    description: "A multifunctional venue in downtown Guelph featuring a barbershop, co-working space, and intimate evening bar with live music events. The site needed to convey the unique atmosphere and multiple services while maintaining a cohesive brand identity.",
+    image: "/assets/la-poche.jpg",
+    tags: ["Business", "Hospitality", "Local"],
+    features: ["Custom design", "Event calendar", "Mobile responsive", "SEO optimized"],
+  },
+  {
+    title: "Amanda Liczner",
+    url: "https://www.amandaliczner.ca/",
+    description: "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration research. The site showcases academic publications, research projects, and professional experience in an accessible format.",
+    image: "/assets/amanda-liczner.jpg",
+    tags: ["Portfolio", "Research", "Academic"],
+    features: ["Publication showcase", "Research gallery", "CV integration", "Clean typography"],
+  },
+  {
+    title: "Armstrong Coaching",
+    url: "https://armstrong-coaching.com/",
+    description: "Personal training and lifestyle coaching practice combining strength training expertise with holistic wellness guidance. The site emphasizes the personal approach and transformation journey with compelling visuals and clear service offerings.",
+    image: "/assets/armstrong-coaching.jpg",
+    tags: ["Coaching", "Fitness", "Wellness"],
+    features: ["Service packages", "Testimonials", "Contact forms", "Brand identity"],
+  },
+  {
+    title: "Cahill Lab",
+    url: "https://cahilllab.ca/",
+    description: "Research group website for an experimental plant ecology lab at the University of Alberta. Features team profiles, publication lists, and research project descriptions for prospective students and collaborators.",
+    image: "/assets/cahill-lab.jpg",
+    tags: ["Research", "Academia", "Ecology"],
+    features: ["Team profiles", "Publication database", "Research projects", "Academic styling"],
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <SEO
+      title="Portfolio | Alessandro Filazzola"
+      description="View my web design portfolio featuring custom websites for businesses, researchers, and professionals across Canada."
+      openGraph={{
+        basic: {
+          title: "Portfolio | Alessandro Filazzola",
+          type: "website",
+          image: "/AfilazzolaHome.jpg",
+        },
+      }}
+    />
+    <MainHead
+      title="Portfolio | Alessandro Filazzola"
+      description="Web design portfolio"
+    />
+    <style lang="scss">
+      .page-header {
+        background: linear-gradient(135deg, #0a0a0f 0%, var(--color-gradient-mid) 50%, #0a0a0f 100%);
+        padding: 8rem 2rem 5rem;
+        text-align: center;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(ellipse at 50% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 60%);
+          pointer-events: none;
+        }
+      }
+
+      .page-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin: 0 0 1rem;
+        position: relative;
+      }
+
+      .page-subtitle {
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .breadcrumb {
+        margin-bottom: 2rem;
+        position: relative;
+
+        a {
+          color: var(--color-text-secondary);
+          text-decoration: none;
+          font-size: 0.875rem;
+
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+
+        span {
+          color: var(--color-text-muted);
+          margin: 0 0.5rem;
+        }
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .portfolio-list {
+        display: flex;
+        flex-direction: column;
+        gap: 4rem;
+      }
+
+      .portfolio-item {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+        align-items: center;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+
+          &:nth-child(even) {
+            .portfolio-image {
+              order: 2;
+            }
+          }
+        }
+      }
+
+      .portfolio-image {
+        position: relative;
+        border-radius: 16px;
+        overflow: hidden;
+        aspect-ratio: 16 / 10;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.5s ease;
+        }
+
+        &:hover img {
+          transform: scale(1.05);
+        }
+
+        &::after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          border: 1px solid var(--color-border);
+          border-radius: 16px;
+          pointer-events: none;
+        }
+      }
+
+      .portfolio-content {
+        h3 {
+          font-family: var(--font-display);
+          font-size: clamp(1.5rem, 3vw, 2rem);
+          margin: 0 0 1rem;
+
+          a {
+            color: var(--c-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: var(--color-primary);
+            }
+          }
+        }
+
+        > p {
+          color: var(--color-text-secondary);
+          font-size: 1rem;
+          line-height: 1.7;
+          margin: 0 0 1.5rem;
+        }
+      }
+
+      .portfolio-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+
+        span {
+          background: rgba(13, 148, 136, 0.1);
+          color: var(--color-primary);
+          padding: 0.25rem 0.75rem;
+          border-radius: 9999px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+      }
+
+      .portfolio-features {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+
+        li {
+          display: flex;
+          align-items: center;
+          gap: 0.5rem;
+          color: var(--color-text-secondary);
+          font-size: 0.875rem;
+
+          &::before {
+            content: '';
+            width: 16px;
+            height: 16px;
+            background: var(--color-available);
+            border-radius: 50%;
+            flex-shrink: 0;
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='white'%3E%3Cpath fill-rule='evenodd' d='M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z' clip-rule='evenodd'/%3E%3C/svg%3E");
+            background-size: 10px;
+            background-repeat: no-repeat;
+            background-position: center;
+          }
+        }
+      }
+
+      .visit-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+
+        &:hover {
+          gap: 0.75rem;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .cta-section {
+        background: var(--color-bg-card);
+        border-top: 1px solid var(--color-border);
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          margin: 0 0 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Nav />
+
+    <header class="page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Portfolio</span>
+      </nav>
+      <h1 class="page-title">Portfolio</h1>
+      <p class="page-subtitle">
+        A selection of websites I've designed and built for clients across Canada
+      </p>
+    </header>
+
+    <main>
+      <section class="section">
+        <div class="container">
+          <div class="portfolio-list">
+            {portfolioSites.map((site) => (
+              <article class="portfolio-item">
+                <div class="portfolio-image">
+                  <a href={site.url} target="_blank" rel="noopener noreferrer">
+                    <img src={site.image} alt={site.title} loading="lazy" />
+                  </a>
+                </div>
+                <div class="portfolio-content">
+                  <h3>
+                    <a href={site.url} target="_blank" rel="noopener noreferrer">
+                      {site.title}
+                    </a>
+                  </h3>
+                  <div class="portfolio-tags">
+                    {site.tags.map((tag) => (
+                      <span>{tag}</span>
+                    ))}
+                  </div>
+                  <p>{site.description}</p>
+                  <ul class="portfolio-features">
+                    {site.features.map((feature) => (
+                      <li>{feature}</li>
+                    ))}
+                  </ul>
+                  <a href={site.url} target="_blank" rel="noopener noreferrer" class="visit-link">
+                    Visit Website
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                      <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+                      <polyline points="15,3 21,3 21,9"/>
+                      <line x1="10" y1="14" x2="21" y2="3"/>
+                    </svg>
+                  </a>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Like What You See?</h2>
+            <p>
+              I'd love to hear about your project and see how I can help.
+            </p>
+            <a href="/contact" class="btn-primary">Let's Chat</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

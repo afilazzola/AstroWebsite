@@ -1,203 +1,455 @@
 ---
 import MainHead from "../components/MainHead.astro";
-import Footer from "../components/Footer/index.jsx";
 import Nav from "../components/Nav/index.astro";
-import Button from "../components/Button/index.jsx";
+import Footer from "../components/Footer/index.jsx";
 import { SEO } from "astro-seo";
-import "../styles/global.scss";
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <SEO
-      title="Alessandro Filazzola - About Me"
-      description="Alessandro Filazzola is a data scientist, quantitative ecologist, and web developer. He currently works at ApexRMS and is an Adjunct Faculty at Western University in Canada."
+      title="About | Alessandro Filazzola"
+      description="Computational ecologist and web designer based in Ontario, Canada. Combining a research background with a passion for helping small businesses find their voice online."
       openGraph={{
         basic: {
-          title: "Alessandro Filazzola - About Me",
+          title: "About | Alessandro Filazzola",
           type: "website",
           image: "/AfilazzolaAbout.jpg",
         },
       }}
     />
-
     <MainHead
       title="About | Alessandro Filazzola"
-      description="About Alessandro Filazzola"
+      description="Computational ecologist and web designer"
     />
     <style lang="scss">
-      .heroImg {
-        max-height: 24rem;
-        object-fit: cover;
-        overflow: hidden;
+      .page-header {
+        background: linear-gradient(135deg, #0a0a0f 0%, var(--color-gradient-mid) 50%, #0a0a0f 100%);
+        padding: 8rem 2rem 5rem;
+        text-align: center;
+        position: relative;
 
-        img {
-          width: 100%;
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(ellipse at 50% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 60%);
+          pointer-events: none;
         }
       }
 
-      .breadcrumb {
-        margin: 1rem 0;
-        padding: 0.5rem 0;
+      .page-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin: 0 0 1rem;
+        position: relative;
+      }
 
-        ol {
-          display: flex;
-          flex-wrap: wrap;
-          list-style: none;
-          padding: 0;
-          margin: 0;
-          gap: 0.5rem;
-          font-size: 0.875rem;
-        }
+      .page-subtitle {
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .breadcrumb {
+        margin-bottom: 2rem;
+        position: relative;
 
         a {
-          color: #aaa;
+          color: var(--color-text-secondary);
           text-decoration: none;
+          font-size: 0.875rem;
 
           &:hover {
-            text-decoration: underline;
-            color: #fff;
+            color: var(--color-primary);
           }
         }
 
-        [aria-current="page"] {
-          color: #666;
+        span {
+          color: var(--color-text-muted);
+          margin: 0 0.5rem;
+        }
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .intro-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 2fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .intro-text {
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+
+          .highlight {
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
         }
 
-        .separator {
-          color: #666;
-          margin: 0 0.25rem;
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          line-height: 1.8;
+          margin: 0 0 1.5rem;
+        }
+      }
+
+      .intro-image {
+        position: relative;
+
+        img {
+          width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -15px;
+          right: -15px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid var(--color-primary);
+          border-radius: 16px;
+          z-index: -1;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+      }
+
+      .two-column {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 4rem;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .column {
+        h3 {
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+          display: flex;
+          align-items: center;
+          gap: 0.75rem;
+
+          .icon {
+            width: 32px;
+            height: 32px;
+            background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            svg {
+              width: 18px;
+              height: 18px;
+              stroke: white;
+            }
+          }
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1rem;
+          line-height: 1.7;
+          margin: 0 0 1rem;
+        }
+
+        a {
+          color: var(--color-primary);
+          text-decoration: none;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--color-primary-hover);
+          }
+        }
+      }
+
+      .background-section {
+        background: var(--color-bg-card);
+      }
+
+      .background-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .background-text {
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.1rem;
+          line-height: 1.8;
+          margin: 0 0 1.5rem;
+        }
+      }
+
+      .credentials-preview {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+
+        .credential {
+          background: rgba(255, 255, 255, 0.03);
+          border: 1px solid var(--color-border);
+          border-radius: 12px;
+          padding: 1.25rem;
+          text-align: center;
+
+          .value {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+          }
+
+          .label {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+          }
+        }
+      }
+
+      .cta-section {
+        background: linear-gradient(135deg, var(--color-gradient-mid) 0%, var(--color-bg-dark) 100%);
+        text-align: center;
+      }
+
+      .cta-content {
+        max-width: 700px;
+        margin: 0 auto;
+
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          margin: 0 0 2rem;
+        }
+
+        .cta-buttons {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          justify-content: center;
         }
       }
     </style>
   </head>
   <body>
     <Nav />
-    <div class="wrapper">
-      <nav aria-label="Breadcrumb" class="breadcrumb">
-        <ol>
-          <li>
-            <a href="/">Home</a>
-            <span class="separator" aria-hidden="true">/</span>
-          </li>
-          <li>
-            <span aria-current="page">About</span>
-          </li>
-        </ol>
-      </nav>
-      <h1>About</h1>
-      <div class="heroImg">
-        <img
-          width="1400"
-          height="350"
-          src="/PortfolioAlpine.jpg"
-          alt="Alpine landscape with mountains and grassland"
-          loading="eager"
-        />
-      </div>
-      <div
-        class="max-w-md mx-auto overflow-hidden md:max-w-4xl my-4 small-screen-padding md:text-xl text-lg fade-in"
-      >
-        <h1 class="py-12 mx-auto text-5xl md:text-6xl">
-          Alessandro Filazzola <small class="subtitle"> Ph.D. B.Sc.</small>
-        </h1>
-        <div class="md:flex my-4 md:space-x-4">
-          <div class="md:w-3/5">
-            <p>
-              I am a data scientist and full-stack engineer working at <a
-                href="https://apexrms.com/"
-              >
-                ApexRMS</a
-              >. I am also an Adjunct Faculty at Western University in the
-              <a
-                href="https://www.uwo.ca/biology//people/crossappointed-adjunct-and-sessional-faculty.html"
-              >
-                Biology Department
-              </a>. I enjoy finding new data sources or approaches to improve
-              our ability to manage and conserve biodiversity. My experience is
-              in extreme value theory, machine learning, linear mixed modelling,
-              predictive modelling, and multidimensional analyses.
-            </p>
-            <br />
-            <p>
-              Previously, I have worked at the <a
-                href="https://www.utm.utoronto.ca/cue/welcome"
-              >
-                Center for Urban Environments</a
-              >
-              in partnership with local conservation authorities. There I explored
-              how urban biodiversity is impacted by land development and climate
-              change. I have also worked as a data scientist at <a
-                href="http://www.yorku.ca/index.html"
-              >
-                York University
-              </a> exploring the effects of climate variation on lake ice and water
-              quality. I completed a Killam post-doctoral fellowship in 2020 at <a
-                href="https://www.ualberta.ca/index.html"
-              >
-                University of Alberta
-              </a> examining the effects climate change on alpine butterflies and
-              domestic grazing on native biodiversity. I received both my PhD (2018)
-              and BSc (2012) at York University testing how desert plants respond
-              to extreme climates.
-            </p>
-          </div>
 
-          <div class="md:w-2/5 my-4">
-            <img
-              class="w-72 md:w-full object-cover md:h-full mx-auto"
-              src="/AfilazzolaAbout.jpg"
-              alt="Alessandro Filazzola portrait"
-              loading="lazy"
-            />
+    <header class="page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>About</span>
+      </nav>
+      <h1 class="page-title">About Me</h1>
+      <p class="page-subtitle">
+        Computational ecologist by training, web designer by passion
+      </p>
+    </header>
+
+    <main>
+      <!-- Intro Section -->
+      <section class="section">
+        <div class="container">
+          <div class="intro-section">
+            <div class="intro-text">
+              <h2>Hi, I'm <span class="highlight">Alessandro</span></h2>
+              <p>
+                I'm based in Ontario, Canada, where I split my time between ecological research
+                and helping people build websites. It's an unusual combination, but it turns out
+                the same things that make me a good scientist — attention to detail, clear communication,
+                and genuine curiosity — also make for good web design.
+              </p>
+              <p>
+                During the day, I work as a Data Scientist at ApexRMS, developing tools for
+                environmental decision-making. On evenings and weekends, I work with small businesses,
+                researchers, and professionals who need a web presence that feels authentic to who they are.
+              </p>
+              <div style="margin-top: 2rem;">
+                <a href="/contact" class="btn-primary">Get in Touch</a>
+              </div>
+            </div>
+            <div class="intro-image">
+              <img src="/AfilazzolaAbout.jpg" alt="Alessandro Filazzola" loading="eager" />
+            </div>
           </div>
         </div>
-        <br />
-        <div class="md:flex my-4 md:space-x-4">
-          <div class="md:w-2/5 my-4">
-            <img
-              class="w-72 md:w-full object-cover md:h-full mx-auto"
-              src="/AfilazzolaAbout2.jpg"
-              alt="Alessandro Filazzola working in the field"
-              loading="lazy"
-            />
-          </div>
-          <div class="md:w-3/5">
-            <p>
-              I have worked as a research coordinator with the <a
-                href="https://climateconnections.ca/"
-              >
-                Ontario Climate Consortium (OCC)
-              </a> and <a href="https://www.nature.org/">
-                The Nature Conservancy (TNC)
-              </a>. At the OCC I collaborated with local municipalities to
-              develop an adaptation plan to climate change. My time with the TNC
-              I provided recommendations for the strategic retirement of
-              agricultural land to preserve endangered species in California.
-            </p>
-            <br />
-            <p>
-              Most of my research analysis and workshop resources can be found
-              at <a href="https://github.com/afilazzola"> my GitHub page</a>. If
-              you are working on a project that could benefit from my expertise,
-              especially anything with habitat suitability modelling, land cover
-              classification of aerial images, or anonymized human movement
-              data, please reach out to me to discuss more!
-            </p>
-            <br />
-            <a href="/contact">
-              <Button>Contact</Button>
-            </a>
+      </section>
+
+      <!-- Two Columns: Web Design + Current Work -->
+      <section class="section" style="padding-top: 0;">
+        <div class="container">
+          <div class="two-column">
+            <div class="column">
+              <h3>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <rect x="3" y="3" width="18" height="18" rx="2"/>
+                    <path d="M3 9h18"/>
+                    <path d="M9 21V9"/>
+                  </svg>
+                </span>
+                How I Got Into Web Design
+              </h3>
+              <p>
+                It started during grad school when I built websites for research labs and colleagues.
+                What began as favors turned into something I genuinely enjoyed — the mix of creativity
+                and technical problem-solving, the satisfaction of helping someone get their work out there.
+              </p>
+              <p>
+                Now I work with clients across Canada: local businesses looking to connect with their
+                community, researchers sharing their work, fitness coaches building their practice.
+                I like the variety, and I like that each project is a chance to learn about
+                something new.
+              </p>
+            </div>
+            <div class="column">
+              <h3>
+                <span class="icon">
+                  <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+                  </svg>
+                </span>
+                My Day Job
+              </h3>
+              <p>
+                At <a href="https://www.apexrms.com" target="_blank" rel="noopener noreferrer">ApexRMS</a>,
+                I build software tools that help organizations make better decisions about natural resources.
+                It's work that sits at the intersection of ecology, data science, and software engineering.
+              </p>
+              <p>
+                I'm also an <a href="https://www.uwo.ca/biology//people/crossappointed-adjunct-and-sessional-faculty.html" target="_blank" rel="noopener noreferrer">Adjunct Faculty</a>
+                member at Western University, where I continue to contribute to ecological research
+                and mentor graduate students.
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-      <Footer />
-    </div>
+      </section>
+
+      <!-- Research Background Section -->
+      <section class="section background-section">
+        <div class="container">
+          <div class="background-content">
+            <div class="background-text">
+              <h2>Research Background</h2>
+              <p>
+                Before web design, I spent over a decade in academic research as a quantitative ecologist.
+                I got my Ph.D. from York University, did a Killam Postdoctoral Fellowship at the University
+                of Alberta, and published research on everything from climate change impacts on lakes to
+                best practices in ecological data science.
+              </p>
+              <p>
+                That background shapes how I approach web projects. I ask questions, I pay attention to
+                details, and I care about getting things right. If you're curious about the research side,
+                I've put together a dedicated page with more details.
+              </p>
+              <a href="/research" class="btn-secondary">View My Research</a>
+            </div>
+            <div class="credentials-preview">
+              <div class="credential">
+                <div class="value">Ph.D.</div>
+                <div class="label">York University</div>
+              </div>
+              <div class="credential">
+                <div class="value">50+</div>
+                <div class="label">Publications</div>
+              </div>
+              <div class="credential">
+                <div class="value">10+</div>
+                <div class="label">Years Research</div>
+              </div>
+              <div class="credential">
+                <div class="value">Adjunct</div>
+                <div class="label">Western U.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-content">
+            <h2>Let's Connect</h2>
+            <p>
+              Whether you need a website, want to chat about research, or just want to say hello,
+              I'd be happy to hear from you.
+            </p>
+            <div class="cta-buttons">
+              <a href="/contact" class="btn-primary">Get in Touch</a>
+              <a href="/portfolio" class="btn-secondary">See My Work</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
   </body>
 </html>

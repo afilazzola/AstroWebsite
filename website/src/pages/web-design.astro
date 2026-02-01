@@ -6,7 +6,8 @@ import { SEO } from "astro-seo";
 
 // Page configuration
 const pageTitle = "Web Design Services | Alessandro Filazzola";
-const pageDescription = "Professional web design and development services for individuals and small businesses in Canada. Custom websites built with modern technologies for researchers, professionals, and entrepreneurs.";
+const pageDescription =
+  "Professional web design and development services for individuals and small businesses in Canada. Custom websites built with modern technologies for researchers, professionals, and entrepreneurs.";
 const canonicalPath = "/web-design";
 const ogImage = "/granites.jpg"; // You may want to use a different image
 
@@ -14,57 +15,66 @@ const ogImage = "/granites.jpg"; // You may want to use a different image
 const serviceSchema = {
   "@context": "https://schema.org",
   "@type": "Service",
-  "name": "Web Design & Development Services",
-  "description": "Custom web design and development for individuals and small businesses in Canada",
-  "provider": {
+  name: "Web Design & Development Services",
+  description:
+    "Custom web design and development for individuals and small businesses in Canada",
+  provider: {
     "@type": "Person",
-    "name": "Alessandro Filazzola",
-    "url": "https://alessandrofilazzola.com"
+    name: "Alessandro Filazzola",
+    url: "https://alessandrofilazzola.com",
   },
-  "areaServed": {
+  areaServed: {
     "@type": "Country",
-    "name": "Canada"
+    name: "Canada",
   },
-  "serviceType": "Web Design and Development",
-  "audience": {
+  serviceType: "Web Design and Development",
+  audience: {
     "@type": "Audience",
-    "audienceType": "Small Businesses and Individuals"
-  }
+    audienceType: "Small Businesses and Individuals",
+  },
 };
 
-// Example websites
+// Portfolio websites
 const showcaseWebsites = [
   {
-    title: "Cahill Lab",
-    url: "https://cahilllab.ca/",
-    description: "Research laboratory website for Dr. James Cahill's ecology lab, featuring team information, publications, and research projects.",
-    image: "/granites.jpg", // Replace with actual screenshot
-    tags: ["Research", "Academia", "Ecology"]
+    title: "La Poche",
+    url: "https://lapoche.ca/",
+    description:
+      "A multifunctional venue in downtown Guelph featuring a barbershop, co-working space, and intimate evening bar with live music events.",
+    image: "/assets/la-poche.jpg",
+    tags: ["Business", "Hospitality", "Local"],
   },
   {
     title: "Amanda Liczner",
     url: "https://www.amandaliczner.ca/",
-    description: "Professional portfolio website for ecologist Amanda Liczner, showcasing research, publications, and professional experience.",
-    image: "/granites.jpg", // Replace with actual screenshot
-    tags: ["Portfolio", "Research", "Professional"]
+    description:
+      "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration research.",
+    image: "/assets/amanda-liczner.jpg",
+    tags: ["Portfolio", "Research", "Academic"],
   },
   {
-    title: "La Poche",
-    url: "https://lapoche.ca/",
-    description: "Business website for La Poche, featuring services, contact information, and brand presence.",
-    image: "/granites.jpg", // Replace with actual screenshot
-    tags: ["Business", "Commercial", "Services"]
-  }
+    title: "Armstrong Coaching",
+    url: "https://armstrong-coaching.com/",
+    description:
+      "Personal training and lifestyle coaching practice combining strength training expertise with holistic wellness guidance.",
+    image: "/assets/armstrong-coaching.jpg",
+    tags: ["Coaching", "Fitness", "Wellness"],
+  },
+  {
+    title: "Cahill Lab",
+    url: "https://cahilllab.ca/",
+    description:
+      "Research group website for an experimental plant ecology lab at the University of Alberta, featuring team profiles and publications.",
+    image: "/assets/cahill-lab.jpg",
+    tags: ["Research", "Academia", "Ecology"],
+  },
 ];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en-CA">
   <head>
-    <MainHead
-      title={pageTitle}
-      description={pageDescription}
-    />
+    <MainHead title={pageTitle} description={pageDescription} />
     <SEO
       title={pageTitle}
       description={pageDescription}
@@ -84,7 +94,7 @@ const showcaseWebsites = [
         optional: {
           locale: "en_CA",
           siteName: "Alessandro Filazzola Portfolio",
-        }
+        },
       }}
       twitter={{
         card: "summary_large_image",
@@ -95,7 +105,10 @@ const showcaseWebsites = [
     />
 
     <!-- Structured Data -->
-    <script type="application/ld+json" set:html={JSON.stringify(serviceSchema)} />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify(serviceSchema)}
+    />
 
     <style lang="scss">
       .heroImg {
@@ -184,13 +197,18 @@ const showcaseWebsites = [
         .card-image {
           width: 100%;
           height: 200px;
-          background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          color: white;
-          font-size: 1.5rem;
-          font-weight: bold;
+          overflow: hidden;
+
+          img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+          }
+        }
+
+        &:hover .card-image img {
+          transform: scale(1.05);
         }
 
         .card-content {
@@ -377,10 +395,17 @@ const showcaseWebsites = [
 
         <section class="intro-section fade-in">
           <p>
-            I support individuals and small businesses across Canada with professional web design and development services. With expertise in modern web technologies and a background in data science, I create custom websites that are fast, accessible, and optimized for search engines.
+            I support individuals and small businesses across Canada with
+            professional web design and development services. With expertise in
+            modern web technologies and a background in data science, I create
+            custom websites that are fast, accessible, and optimized for search
+            engines.
           </p>
           <p>
-            Whether you're a researcher needing a professional portfolio, a small business establishing your online presence, or an entrepreneur launching a new venture, I can help bring your vision to life with a website tailored to your specific needs.
+            Whether you're a researcher needing a professional portfolio, a
+            small business establishing your online presence, or an entrepreneur
+            launching a new venture, I can help bring your vision to life with a
+            website tailored to your specific needs.
           </p>
         </section>
 
@@ -389,19 +414,31 @@ const showcaseWebsites = [
           <div class="services-list">
             <div class="service-item">
               <h3>Custom Design</h3>
-              <p>Tailored websites designed specifically for your brand and audience, not cookie-cutter templates.</p>
+              <p>
+                Tailored websites designed specifically for your brand and
+                audience, not cookie-cutter templates.
+              </p>
             </div>
             <div class="service-item">
               <h3>SEO Optimization</h3>
-              <p>Built-in search engine optimization to help your website rank well and be discovered by your audience.</p>
+              <p>
+                Built-in search engine optimization to help your website rank
+                well and be discovered by your audience.
+              </p>
             </div>
             <div class="service-item">
               <h3>Responsive & Fast</h3>
-              <p>Modern, mobile-friendly websites that load quickly and work seamlessly across all devices.</p>
+              <p>
+                Modern, mobile-friendly websites that load quickly and work
+                seamlessly across all devices.
+              </p>
             </div>
             <div class="service-item">
               <h3>Ongoing Support</h3>
-              <p>Continued maintenance and updates to keep your website secure and current.</p>
+              <p>
+                Continued maintenance and updates to keep your website secure
+                and current.
+              </p>
             </div>
           </div>
         </section>
@@ -409,49 +446,51 @@ const showcaseWebsites = [
         <section class="showcase-section">
           <h2>Featured Projects</h2>
           <div class="showcase-grid">
-            {showcaseWebsites.map((site) => (
-              <article class="website-card">
-                <div class="card-image">
-                  {site.title}
-                </div>
-                <div class="card-content">
-                  <h3>
-                    <a href={site.url} target="_blank" rel="noopener noreferrer">
-                      {site.title}
-                    </a>
-                  </h3>
-                  <p class="card-description">{site.description}</p>
-                  <div class="card-tags">
-                    {site.tags.map((tag) => (
-                      <span class="tag">{tag}</span>
-                    ))}
+            {
+              showcaseWebsites.map((site) => (
+                <article class="website-card">
+                  <div class="card-image">
+                    <img src={site.image} alt={site.title} loading="lazy" />
                   </div>
-                  <a href={site.url} target="_blank" rel="noopener noreferrer" class="card-link">
-                    Visit Website
-                  </a>
-                </div>
-              </article>
-            ))}
-
-            <!-- Placeholder cards for future projects -->
-            <div class="placeholder-card">
-              <p class="placeholder-text">More projects coming soon</p>
-            </div>
-            <div class="placeholder-card">
-              <p class="placeholder-text">More projects coming soon</p>
-            </div>
+                  <div class="card-content">
+                    <h3>
+                      <a
+                        href={site.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {site.title}
+                      </a>
+                    </h3>
+                    <p class="card-description">{site.description}</p>
+                    <div class="card-tags">
+                      {site.tags.map((tag) => (
+                        <span class="tag">{tag}</span>
+                      ))}
+                    </div>
+                    <a
+                      href={site.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      class="card-link"
+                    >
+                      Visit Website
+                    </a>
+                  </div>
+                </article>
+              ))
+            }
           </div>
         </section>
 
         <section class="cta-section">
           <h2>Ready to Build Your Website?</h2>
           <p>
-            Let's discuss your web design needs and create a website that helps you achieve your goals.
-            Whether you're starting from scratch or looking to refresh an existing site, I'm here to help.
+            Let's discuss your web design needs and create a website that helps
+            you achieve your goals. Whether you're starting from scratch or
+            looking to refresh an existing site, I'm here to help.
           </p>
-          <a href="/contact" class="cta-button">
-            Get in Touch
-          </a>
+          <a href="/contact" class="cta-button"> Get in Touch </a>
         </section>
       </main>
 

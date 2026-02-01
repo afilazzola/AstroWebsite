@@ -87,6 +87,40 @@ import { SEO } from "astro-seo";
         }
       }
 
+      .breadcrumb {
+        margin: 1rem 0;
+        padding: 0.5rem 0;
+
+        ol {
+          display: flex;
+          flex-wrap: wrap;
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          gap: 0.5rem;
+          font-size: 0.875rem;
+        }
+
+        a {
+          color: #aaa;
+          text-decoration: none;
+
+          &:hover {
+            text-decoration: underline;
+            color: #fff;
+          }
+        }
+
+        [aria-current="page"] {
+          color: #666;
+        }
+
+        .separator {
+          color: #666;
+          margin: 0 0.25rem;
+        }
+      }
+
       .theme-card {
         background: white;
         border-radius: 12px;
@@ -152,6 +186,17 @@ import { SEO } from "astro-seo";
     <div>
       <Nav />
       <div class="wrapper">
+        <nav aria-label="Breadcrumb" class="breadcrumb">
+          <ol>
+            <li>
+              <a href="/">Home</a>
+              <span class="separator" aria-hidden="true">/</span>
+            </li>
+            <li>
+              <span aria-current="page">Publications</span>
+            </li>
+          </ol>
+        </nav>
         <h1>Publications</h1>
         <div class="heroImg">
           <img

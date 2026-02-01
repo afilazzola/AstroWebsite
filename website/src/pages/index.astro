@@ -268,6 +268,32 @@ const portfolioSites = [
         }
       }
 
+      .research-image {
+        position: relative;
+
+        img {
+          width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: -12px;
+          left: -12px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid var(--color-primary);
+          border-radius: 16px;
+          z-index: -1;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+      }
+
       .research-highlights {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -512,8 +538,8 @@ const portfolioSites = [
           </div>
           <a href="/research" class="btn-secondary">Explore My Research</a>
         </div>
-        <div class="research-image" style="display: none;">
-          <!-- Placeholder for potential image -->
+        <div class="research-image">
+          <img src="/alex-filazzola-2.jpg" alt="Alessandro Filazzola in the field" loading="lazy" />
         </div>
       </div>
     </section>

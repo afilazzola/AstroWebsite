@@ -2,6 +2,7 @@
 import MainHead from "../components/MainHead.astro";
 import Nav from "../components/Nav/index.astro";
 import Footer from "../components/Footer/index.jsx";
+import ContactForm from "../components/ContactForm/index.astro";
 import { SEO } from "astro-seo";
 ---
 
@@ -249,62 +250,6 @@ import { SEO } from "astro-seo";
         }
       }
 
-      .service-types {
-        display: grid;
-        grid-template-columns: repeat(2, 1fr);
-        gap: 0.75rem;
-        margin-bottom: 2rem;
-      }
-
-      .service-type {
-        display: flex;
-        align-items: center;
-        gap: 0.5rem;
-        padding: 0.75rem 1rem;
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--color-border);
-        border-radius: 8px;
-        color: var(--color-text-secondary);
-        font-size: 0.875rem;
-
-        &::before {
-          content: '';
-          width: 8px;
-          height: 8px;
-          background: var(--color-primary);
-          border-radius: 50%;
-          flex-shrink: 0;
-        }
-      }
-
-      .cta-button {
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        gap: 0.75rem;
-        width: 100%;
-        padding: 1rem 2rem;
-        background: var(--color-accent);
-        color: white;
-        border-radius: 12px;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 1.1rem;
-        transition: all 0.3s ease;
-
-        &:hover {
-          background: var(--color-accent-hover);
-          transform: translateY(-2px);
-          box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3);
-          color: white;
-        }
-
-        svg {
-          width: 20px;
-          height: 20px;
-        }
-      }
-
       .social-section {
         margin-top: 3rem;
         padding-top: 2rem;
@@ -373,6 +318,55 @@ import { SEO } from "astro-seo";
           font-size: 1.1rem;
           line-height: 1.7;
           margin: 0;
+        }
+      }
+
+      /* Dark theme overrides for contact form */
+      :global(.contact-form) {
+        .form-label {
+          color: var(--color-text-secondary) !important;
+        }
+
+        .form-input {
+          background-color: rgba(255, 255, 255, 0.05) !important;
+          border-color: var(--color-border) !important;
+          color: var(--c-white) !important;
+
+          &::placeholder {
+            color: var(--color-text-muted) !important;
+          }
+
+          &:focus {
+            border-color: var(--color-primary) !important;
+            box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2) !important;
+          }
+        }
+
+        .submit-button {
+          background-color: var(--color-accent) !important;
+          border-radius: 12px !important;
+          font-size: 1.1rem !important;
+          transition: all 0.3s ease !important;
+
+          &:hover:not(:disabled) {
+            background-color: var(--color-accent-hover) !important;
+            transform: translateY(-2px) !important;
+            box-shadow: 0 8px 20px rgba(249, 115, 22, 0.3) !important;
+          }
+        }
+
+        .form-message.success {
+          color: var(--color-available) !important;
+        }
+
+        .form-message.error {
+          color: #ef4444 !important;
+        }
+
+        .rate-limit-message {
+          background-color: rgba(251, 191, 36, 0.1) !important;
+          border-color: rgba(251, 191, 36, 0.3) !important;
+          color: #fbbf24 !important;
         }
       }
     </style>
@@ -464,24 +458,10 @@ import { SEO } from "astro-seo";
             </div>
 
             <div class="contact-form-section">
-              <h3>What I Can Help With</h3>
-              <p class="form-subtitle">I work on projects like:</p>
+              <h3>Send a Message</h3>
+              <p class="form-subtitle">I'll get back to you as soon as I can.</p>
 
-              <div class="service-types">
-                <div class="service-type">New Websites</div>
-                <div class="service-type">Website Redesigns</div>
-                <div class="service-type">Portfolio Sites</div>
-                <div class="service-type">Business Sites</div>
-                <div class="service-type">Research Labs</div>
-                <div class="service-type">SEO Optimization</div>
-              </div>
-
-              <a href="mailto:alex.filazzola@apexrms.com?subject=Hello" class="cta-button">
-                Drop Me a Line
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <path d="M5 12h14M12 5l7 7-7 7"/>
-                </svg>
-              </a>
+              <ContactForm />
             </div>
           </div>
         </div>

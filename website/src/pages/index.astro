@@ -9,45 +9,53 @@ const portfolioSites = [
   {
     title: "La Poche",
     url: "https://lapoche.ca/",
-    description: "A multifunctional venue in downtown Guelph featuring a barbershop, co-working space, and intimate evening bar.",
+    description:
+      "A multifunctional venue in downtown Guelph featuring a barbershop, co-working space, and intimate evening bar.",
     image: "/assets/la-poche.jpg",
     tags: ["Business", "Hospitality"],
   },
   {
     title: "Amanda Liczner",
     url: "https://www.amandaliczner.ca/",
-    description: "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration.",
+    description:
+      "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration.",
     image: "/assets/amanda-liczner.jpg",
     tags: ["Portfolio", "Academic"],
   },
   {
     title: "Armstrong Coaching",
     url: "https://armstrong-coaching.com/",
-    description: "Personal training and lifestyle coaching practice combining strength training with holistic wellness guidance.",
+    description:
+      "Personal training and lifestyle coaching practice combining strength training with holistic wellness guidance.",
     image: "/assets/armstrong-coaching.jpg",
     tags: ["Coaching", "Fitness"],
   },
   {
     title: "Legendary DnD",
     url: "https://legendarydnd.ca/",
-    description: "An online platform for Dungeons & Dragons enthusiasts featuring campaign resources, character tools, and community content.",
+    description:
+      "An online platform for Dungeons & Dragons enthusiasts featuring campaign resources, character tools, and community content.",
     image: "/assets/legendary-dnd.jpg",
     tags: ["Gaming", "Community"],
   },
 ];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
     <SEO
       title="Alessandro Filazzola - Computational Ecologist & Web Designer"
       description="Computational ecologist and web designer helping small businesses and researchers build websites that reflect who they are. Based in Ontario, Canada."
       openGraph={{
         basic: {
-          title: "Alessandro Filazzola - Computational Ecologist & Web Designer",
+          title:
+            "Alessandro Filazzola - Computational Ecologist & Web Designer",
           type: "website",
           image: "/AfilazzolaHome.jpg",
         },
@@ -63,19 +71,25 @@ const portfolioSites = [
         min-height: 100vh;
         display: flex;
         align-items: center;
-        background: linear-gradient(135deg, #0a0a0f 0%, var(--color-gradient-mid) 50%, #0a0a0f 100%);
+        background-image: url("/assets/header.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
         overflow: hidden;
 
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           top: 0;
           left: 0;
           right: 0;
           bottom: 0;
-          background:
-            radial-gradient(ellipse at 20% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 50%),
-            radial-gradient(ellipse at 80% 50%, rgba(100, 116, 139, 0.1) 0%, transparent 50%);
+          background: linear-gradient(
+            135deg,
+            rgba(10, 10, 15, 0.85) 0%,
+            rgba(19, 78, 74, 0.7) 50%,
+            rgba(10, 10, 15, 0.85) 100%
+          );
           pointer-events: none;
         }
       }
@@ -112,7 +126,11 @@ const portfolioSites = [
         color: var(--c-white);
 
         .highlight {
-          background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+          background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-secondary) 100%
+          );
           -webkit-background-clip: text;
           -webkit-text-fill-color: transparent;
           background-clip: text;
@@ -184,15 +202,13 @@ const portfolioSites = [
         padding: 0 2rem;
 
         @media (min-width: 768px) {
-          grid-template-columns: 1fr 2fr;
+          grid-template-columns: 1fr 1fr;
           gap: 4rem;
         }
       }
 
       .about-image {
         position: relative;
-        max-width: 300px;
-        margin: 0 auto;
 
         img {
           width: 100%;
@@ -201,7 +217,7 @@ const portfolioSites = [
         }
 
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           top: -12px;
           right: -12px;
@@ -235,7 +251,11 @@ const portfolioSites = [
 
       /* Research/Ecology Section */
       .research-section {
-        background: linear-gradient(135deg, var(--color-gradient-mid) 0%, var(--color-bg-dark) 100%);
+        background: linear-gradient(
+          135deg,
+          var(--color-gradient-mid) 0%,
+          var(--color-bg-dark) 100%
+        );
       }
 
       .research-content {
@@ -278,7 +298,7 @@ const portfolioSites = [
         }
 
         &::before {
-          content: '';
+          content: "";
           position: absolute;
           top: -12px;
           left: -12px;
@@ -470,12 +490,12 @@ const portfolioSites = [
       <div class="hero-content">
         <p class="hero-name">Alessandro Filazzola</p>
         <h1 class="hero-title">
-          Computational Ecologist<br/>
+          Computational Ecologist<br />
           <span class="highlight">& Web Designer</span>
         </h1>
         <p class="hero-subtitle">
-          I study climate change and ecosystems by day, and help small businesses
-          and researchers build websites that reflect who they are.
+          I study climate change and ecosystems by day, and help small
+          businesses and researchers build websites that reflect who they are.
           Based in Ontario, Canada.
         </p>
         <div class="hero-buttons">
@@ -489,19 +509,25 @@ const portfolioSites = [
     <section class="section about-preview">
       <div class="about-content">
         <div class="about-image">
-          <img src="/AfilazzolaHome.jpg" alt="Alessandro Filazzola" loading="lazy" />
+          <img
+            src="/alex-filazzola-1.jpg"
+            alt="Alessandro Filazzola"
+            loading="lazy"
+          />
         </div>
         <div class="about-text">
           <h2>Hi, I'm Alex</h2>
           <p>
-            I'm a computational ecologist with a Ph.D. in quantitative ecology and over a decade
-            of research experience. My academic work focuses on climate change impacts, plant ecology,
-            and developing better methods for ecological data science.
+            I'm a computational ecologist with a Ph.D. in biology and over a
+            decade of research experience. My academic work focuses on climate
+            change impacts, plant ecology, and developing better methods for
+            ecological data science.
           </p>
           <p>
-            On the side, I've discovered a passion for building websites. What started as helping
-            fellow researchers create academic portfolios has grown into working with small businesses
-            and professionals across Canada who want a web presence that feels authentic to who they are.
+            On the side, I've discovered a passion for building websites. What
+            started as helping fellow researchers create academic portfolios has
+            grown into working with small businesses and professionals in Canada
+            who want a web presence that feels authentic to who they are.
           </p>
           <a href="/about" class="btn-secondary">More About Me</a>
         </div>
@@ -514,9 +540,10 @@ const portfolioSites = [
         <div class="research-text">
           <h2>Ecology & Data Science</h2>
           <p>
-            I work as a Data Scientist at ApexRMS, where I develop tools for environmental
-            decision-making. My research spans climate change impacts on lakes, plant facilitation,
-            and improving how we do science with better code and workflows.
+            I work as a Data Scientist at ApexRMS, where I develop tools for
+            environmental decision-making. My research spans climate change
+            impacts on lakes, plant facilitation, and improving how we do
+            science with better code and workflows.
           </p>
           <div class="research-highlights">
             <div class="highlight-item">
@@ -539,7 +566,11 @@ const portfolioSites = [
           <a href="/research" class="btn-secondary">Explore My Research</a>
         </div>
         <div class="research-image">
-          <img src="/alex-filazzola-2.jpg" alt="Alessandro Filazzola in the field" loading="lazy" />
+          <img
+            src="/alex-filazzola-2.jpg"
+            alt="Alessandro Filazzola in the field"
+            loading="lazy"
+          />
         </div>
       </div>
     </section>
@@ -548,44 +579,56 @@ const portfolioSites = [
     <section class="section webdesign-section">
       <div class="section-header">
         <h2 class="section-title">Web Design</h2>
-        <p class="section-subtitle">Helping small businesses and researchers find their voice online</p>
+        <p class="section-subtitle">
+          Helping small businesses and researchers find their voice online
+        </p>
       </div>
 
       <div class="webdesign-intro">
         <p>
-          I work closely with clients to build websites they're proud of. Whether you're a local business
-          looking to connect with your community, or a researcher needing an academic portfolio,
-          I'll help create something that reflects your style and helps people find you.
+          I work closely with clients to build websites they're proud of.
+          Whether you're a local business looking to connect with your
+          community, or a researcher needing an academic portfolio, I'll help
+          create something that reflects your style and helps people find you.
         </p>
       </div>
 
       <div class="portfolio-grid">
-        {portfolioSites.map((site) => (
-          <article class="portfolio-card">
-            <div class="portfolio-image">
-              <img src={site.image} alt={site.title} loading="lazy" />
-            </div>
-            <div class="portfolio-content">
-              <h3>
-                <a href={site.url} target="_blank" rel="noopener noreferrer">
-                  {site.title}
-                </a>
-              </h3>
-              <p>{site.description}</p>
-              <div class="portfolio-tags">
-                {site.tags.map((tag) => (
-                  <span>{tag}</span>
-                ))}
+        {
+          portfolioSites.map((site) => (
+            <article class="portfolio-card">
+              <div class="portfolio-image">
+                <img src={site.image} alt={site.title} loading="lazy" />
               </div>
-            </div>
-          </article>
-        ))}
+              <div class="portfolio-content">
+                <h3>
+                  <a href={site.url} target="_blank" rel="noopener noreferrer">
+                    {site.title}
+                  </a>
+                </h3>
+                <p>{site.description}</p>
+                <div class="portfolio-tags">
+                  {site.tags.map((tag) => (
+                    <span>{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))
+        }
       </div>
       <div style="text-align: center;">
         <a href="/portfolio" class="view-all-link">
           View All Projects
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M5 12h14M12 5l7 7-7 7"/>
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
           </svg>
         </a>
       </div>
@@ -596,8 +639,8 @@ const portfolioSites = [
       <div class="cta-content">
         <h2>Let's Connect</h2>
         <p>
-          Whether you're interested in my research or looking for help with a website,
-          I'd be happy to chat.
+          Whether you're interested in my research or looking for help with a
+          website, I'd be happy to chat.
         </p>
         <a href="/contact" class="btn-primary">Get in Touch</a>
       </div>

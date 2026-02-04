@@ -2,8 +2,13 @@
 import "../styles/global.scss";
 const {
   title = "Alessandro Filazzola",
-  description = "Alessandro Filazzola: Data scientist at ApexRMS",
+  description = "Alessandro Filazzola: Computational ecologist and web designer based in Guelph, Canada",
+  image = "/AfilazzolaHome.jpg",
+  type = "website",
 } = Astro.props;
+
+const siteUrl = "https://filazzola.info";
+const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
 <!-- Google tag (gtag.js) -->
@@ -17,17 +22,73 @@ const {
 </script>
 
 <meta charset="UTF-8" />
-<meta name="description" property="og:description" content={description} />
 <meta name="viewport" content="width=device-width" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
-<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+<!-- SEO Meta Tags -->
+<meta name="description" content={description} />
+<meta name="author" content="Alessandro Filazzola" />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href={canonicalUrl} />
 
+<!-- Geographic Meta Tags -->
+<meta name="geo.region" content="CA-ON" />
+<meta name="geo.placename" content="Guelph" />
+
+<!-- Open Graph -->
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:type" content={type} />
+<meta property="og:url" content={canonicalUrl} />
+<meta property="og:image" content={`${siteUrl}${image}`} />
+<meta property="og:site_name" content="Alessandro Filazzola" />
+<meta property="og:locale" content="en_CA" />
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={`${siteUrl}${image}`} />
+
+<!-- Favicon -->
+<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 <link rel="icon" href="/mountain.ico" />
+<link rel="apple-touch-icon" href="/mountain.ico" />
+
+<!-- Fonts -->
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 <link
   href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Sora:wght@400;500;600;700;800&display=swap"
   rel="stylesheet"
 />
+
+<!-- JSON-LD Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify({
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Alessandro Filazzola",
+  "url": siteUrl,
+  "image": `${siteUrl}/alex-filazzola-1.jpg`,
+  "jobTitle": ["Computational Ecologist", "Web Designer", "Data Scientist"],
+  "worksFor": {
+    "@type": "Organization",
+    "name": "ApexRMS"
+  },
+  "alumniOf": {
+    "@type": "CollegeOrUniversity",
+    "name": "York University"
+  },
+  "address": {
+    "@type": "PostalAddress",
+    "addressLocality": "Guelph",
+    "addressRegion": "Ontario",
+    "addressCountry": "Canada"
+  },
+  "sameAs": [
+    "https://github.com/afilazzola",
+    "https://www.linkedin.com/in/afilazzola/",
+    "https://scholar.google.ca/citations?user=mKvIMTYAAAAJ"
+  ]
+})} />

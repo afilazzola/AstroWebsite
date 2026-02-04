@@ -1,0 +1,779 @@
+---
+import MainHead from "../components/MainHead.astro";
+import Nav from "../components/Nav/index.astro";
+import Footer from "../components/Footer/index.jsx";
+import { SEO } from "astro-seo";
+
+const researchThemes = [
+  {
+    title: "Climate Change & Lake Ecosystems",
+    description:
+      "Investigating how climate change affects lake ice dynamics, water quality, and freshwater biodiversity. My research has contributed to forecasting models predicting permanent ice loss in lakes worldwide.",
+    icon: "water",
+  },
+  {
+    title: "Plant Ecology & Facilitation",
+    description:
+      "Studying plant-plant interactions, particularly how nurse plants facilitate the establishment of other species in harsh environments like alpine meadows and arid regions.",
+    icon: "plant",
+  },
+  {
+    title: "Ecological Data Science",
+    description:
+      "Developing best practices for reproducible research, workflow management, and clean code in ecology. Advocating for transparent, well-documented analytical approaches in environmental science.",
+    icon: "data",
+  },
+  {
+    title: "Biodiversity & Conservation",
+    description:
+      "Examining grazing impacts on biodiversity across trophic levels, and understanding how land-use practices affect ecosystem health and species diversity.",
+    icon: "nature",
+  },
+];
+
+const keyPublications = [
+  {
+    title: "Forecasting the permanent loss of lake ice within the 21st century",
+    journal: "Geophysical Research Letters (2021)",
+    url: "https://agupubs.onlinelibrary.wiley.com/doi/abs/10.1029/2020GL091108",
+  },
+  {
+    title: "A call for clean code to effectively communicate science",
+    journal: "Methods in Ecology and Evolution (2022)",
+    url: "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/2041-210X.13961",
+  },
+  {
+    title: "Grazing effects on biodiversity is multi-trophic: a meta-analysis",
+    journal: "Ecology Letters (2020)",
+    url: "https://onlinelibrary.wiley.com/doi/abs/10.1111/ele.13527",
+  },
+  {
+    title:
+      "Improving ecological data science with workflow management software",
+    journal: "Methods in Ecology and Evolution (2023)",
+    url: "https://besjournals.onlinelibrary.wiley.com/doi/abs/10.1111/2041-210X.14113",
+  },
+  {
+    title: "The facilitative continuum under the stress-gradient hypothesis",
+    journal: "Journal of Ecology (2014)",
+    url: "https://besjournals.onlinelibrary.wiley.com/doi/10.1111/1365-2745.12280",
+  },
+];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <SEO
+      title="Research & Ecology | Climate Change & Data Science | Alessandro Filazzola"
+      description="Computational ecologist specializing in climate change impacts on lake ecosystems, plant ecology, and ecological data science. Data Scientist at ApexRMS with 50+ peer-reviewed publications. Ph.D. York University."
+      openGraph={{
+        basic: {
+          title: "Research & Ecology | Alessandro Filazzola - Computational Ecologist",
+          type: "website",
+          image: "/AfilazzolaAbout.jpg",
+        },
+      }}
+    />
+    <MainHead
+      title="Research & Ecology | Climate Change & Data Science | Alessandro Filazzola"
+      description="Computational ecologist specializing in climate change impacts on lake ecosystems, plant ecology, and ecological data science. 50+ peer-reviewed publications."
+      image="/AfilazzolaAbout.jpg"
+    />
+    <style lang="scss">
+      .page-header {
+        background: linear-gradient(
+          135deg,
+          #0a0a0f 0%,
+          var(--color-gradient-mid) 50%,
+          #0a0a0f 100%
+        );
+        padding: 8rem 2rem 5rem;
+        text-align: center;
+        position: relative;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(
+            ellipse at 50% 50%,
+            rgba(13, 148, 136, 0.15) 0%,
+            transparent 60%
+          );
+          pointer-events: none;
+        }
+      }
+
+      .page-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin: 0 0 1rem;
+        position: relative;
+      }
+
+      .page-subtitle {
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        max-width: 700px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .breadcrumb {
+        margin-bottom: 2rem;
+        position: relative;
+
+        a {
+          color: var(--color-text-secondary);
+          text-decoration: none;
+          font-size: 0.875rem;
+
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+
+        span {
+          color: var(--color-text-muted);
+          margin: 0 0.5rem;
+        }
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .position-section {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 2fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .position-text {
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+
+          .highlight {
+            background: linear-gradient(
+              135deg,
+              var(--color-primary),
+              var(--color-secondary)
+            );
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+          }
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          line-height: 1.8;
+          margin: 0 0 1.5rem;
+        }
+
+        a.inline-link {
+          color: var(--color-primary);
+          text-decoration: none;
+          font-weight: 500;
+          transition: color 0.3s ease;
+
+          &:hover {
+            color: var(--color-primary-hover);
+          }
+        }
+      }
+
+      .position-image {
+        position: relative;
+
+        img {
+          width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -15px;
+          right: -15px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid var(--color-primary);
+          border-radius: 16px;
+          z-index: -1;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+      }
+
+      .background-section {
+        background: var(--color-bg-card);
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(2rem, 5vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          max-width: 600px;
+          margin: 0 auto;
+        }
+      }
+
+      .credentials-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        @media (min-width: 640px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+
+        @media (min-width: 1024px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .credential-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        text-align: center;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: var(--color-primary);
+          transform: translateY(-4px);
+        }
+
+        .credential-icon {
+          width: 48px;
+          height: 48px;
+          background: linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-secondary)
+          );
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin: 0 auto 1rem;
+
+          svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+          }
+        }
+
+        h4 {
+          font-size: 1rem;
+          margin: 0 0 0.5rem;
+          color: var(--c-white);
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 0.875rem;
+          margin: 0;
+          line-height: 1.5;
+        }
+      }
+
+      .themes-section {
+        background: linear-gradient(
+          135deg,
+          var(--color-gradient-mid) 0%,
+          var(--color-bg-dark) 100%
+        );
+      }
+
+      .themes-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .theme-card {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: rgba(255, 255, 255, 0.2);
+          transform: translateY(-4px);
+        }
+
+        .theme-icon {
+          width: 48px;
+          height: 48px;
+          background: linear-gradient(
+            135deg,
+            var(--color-primary),
+            var(--color-secondary)
+          );
+          border-radius: 12px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          margin-bottom: 1.25rem;
+
+          svg {
+            width: 24px;
+            height: 24px;
+            stroke: white;
+            fill: none;
+          }
+        }
+
+        h3 {
+          font-family: var(--font-display);
+          font-size: 1.25rem;
+          font-weight: 700;
+          margin: 0 0 0.75rem;
+          color: var(--c-white);
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 0.95rem;
+          line-height: 1.7;
+          margin: 0;
+        }
+      }
+
+      .publications-section {
+        background: var(--color-bg-card);
+      }
+
+      .publications-list {
+        max-width: 800px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 2rem;
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            padding: 1.25rem 0;
+            border-bottom: 1px solid var(--color-border);
+
+            &:last-child {
+              border-bottom: none;
+              padding-bottom: 0;
+            }
+
+            &:first-child {
+              padding-top: 0;
+            }
+
+            a {
+              color: var(--c-white);
+              text-decoration: none;
+              font-weight: 500;
+              font-size: 1.05rem;
+              transition: color 0.3s ease;
+              display: block;
+              margin-bottom: 0.375rem;
+
+              &:hover {
+                color: var(--color-primary);
+              }
+            }
+
+            .journal {
+              color: var(--color-text-muted);
+              font-size: 0.875rem;
+              font-style: italic;
+            }
+          }
+        }
+      }
+
+      .scholar-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-top: 2rem;
+        padding: 1rem 1.5rem;
+        background: rgba(13, 148, 136, 0.1);
+        border: 1px solid rgba(13, 148, 136, 0.3);
+        border-radius: 12px;
+        color: var(--color-primary);
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+
+        &:hover {
+          background: rgba(13, 148, 136, 0.2);
+          border-color: var(--color-primary);
+          gap: 0.75rem;
+        }
+
+        svg {
+          width: 20px;
+          height: 20px;
+        }
+      }
+
+      .resources-section {
+        text-align: center;
+      }
+
+      .resources-grid {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 1.5rem;
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      .resource-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 1rem 1.5rem;
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        color: var(--c-white);
+        text-decoration: none;
+        font-weight: 500;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: var(--color-primary);
+          transform: translateY(-2px);
+          color: var(--color-primary);
+        }
+
+        svg {
+          width: 24px;
+          height: 24px;
+          fill: currentColor;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Nav />
+
+    <header class="page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Research</span>
+      </nav>
+      <h1 class="page-title">Research & Ecology</h1>
+      <p class="page-subtitle">
+        My background as a computational ecologist studying climate change,
+        plant ecology, and ecological data science
+      </p>
+    </header>
+
+    <main>
+      <!-- Current Position Section -->
+      <section class="section">
+        <div class="container">
+          <div class="position-section">
+            <div class="position-text">
+              <h2>Data Scientist at <span class="highlight">ApexRMS</span></h2>
+              <p>
+                I currently work as a Data Scientist at <a
+                  href="https://www.apexrms.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-link">ApexRMS</a
+                >, a company specializing in decision-support systems for
+                environmental management. We develop tools that help researchers
+                at organizations around the world make better decisions about
+                natural resources and conservation. At ApexRMS, I support the
+                development and marketing of our flagship software <a
+                  href="https://www.syncrosim.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-link">SyncroSim</a
+                >, an intergrated development platform for ecological models.
+              </p>
+              <p>
+                My role combines ecological knowledge with software development,
+                building web applications and analytical tools that make complex
+                environmental models accessible to researchers, managers, and
+                policy makers. This work sits at the intersection of ecology,
+                data science, and software engineering.
+              </p>
+              <p>
+                I'm also an <a
+                  href="https://www.uwo.ca/biology//people/crossappointed-adjunct-and-sessional-faculty.html"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="inline-link">Adjunct Faculty</a
+                > member in the Biology Department at Western University, where I
+                continue to contribute to ecological research and mentor graduate
+                students.
+              </p>
+            </div>
+            <div class="position-image">
+              <img
+                src="/AfilazzolaAbout.jpg"
+                alt="Alessandro Filazzola"
+                loading="eager"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Academic Background Section -->
+      <section class="section background-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Academic Background</h2>
+            <p>
+              A decade of research in quantitative ecology and environmental
+              science
+            </p>
+          </div>
+
+          <div class="credentials-grid">
+            <div class="credential-card">
+              <div class="credential-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M22 10v6M2 10l10-5 10 5-10 5z"></path>
+                  <path d="M6 12v5c3 3 9 3 12 0v-5"></path>
+                </svg>
+              </div>
+              <h4>Ph.D. in Ecology</h4>
+              <p>Quantitative Ecology<br />York University</p>
+            </div>
+            <div class="credential-card">
+              <div class="credential-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <circle cx="12" cy="8" r="4"></circle>
+                  <path d="M20 21a8 8 0 1 0-16 0"></path>
+                  <path d="M12 12v4l2 2"></path>
+                </svg>
+              </div>
+              <h4>Killam Fellowship</h4>
+              <p>Postdoctoral Research<br />University of Alberta</p>
+            </div>
+            <div class="credential-card">
+              <div class="credential-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                  <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                </svg>
+              </div>
+              <h4>Adjunct Faculty</h4>
+              <p>Biology Department<br />Western University</p>
+            </div>
+            <div class="credential-card">
+              <div class="credential-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2">
+                  <path
+                    d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"
+                  ></path>
+                  <polyline points="14,2 14,8 20,8"></polyline>
+                  <line x1="16" y1="13" x2="8" y2="13"></line>
+                  <line x1="16" y1="17" x2="8" y2="17"></line>
+                </svg>
+              </div>
+              <h4>50+ Publications</h4>
+              <p>Peer-Reviewed<br />Research Papers</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Research Themes Section -->
+      <section class="section themes-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Research Themes</h2>
+            <p>The areas of ecology and data science that drive my work</p>
+          </div>
+
+          <div class="themes-grid">
+            {
+              researchThemes.map((theme) => (
+                <div class="theme-card">
+                  <div class="theme-icon">
+                    {theme.icon === "water" && (
+                      <svg viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0z" />
+                      </svg>
+                    )}
+                    {theme.icon === "plant" && (
+                      <svg viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M7 20h10" />
+                        <path d="M12 20v-6" />
+                        <path d="M12 14c-2-2-6-3-6-7 0-3.5 3-5 6-5s6 1.5 6 5c0 4-4 5-6 7z" />
+                      </svg>
+                    )}
+                    {theme.icon === "data" && (
+                      <svg viewBox="0 0 24 24" stroke-width="2">
+                        <rect x="3" y="3" width="18" height="18" rx="2" />
+                        <path d="M3 9h18" />
+                        <path d="M9 21V9" />
+                      </svg>
+                    )}
+                    {theme.icon === "nature" && (
+                      <svg viewBox="0 0 24 24" stroke-width="2">
+                        <path d="M12 22c4.97 0 9-2.69 9-6v-2c0-2.21-1.79-4-4-4H7c-2.21 0-4 1.79-4 4v2c0 3.31 4.03 6 9 6z" />
+                        <path d="M12 22V10" />
+                        <path d="M9 10c0-3 3-5 3-8 0 3 3 5 3 8" />
+                      </svg>
+                    )}
+                  </div>
+                  <h3>{theme.title}</h3>
+                  <p>{theme.description}</p>
+                </div>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+
+      <!-- Publications Section -->
+      <section class="section publications-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Selected Publications</h2>
+            <p>Highlights from my research in ecology and data science</p>
+          </div>
+
+          <div class="publications-list">
+            <ul>
+              {
+                keyPublications.map((pub) => (
+                  <li>
+                    <a href={pub.url} target="_blank" rel="noopener noreferrer">
+                      {pub.title}
+                    </a>
+                    <span class="journal">{pub.journal}</span>
+                  </li>
+                ))
+              }
+            </ul>
+          </div>
+
+          <div style="text-align: center;">
+            <a
+              href="https://scholar.google.ca/citations?user=mKvIMTYAAAAJ&hl=en&oi=ao"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="scholar-link"
+            >
+              View all publications on Google Scholar
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+              >
+                <path
+                  d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"
+                ></path>
+                <polyline points="15,3 21,3 21,9"></polyline>
+                <line x1="10" y1="14" x2="21" y2="3"></line>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Resources Section -->
+      <section class="section resources-section">
+        <div class="container">
+          <div class="section-header">
+            <h2>Code & Resources</h2>
+            <p>Open-source tools and research code</p>
+          </div>
+
+          <div class="resources-grid">
+            <a
+              href="https://github.com/afilazzola"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
+                ></path>
+              </svg>
+              GitHub Profile
+            </a>
+            <a
+              href="https://scholar.google.ca/citations?user=mKvIMTYAAAAJ&hl=en&oi=ao"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="resource-link"
+            >
+              <svg viewBox="0 0 24 24">
+                <path
+                  d="M5.242 13.769L0 9.5 12 0l12 9.5-5.242 4.269C17.548 11.249 14.978 9.5 12 9.5c-2.977 0-5.548 1.748-6.758 4.269zM12 10a7 7 0 1 0 0 14 7 7 0 0 0 0-14z"
+                ></path>
+              </svg>
+              Google Scholar
+            </a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

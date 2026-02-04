@@ -1,0 +1,428 @@
+---
+export interface Props {
+  apiEndpoint?: string;
+  rateLimitMinutes?: number;
+  maxMessageLength?: number;
+  className?: string;
+  successMessage?: string;
+  errorMessage?: string;
+}
+
+const {
+  apiEndpoint = "/api/contact",
+  rateLimitMinutes = 5,
+  maxMessageLength = 2000,
+  className = "",
+  successMessage = "Thanks! Your message has been sent. I will get back to you shortly.",
+  errorMessage = "Oops! Something went wrong. Please try again later.",
+} = Astro.props;
+
+const RECAPTCHA_SITE_KEY = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+const API_ENDPOINT = import.meta.env.PUBLIC_API_ENDPOINT;
+---
+
+<script
+  src={`https://www.google.com/recaptcha/api.js?render=${RECAPTCHA_SITE_KEY}`}
+  async
+  defer></script>
+
+<style>
+  .address-field {
+    position: absolute !important;
+    left: -9999px !important;
+    width: 1px !important;
+    height: 1px !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+  }
+
+  /* Rate limiting message */
+  .rate-limit-message {
+    display: none;
+    background-color: #fef3cd;
+    border: 1px solid #fecf6a;
+    color: #856404;
+    padding: 0.75rem;
+    border-radius: 0.375rem;
+    margin-top: 1rem;
+  }
+
+  .contact-form {
+    position: relative;
+  }
+
+  .form-field {
+    margin-bottom: 1rem;
+  }
+
+  .form-label {
+    display: block;
+    font-weight: 500;
+    color: #f7f3ed;
+    margin-bottom: 0.5rem;
+  }
+
+  .form-input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: 0.375rem;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f7f3ed;
+    transition:
+      border-color 0.15s ease-in-out,
+      box-shadow 0.15s ease-in-out;
+  }
+
+  .form-input:focus {
+    outline: none;
+    border-color: #0d9488;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+  }
+
+  .form-input::placeholder {
+    color: rgba(247, 243, 237, 0.5);
+  }
+
+  .form-textarea {
+    resize: vertical;
+    min-height: 120px;
+  }
+
+  .submit-button {
+    background-color: transparent;
+    color: #f7f3ed;
+    padding: 1rem 2rem;
+    border: 2px solid #f7f3ed;
+    border-radius: 0.375rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+  }
+
+  .submit-button:hover:not(:disabled) {
+    background-color: #f7f3ed;
+    color: #0a0a0f;
+    box-shadow: 0 4px 12px rgba(247, 243, 237, 0.2);
+  }
+
+  .submit-button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  .form-message {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.875rem;
+  }
+
+  .form-message.success {
+    color: #065f46;
+  }
+
+  .form-message.error {
+    color: #dc2626;
+  }
+</style>
+
+<form
+  id="contact-form"
+  class={`contact-form ${className}`}
+  data-api-endpoint={API_ENDPOINT}
+  data-rate-limit={rateLimitMinutes}
+  data-max-length={maxMessageLength}
+  data-success-message={successMessage}
+  data-error-message={errorMessage}
+  data-recaptcha-key={RECAPTCHA_SITE_KEY}
+>
+  <input
+    name="address2"
+    type="text"
+    class="address-field"
+    tabindex="-1"
+    autocomplete="off"
+    aria-hidden="true"
+  />
+
+  <div class="form-field">
+    <label for="contact-name" class="form-label"> Name * </label>
+    <input
+      id="contact-name"
+      name="name"
+      type="text"
+      required
+      maxlength="100"
+      class="form-input"
+      autocomplete="name"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="contact-email" class="form-label"> Email * </label>
+    <input
+      id="contact-email"
+      name="email"
+      type="email"
+      required
+      maxlength="254"
+      class="form-input"
+      autocomplete="email"
+    />
+  </div>
+
+  <div class="form-field">
+    <label for="contact-message" class="form-label"> Message * </label>
+    <textarea
+      id="contact-message"
+      name="message"
+      required
+      minlength="10"
+      maxlength={maxMessageLength}
+      class="form-input form-textarea"
+      placeholder="Your message here..."
+      rows="5"></textarea>
+  </div>
+  <div>
+    <input type="hidden" name="recaptchaToken" id="recaptchaToken" />
+  </div>
+
+  <button type="submit" id="submit-button" class="submit-button">
+    Send Message
+  </button>
+
+  <div id="form-message" class="form-message"></div>
+  <div id="rate-limit-message" class="rate-limit-message">
+    Please wait a moment before sending another message.
+  </div>
+  <div>
+    <p style="font-size:.75rem;opacity:.75;margin-top:.5rem">
+      This site is protected by reCAPTCHA and the Google
+      <a
+        href="https://policies.google.com/privacy"
+        target="_blank"
+        rel="noopener">Privacy Policy</a
+      > and
+      <a href="https://policies.google.com/terms" target="_blank" rel="noopener"
+        >Terms of Service</a
+      > apply.
+    </p>
+  </div>
+</form>
+
+<script>
+  interface FormConfig {
+    apiEndpoint: string;
+    rateLimitMinutes: number;
+    maxLength: number;
+    successMessage: string;
+    errorMessage: string;
+    recaptchaKey: string;
+  }
+
+  class ContactForm {
+    private form: HTMLFormElement;
+    private messageBox: HTMLElement;
+    private submitButton: HTMLButtonElement;
+    private rateLimitMessage: HTMLElement;
+    private config: FormConfig;
+
+    constructor(form: HTMLFormElement) {
+      this.form = form;
+      this.messageBox = form.querySelector("#form-message")!;
+      this.submitButton = form.querySelector("#submit-button")!;
+      this.rateLimitMessage = form.querySelector("#rate-limit-message")!;
+
+      // Get configuration from data attributes
+      this.config = {
+        apiEndpoint: form.dataset.apiEndpoint!,
+        rateLimitMinutes: parseInt(form.dataset.rateLimit!),
+        maxLength: parseInt(form.dataset.maxLength!),
+        successMessage: form.dataset.successMessage!,
+        errorMessage: form.dataset.errorMessage!,
+        recaptchaKey: form.dataset.recaptchaKey!,
+      };
+
+      this.init();
+    }
+
+    init(): void {
+      this.form.addEventListener("submit", this.handleSubmit.bind(this));
+    }
+
+    isRateLimited(): boolean {
+      const lastSubmission = localStorage.getItem("lastFormSubmission");
+      if (!lastSubmission) return false;
+
+      const now = Date.now();
+      const timeDiff = now - parseInt(lastSubmission);
+      return timeDiff < this.config.rateLimitMinutes * 60 * 1000;
+    }
+
+    showRateLimit(): void {
+      this.rateLimitMessage.style.display = "block";
+      setTimeout(() => {
+        this.rateLimitMessage.style.display = "none";
+      }, 5000);
+    }
+
+    hasSpamKeywords(message: string): boolean {
+      const spamKeywords = [
+        "crypto",
+        "bitcoin",
+        "investment",
+        "trading",
+        "loan",
+        "viagra",
+        "casino",
+        "gambling",
+        "winner",
+        "click here",
+        "limited time",
+        "make money",
+        "work from home",
+        "guarantee",
+        "risk-free",
+        "no obligation",
+        "nigerian prince",
+        "inheritance",
+        "lottery",
+        "million dollars",
+        "seo",
+        "free gift",
+        "act now",
+        "special promotion",
+        "weight loss",
+        "miracle cure",
+        "undefined",
+      ];
+      const lowerMessage = message.toLowerCase();
+      return spamKeywords.some((keyword) => lowerMessage.includes(keyword));
+    }
+
+    hasExcessiveLinks(message: string): boolean {
+      const linkRegex = /(https?:\/\/[^\s]+)/gi;
+      const links = message.match(linkRegex) || [];
+      return links.length > 2;
+    }
+
+    showMessage(text: string, type: "error" | "success" = "error"): void {
+      this.messageBox.textContent = text;
+      this.messageBox.className = `form-message ${type}`;
+    }
+
+    setButtonState(disabled: boolean, text: string): void {
+      this.submitButton.disabled = disabled;
+      this.submitButton.textContent = text;
+    }
+
+    async handleSubmit(e: Event): Promise<void> {
+      e.preventDefault();
+
+      // Rate limiting check
+      if (this.isRateLimited()) {
+        this.showRateLimit();
+        return;
+      }
+
+      // Get form data
+      const formData = new FormData(this.form);
+      const data = {
+        name: (formData.get("name") as string)?.trim() || "",
+        email: (formData.get("email") as string)?.trim() || "",
+        message: (formData.get("message") as string)?.trim() || "",
+        address2: formData.get("address2") as string,
+      };
+
+      // Client-side validation
+      if (data.address2) {
+        this.showMessage("Error: Please try again.");
+        return;
+      }
+
+      if (this.hasSpamKeywords(data.message)) {
+        this.showMessage(
+          "Your message contains content that appears to be spam. Please revise and try again.",
+        );
+        return;
+      }
+
+      if (this.hasExcessiveLinks(data.message)) {
+        this.showMessage("Please limit links in your message.");
+        return;
+      }
+
+      if (data.message.length > this.config.maxLength) {
+        this.showMessage("Please limit your message to 2000 characters.");
+        return;
+      }
+
+      if (data.message.length < 10) {
+        this.showMessage("Your message is too short.");
+        return;
+      }
+
+      // Submit form
+      this.setButtonState(true, "Sending...");
+
+      try {
+        // 🔐 Get reCAPTCHA token just-in-time
+        const actionName = "contact_submit";
+        const recaptchaKey = this.config.recaptchaKey;
+        const token = await new Promise<string>((resolve, reject) => {
+          // grecaptcha is injected by the script tag loaded above
+          // @ts-ignore
+          grecaptcha.ready(() => {
+            // @ts-ignore
+            grecaptcha
+              .execute(recaptchaKey, {
+                action: actionName,
+              })
+              .then(resolve)
+              .catch(reject);
+          });
+        });
+
+        const response = await fetch(this.config.apiEndpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            Accept: "application/json",
+          },
+          body: JSON.stringify({
+            name: data.name,
+            email: data.email,
+            message: data.message,
+            timestamp: Date.now(),
+            userAgent: navigator.userAgent.substring(0, 200),
+            recaptchaToken: token,
+            recaptchaAction: actionName,
+          }),
+        });
+
+        if (response.ok) {
+          this.form.reset();
+          this.showMessage(this.config.successMessage, "success");
+          localStorage.setItem("lastFormSubmission", Date.now().toString());
+        } else {
+          throw new Error("Network response was not ok");
+        }
+      } catch (error) {
+        console.error("Contact form error:", error);
+        this.showMessage(this.config.errorMessage);
+      } finally {
+        setTimeout(() => {
+          this.setButtonState(false, "Send Message");
+        }, 2000);
+      }
+    }
+  }
+
+  // Initialize all contact forms on the page
+  document.addEventListener("DOMContentLoaded", () => {
+    const forms = document.querySelectorAll(
+      "#contact-form",
+    ) as NodeListOf<HTMLFormElement>;
+    forms.forEach((form) => new ContactForm(form));
+  });
+</script>

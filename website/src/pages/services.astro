@@ -1,0 +1,508 @@
+---
+import MainHead from "../components/MainHead.astro";
+import Nav from "../components/Nav/index.astro";
+import Footer from "../components/Footer/index.jsx";
+import { SEO } from "astro-seo";
+
+const services = [
+  {
+    title: "Custom Web Design",
+    description: "Every business has its own story and personality. I'll work with you to create a design that captures who you are and speaks to the people you want to reach.",
+    features: [
+      "Design that reflects your brand",
+      "Thoughtful user experience",
+      "Mobile-friendly layouts",
+      "Accessibility for everyone",
+    ],
+  },
+  {
+    title: "Modern Development",
+    description: "Your website will be built with technologies that are fast, reliable, and easy to maintain. No bloated code or unnecessary complexity.",
+    features: [
+      "Fast loading times",
+      "Clean, maintainable code",
+      "Works on all browsers",
+      "Built to last",
+    ],
+  },
+  {
+    title: "SEO Optimization",
+    description: "A beautiful website is only valuable if people can find it. I include search engine optimization so your site shows up when people are looking for what you offer.",
+    features: [
+      "Technical SEO setup",
+      "Proper meta tags and structure",
+      "Performance optimization",
+      "Search engine submission",
+    ],
+  },
+  {
+    title: "Ongoing Support",
+    description: "I don't disappear after launch. I'm here to help with updates, answer questions, and make sure your site keeps working well over time.",
+    features: [
+      "Regular security updates",
+      "Content changes and tweaks",
+      "Performance monitoring",
+      "Technical support when needed",
+    ],
+  },
+];
+
+const processSteps = [
+  {
+    number: "01",
+    title: "Conversation",
+    description: "We start by talking about what you need, who you're trying to reach, and what success looks like for you.",
+  },
+  {
+    number: "02",
+    title: "Design",
+    description: "I create mockups and we refine them together until we've got something that feels right.",
+  },
+  {
+    number: "03",
+    title: "Build",
+    description: "Your design comes to life with clean code, tested across devices to make sure everything works.",
+  },
+  {
+    number: "04",
+    title: "Launch",
+    description: "We launch together, and I walk you through how to update your content so you're comfortable managing it.",
+  },
+];
+---
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <SEO
+      title="Web Design Services Guelph | Custom Websites for Small Business | Alessandro Filazzola"
+      description="Custom web design services in Guelph, Ontario for small businesses, researchers, and professionals. Mobile-friendly, SEO-optimized websites built with care. Free consultation available."
+      openGraph={{
+        basic: {
+          title: "Web Design Services Guelph | Alessandro Filazzola",
+          type: "website",
+          image: "/AfilazzolaHome.jpg",
+        },
+      }}
+    />
+    <MainHead
+      title="Web Design Services Guelph | Custom Websites for Small Business | Alessandro Filazzola"
+      description="Custom web design services in Guelph, Ontario for small businesses, researchers, and professionals. Mobile-friendly, SEO-optimized websites built with care."
+    />
+    <style lang="scss">
+      .page-header {
+        background: linear-gradient(135deg, #0a0a0f 0%, var(--color-gradient-mid) 50%, #0a0a0f 100%);
+        padding: 8rem 2rem 5rem;
+        text-align: center;
+        position: relative;
+
+        &::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: radial-gradient(ellipse at 50% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 60%);
+          pointer-events: none;
+        }
+      }
+
+      .page-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 6vw, 4rem);
+        font-weight: 800;
+        margin: 0 0 1rem;
+        position: relative;
+      }
+
+      .page-subtitle {
+        font-size: 1.25rem;
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+        position: relative;
+      }
+
+      .breadcrumb {
+        margin-bottom: 2rem;
+        position: relative;
+
+        a {
+          color: var(--color-text-secondary);
+          text-decoration: none;
+          font-size: 0.875rem;
+
+          &:hover {
+            color: var(--color-primary);
+          }
+        }
+
+        span {
+          color: var(--color-text-muted);
+          margin: 0 0.5rem;
+        }
+      }
+
+      .section {
+        padding: 5rem 0;
+      }
+
+      .container {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 4rem;
+      }
+
+      .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin: 0 0 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* My Approach Section */
+      .approach-section {
+        background: var(--color-bg-card);
+      }
+
+      .approach-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .approach-text {
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.1rem;
+          line-height: 1.8;
+          margin: 0 0 1.5rem;
+        }
+      }
+
+      .approach-values {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+
+        @media (min-width: 480px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .value-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-border);
+        border-radius: 12px;
+        padding: 1.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: var(--color-primary);
+        }
+
+        h4 {
+          font-size: 1rem;
+          margin: 0 0 0.5rem;
+          color: var(--c-white);
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 0.9rem;
+          line-height: 1.6;
+          margin: 0;
+        }
+      }
+
+      .services-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(2, 1fr);
+        }
+      }
+
+      .service-card {
+        background: var(--color-bg-card);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        padding: 2.5rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          border-color: rgba(255, 255, 255, 0.2);
+          transform: translateY(-4px);
+        }
+
+        h3 {
+          font-family: var(--font-display);
+          font-size: 1.5rem;
+          margin: 0 0 1rem;
+          color: var(--c-white);
+        }
+
+        > p {
+          color: var(--color-text-secondary);
+          line-height: 1.7;
+          margin: 0 0 1.5rem;
+        }
+
+        ul {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+
+          li {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            margin-bottom: 0.75rem;
+            color: var(--color-text-secondary);
+            font-size: 0.95rem;
+
+            &::before {
+              content: '';
+              width: 6px;
+              height: 6px;
+              background: var(--color-primary);
+              border-radius: 50%;
+              flex-shrink: 0;
+            }
+          }
+        }
+      }
+
+      .process-section {
+        background: linear-gradient(135deg, var(--color-gradient-mid) 0%, var(--color-bg-dark) 100%);
+      }
+
+      .process-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 2rem;
+
+        @media (min-width: 768px) {
+          grid-template-columns: repeat(4, 1fr);
+        }
+      }
+
+      .process-step {
+        text-align: center;
+        position: relative;
+
+        .step-number {
+          font-family: var(--font-display);
+          font-size: 3rem;
+          font-weight: 800;
+          background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+          margin-bottom: 1rem;
+        }
+
+        h3 {
+          font-family: var(--font-display);
+          font-size: 1.25rem;
+          margin: 0 0 0.75rem;
+          color: var(--c-white);
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 0.95rem;
+          line-height: 1.6;
+          margin: 0;
+        }
+
+        @media (min-width: 768px) {
+          &:not(:last-child)::after {
+            content: '';
+            position: absolute;
+            top: 2rem;
+            right: -1rem;
+            width: 2rem;
+            height: 2px;
+            background: var(--color-border);
+          }
+        }
+      }
+
+      .cta-section {
+        text-align: center;
+        background: var(--color-bg-card);
+      }
+
+      .cta-card {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--color-border);
+        border-radius: 20px;
+        padding: 4rem 2rem;
+        max-width: 700px;
+        margin: 0 auto;
+
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          margin: 0 0 2rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <Nav />
+
+    <header class="page-header">
+      <nav class="breadcrumb" aria-label="Breadcrumb">
+        <a href="/">Home</a>
+        <span>/</span>
+        <span>Services</span>
+      </nav>
+      <h1 class="page-title">Services</h1>
+      <p class="page-subtitle">
+        Custom web design for small businesses and professionals across Canada
+      </p>
+    </header>
+
+    <main>
+      <!-- My Approach Section -->
+      <section class="section approach-section">
+        <div class="container">
+          <div class="approach-content">
+            <div class="approach-text">
+              <h2>My Approach</h2>
+              <p>
+                I believe a good website starts with understanding who you are and what you need.
+                I work directly with my clients throughout the process, not through layers of project managers
+                or account executives. When you work with me, you work with me.
+              </p>
+              <p>
+                My background in research means I'm comfortable diving deep into understanding your
+                field, whether that's ecology, fitness coaching, or hospitality. I ask questions,
+                I listen, and I build something that actually fits.
+              </p>
+            </div>
+            <div class="approach-values">
+              <div class="value-card">
+                <h4>Personal</h4>
+                <p>Direct communication with no middlemen or corporate overhead</p>
+              </div>
+              <div class="value-card">
+                <h4>Collaborative</h4>
+                <p>Your input shapes the design at every step</p>
+              </div>
+              <div class="value-card">
+                <h4>Honest</h4>
+                <p>Clear pricing and realistic expectations from the start</p>
+              </div>
+              <div class="value-card">
+                <h4>Thoughtful</h4>
+                <p>Clean, purposeful design without unnecessary complexity</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Services Section -->
+      <section class="section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">What I Offer</h2>
+            <p class="section-subtitle">
+              Everything you need to get online and stay there
+            </p>
+          </div>
+          <div class="services-grid">
+            {services.map((service) => (
+              <div class="service-card">
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
+                <ul>
+                  {service.features.map((feature) => (
+                    <li>{feature}</li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- Process Section -->
+      <section class="section process-section">
+        <div class="container">
+          <div class="section-header">
+            <h2 class="section-title">How It Works</h2>
+            <p class="section-subtitle">
+              A straightforward process from first conversation to launch
+            </p>
+          </div>
+          <div class="process-grid">
+            {processSteps.map((step) => (
+              <div class="process-step">
+                <div class="step-number">{step.number}</div>
+                <h3>{step.title}</h3>
+                <p>{step.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA Section -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta-card">
+            <h2>Interested in Working Together?</h2>
+            <p>
+              Drop me a line and let's talk about what you're looking for.
+              No pressure, just a conversation.
+            </p>
+            <a href="/contact" class="btn-primary">Get in Touch</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <Footer />
+  </body>
+</html>

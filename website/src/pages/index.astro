@@ -1,23 +1,47 @@
 ---
-// Component Imports
 import MainHead from "../components/MainHead.astro";
-import Button from "../components/Button/index.jsx";
 import Nav from "../components/Nav/index.astro";
 import Footer from "../components/Footer/index.jsx";
-import SkillSets from "../components/Skills/index.jsx";
-import ScrollInSection from "../components/AnimateScroll";
-import PortfolioPreview from "../components/PortfolioPreview";
 import { SEO } from "astro-seo";
 
-// Data Fetching: List all Markdown posts in the repo.
-const projects = await Astro.glob("./project/**/*.md");
-const featuredProject = projects[0];
-
-// Full Astro Component Syntax:
-// https://docs.astro.build/core-concepts/astro-components/
+// Portfolio websites data
+const portfolioSites = [
+  {
+    title: "La Poche",
+    url: "https://lapoche.ca/",
+    description:
+      "A multifunctional venue in downtown Guelph featuring a barbershop, co-working space, and intimate evening bar.",
+    image: "/assets/la-poche.jpg",
+    tags: ["Business", "Hospitality"],
+  },
+  {
+    title: "Amanda Liczner",
+    url: "https://www.amandaliczner.ca/",
+    description:
+      "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration.",
+    image: "/assets/amanda-liczner.jpg",
+    tags: ["Portfolio", "Academic"],
+  },
+  {
+    title: "Armstrong Coaching",
+    url: "https://armstrong-coaching.com/",
+    description:
+      "Personal training and lifestyle coaching practice combining strength training with holistic wellness guidance.",
+    image: "/assets/armstrong-coaching.jpg",
+    tags: ["Coaching", "Fitness"],
+  },
+  {
+    title: "Legendary DnD",
+    url: "https://legendarydnd.ca/",
+    description:
+      "An online platform for Dungeons & Dragons enthusiasts featuring campaign resources, character tools, and community content.",
+    image: "/assets/legendary-dnd.jpg",
+    tags: ["Gaming", "Community"],
+  },
+];
 ---
 
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -25,241 +49,603 @@ const featuredProject = projects[0];
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
- 
     <SEO
-      title="Alessandro Filazzola - Home"
-      description="Alessandro Filazzola is a data scientist, quantitative ecologist, and web developer. He currently works at ApexRMS and is an Adjunct Faculty at Western University in Canada."
+      title="Alessandro Filazzola - Computational Ecologist & Web Designer"
+      description="Computational ecologist and web designer helping small businesses and researchers build websites that reflect who they are. Based in Guelph, Canada."
       openGraph={{
         basic: {
-          title: "Alessandro Filazzola - Home",
+          title:
+            "Alessandro Filazzola - Computational Ecologist & Web Designer",
           type: "website",
           image: "/AfilazzolaHome.jpg",
         },
       }}
     />
     <MainHead
-      title="Alessandro Filazzola: Personal Site"
-      description="Data scientist at ApexRMS."
+      title="Alessandro Filazzola - Computational Ecologist & Web Designer"
+      description="Computational ecologist and web designer based in Guelph, Canada."
     />
     <style lang="scss">
-      $w-s: 750px;
-
       .hero {
         position: relative;
-        overflow: hidden;
-        height: 100vh; /* Full viewport height */
-      }
-
-      .myVideo {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-      }
-
-      .gradient {
-        background: var(--c-black);
-        opacity: 0.3;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 2;
-      }
-
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 3;
-        display: flex;
-        flex-direction: column;
-        align-items: flex-start;
-        justify-content: center;
-        padding: 0 2rem;
-        color: var(--c-orange);
-      }
-
-      .title {
-        font-weight: 900;
-        font-size: var(--f-u11);
-        margin-bottom: 0.5rem;
-        margin-top: 0;
-        text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
-
-        @media (max-width: 640px) {
-          font-weight: 800;
-          font-size: var(--f-u8);
-        }
-      }
-
-      @media (prefers-reduced-motion: reduce) {
-        .myVideo {
-          display: none;
-        }
-        .hero {
-          background: linear-gradient(135deg, var(--c-dblue) 0%, var(--c-mblue) 100%);
-        }
-      }
-
-      .roles {
-        display: flex;
-      }
-
-      .role {
-        font-weight: 900;
-        color: var(--c-lgray);
-        font-size: var(--f-u3);
-        background-color: var(--c-black);
-        padding: 0.25em 0.5em;
-        border-radius: 5px;
-        margin-right: 1em;
-        transition: background-color 0.3s ease-in-out;
-
-        @media (max-width: 640px) {
-          font-size: var(--f-u2);
-        }
-      }
-
-      .role:hover {
-        background-color: var(--c-orange);
-      }
-
-      .invert {
-        position: absolute;
+        min-height: 100vh;
         display: flex;
         align-items: center;
+        background-image: url("/assets/header.jpg");
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        overflow: hidden;
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: 0;
+          left: 0;
+          right: 0;
+          bottom: 0;
+          background: linear-gradient(
+            135deg,
+            rgba(10, 10, 15, 0.85) 0%,
+            rgba(19, 78, 74, 0.7) 50%,
+            rgba(10, 10, 15, 0.85) 100%
+          );
+          pointer-events: none;
+        }
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 2rem;
+        text-align: center;
+
+        @media (min-width: 768px) {
+          text-align: left;
+          padding: 4rem 2rem;
+        }
+      }
+
+      .hero-name {
+        font-family: var(--font-display);
+        font-size: clamp(1.25rem, 3vw, 1.5rem);
+        font-weight: 500;
+        color: var(--color-text-secondary);
+        margin: 0 0 0.75rem;
+        letter-spacing: 0.05em;
+      }
+
+      .hero-title {
+        font-family: var(--font-display);
+        font-size: clamp(2.25rem, 7vw, 4.5rem);
+        font-weight: 800;
+        line-height: 1.1;
+        margin: 0 0 1.5rem;
+        color: var(--c-white);
+
+        .highlight {
+          background: linear-gradient(
+            135deg,
+            var(--color-primary) 0%,
+            var(--color-secondary) 100%
+          );
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+          background-clip: text;
+        }
+      }
+
+      .hero-subtitle {
+        font-size: clamp(1.125rem, 2vw, 1.375rem);
+        color: var(--color-text-secondary);
+        max-width: 650px;
+        margin: 0 0 2.5rem;
+        line-height: 1.7;
+
+        @media (min-width: 768px) {
+          margin: 0 0 2.5rem;
+        }
+
+        @media (max-width: 767px) {
+          margin: 0 auto 2.5rem;
+        }
+      }
+
+      .hero-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
         justify-content: center;
-        border-radius: 5px;
-        width: 100%;
-        height: 100%;
-        top: 0;
-        left: 0;
-        pointer-events: none;
-        clip-path: polygon(0% 100%, 100% 100%, 100% 200%, 0% 200%);
-        transition: clip-path cubic-bezier(0.4, 0, 0.5, 1) 150ms;
-      }
-      .img {
-        display: block;
-        width: 100%;
-        height: auto;
+
+        @media (min-width: 768px) {
+          justify-content: flex-start;
+        }
       }
 
-      .desc {
-        margin-top: 1.5rem;
-        margin-bottom: 0;
+      .section {
+        padding: 5rem 0;
       }
 
-      .subtitle {
-        display: block;
-        font-weight: 600;
-        font-size: var(--f-d4);
-        letter-spacing: -0.0625em;
-        color: var(--c-lgray);
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
       }
 
-      .bio {
-        line-height: 2;
+      .section-title {
+        font-family: var(--font-display);
+        font-size: clamp(2rem, 5vw, 3rem);
+        font-weight: 700;
+        margin: 0 0 1rem;
+      }
+
+      .section-subtitle {
+        font-size: 1.125rem;
+        color: var(--color-text-secondary);
+        max-width: 600px;
+        margin: 0 auto;
+      }
+
+      /* About Preview Section */
+      .about-preview {
+        background: var(--color-bg-card);
+      }
+
+      .about-content {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+          gap: 4rem;
+        }
+      }
+
+      .about-image {
+        position: relative;
+
+        img {
+          width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -15px;
+          right: -15px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid var(--color-primary);
+          border-radius: 16px;
+          z-index: -1;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+      }
+
+      .about-text {
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(1.75rem, 4vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.1rem;
+          line-height: 1.8;
+          margin: 0 0 1.5rem;
+        }
+      }
+
+      /* Research/Ecology Section */
+      .research-section {
+        background: linear-gradient(
+          135deg,
+          var(--color-gradient-mid) 0%,
+          var(--color-bg-dark) 100%
+        );
+      }
+
+      .research-content {
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 3rem;
+        align-items: center;
+
+        @media (min-width: 768px) {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .research-text {
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(2rem, 5vw, 2.5rem);
+          font-weight: 700;
+          margin: 0 0 1.5rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          line-height: 1.8;
+          margin: 0 0 1.5rem;
+        }
+      }
+
+      .research-image {
+        position: relative;
+
+        img {
+          width: 100%;
+          border-radius: 16px;
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        &::before {
+          content: "";
+          position: absolute;
+          top: -15px;
+          left: -15px;
+          width: 100%;
+          height: 100%;
+          border: 2px solid var(--color-primary);
+          border-radius: 16px;
+          z-index: -1;
+
+          @media (max-width: 767px) {
+            display: none;
+          }
+        }
+      }
+
+      .research-highlights {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 1rem;
         margin-bottom: 2rem;
 
-        > span:first-of-type {
-          line-height: 1;
-          margin-bottom: 0.5em;
-          display: block;
+        .highlight-item {
+          background: rgba(255, 255, 255, 0.05);
+          border: 1px solid var(--color-border);
+          border-radius: 12px;
+          padding: 1rem;
+          text-align: center;
+
+          .number {
+            font-family: var(--font-display);
+            font-size: 1.75rem;
+            font-weight: 700;
+            color: var(--color-primary);
+            margin-bottom: 0.25rem;
+          }
+
+          .label {
+            color: var(--color-text-secondary);
+            font-size: 0.875rem;
+          }
+        }
+      }
+
+      /* Web Design Section */
+      .webdesign-section {
+        background: var(--color-bg-card);
+      }
+
+      .webdesign-intro {
+        max-width: 800px;
+        margin: 0 auto 3rem;
+        text-align: center;
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          line-height: 1.8;
+        }
+      }
+
+      .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+        max-width: 80rem;
+        margin: 0 auto;
+        padding: 0 2rem;
+      }
+
+      .portfolio-card {
+        background: var(--color-bg-dark);
+        border: 1px solid var(--color-border);
+        border-radius: 16px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+
+        &:hover {
+          transform: translateY(-8px);
+          border-color: rgba(255, 255, 255, 0.2);
+          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+          .portfolio-image img {
+            transform: scale(1.05);
+          }
+        }
+      }
+
+      .portfolio-image {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+          transition: transform 0.3s ease;
+        }
+      }
+
+      .portfolio-content {
+        padding: 1.5rem;
+
+        h3 {
+          font-size: 1.25rem;
+          margin: 0 0 0.5rem;
+
+          a {
+            color: var(--c-white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+
+            &:hover {
+              color: var(--color-primary);
+            }
+          }
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 0.9rem;
+          line-height: 1.6;
+          margin: 0 0 1rem;
+        }
+      }
+
+      .portfolio-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+
+        span {
+          background: rgba(13, 148, 136, 0.1);
+          color: var(--color-primary);
+          padding: 0.25rem 0.75rem;
+          border-radius: 9999px;
+          font-size: 0.75rem;
+          font-weight: 500;
+        }
+      }
+
+      .view-all-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--color-primary);
+        font-weight: 600;
+        text-decoration: none;
+        margin-top: 2rem;
+        transition: all 0.3s ease;
+
+        &:hover {
+          gap: 0.75rem;
+        }
+      }
+
+      /* CTA Section */
+      .cta-section {
+        border-top: 1px solid var(--color-border);
+        border-bottom: 1px solid var(--color-border);
+      }
+
+      .cta-content {
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        text-align: center;
+
+        h2 {
+          font-family: var(--font-display);
+          font-size: clamp(2rem, 5vw, 2.5rem);
           font-weight: 700;
-          font-size: var(--f-u4);
+          margin: 0 0 1rem;
+        }
+
+        p {
+          color: var(--color-text-secondary);
+          font-size: 1.125rem;
+          margin: 0 0 2rem;
         }
       }
     </style>
   </head>
   <body>
     <Nav />
-    <header class="hero">
-      <video
-        autoplay
-        muted
-        loop
-        playsinline
-        preload="metadata"
-        id="myVideo"
-        class="myVideo"
-        aria-label="Background video of alpine grassland"
-      >
-        <source src="alpineGrassland.mp4" type="video/mp4" />
-        Your browser does not support the video tag.
-      </video>
-      <div class="gradient"></div>
-      <div class="overlay">
-        <h1 class="title">Alessandro Filazzola</h1>
-        <div class="flex flex-col lg:flex-row lg:gap-5 gap-y-5 mt-4">
-          <span class="role">Data Science</span>
-          <span class="role">Quantitative Ecology</span>
-          <span class="role">Web Development</span>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="hero-content">
+        <p class="hero-name">Alessandro Filazzola</p>
+        <h1 class="hero-title">
+          Computational Ecologist<br />
+          <span class="highlight">& Web Designer</span>
+        </h1>
+        <p class="hero-subtitle">
+          I study climate change and ecosystems by day, and help small
+          businesses and researchers build websites that reflect who they are.
+          Based in Guelph, Canada.
+        </p>
+        <div class="hero-buttons">
+          <a href="/research" class="btn-secondary">View My Research</a>
+          <a href="/portfolio" class="btn-primary">See My Web Work</a>
         </div>
       </div>
-    </header>
-    <main
-      class="max-w-md mx-auto overflow-hidden md:max-w-6xl my-4 small-screen-padding md:text-2xl text-xl"
-    >
-      <ScrollInSection client:load>
-        <h2 class="py-6 mx-auto text-4xl md:text-6xl font-semibold">About</h2>
-        <div class="md:flex my-4 md:space-x-4">
-          <div class="md:w-3/5">
-            <p class="desc md:py-6 lg:py-0">
-              I am a data scientist and full-stack engineer at <a
-                href="https://www.apexrms.com">ApexRMS</a
-              >, and Adjunct Faculty in Biology at <a
-                href="https://www.uwo.ca/index.html">Western University</a
-              >. My work is focused on forecasting ecological responses across
-              time and space with a specific interest in extreme climate events
-              and sustainable development. Currently, I'm working on creating an
-              image classifier for alpine snowpack, using anonymized cell phone
-              data to understand how people use urban parks, and developing a
-              web application for ecological forecasting.
-            </p>
-          </div>
-          <div class="md:w-2/5 pt-6 md:pt-4">
-            <img
-              class="w-72 md:w-4/5 object-cover md:h-full mx-auto"
-              src="./AfilazzolaHome.jpg"
-              alt="Alessandro Filazzola in the field"
-              loading="lazy"
-            />
-          </div>
-        </div>
+    </section>
 
-        <div class="py-8">
-          <a href="/about">
-            <Button>More about me</Button>
-          </a>
+    <!-- About Preview Section -->
+    <section class="section about-preview">
+      <div class="about-content">
+        <div class="about-image">
+          <img
+            src="/alex-filazzola-1.jpg"
+            alt="Alessandro Filazzola"
+            loading="lazy"
+          />
         </div>
-      </ScrollInSection>
-      <ScrollInSection client:load>
-        <h2 class="text-4xl md:text-6xl font-semibold">Skills</h2>
-        <p class="desc">
-          I am passionate about data science, ecology, and programming
-          including:
+        <div class="about-text">
+          <h2>Hi, I'm Alex</h2>
+          <p>
+            I'm a computational ecologist with a Ph.D. in biology and over a
+            decade of research experience. My academic work focuses on climate
+            change impacts, plant ecology, and developing better methods for
+            ecological data science.
+          </p>
+          <p>
+            On the side, I've discovered a passion for building websites. What
+            started as helping fellow researchers create academic portfolios has
+            grown into working with small businesses and professionals in Canada
+            who want a web presence that feels authentic to who they are.
+          </p>
+          <a href="/research" class="btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Research/Ecology Section -->
+    <section class="section research-section">
+      <div class="research-content">
+        <div class="research-text">
+          <h2>Ecology & Data Science</h2>
+          <p>
+            I work as a Data Scientist at ApexRMS, where I develop tools for
+            environmental decision-making. My research spans climate change
+            impacts on lakes, forecasting land cover change, plant facilitation,
+            and improving how we do science with better code and workflows.
+          </p>
+          <div class="research-highlights">
+            <div class="highlight-item">
+              <div class="number">50+</div>
+              <div class="label">Publications</div>
+            </div>
+            <div class="highlight-item">
+              <div class="number">10+</div>
+              <div class="label">Years Research</div>
+            </div>
+            <div class="highlight-item">
+              <div class="number">Ph.D.</div>
+              <div class="label">York University</div>
+            </div>
+            <div class="highlight-item">
+              <div class="number">Adjunct Faculty</div>
+              <div class="label">Western University</div>
+            </div>
+          </div>
+          <a href="/research" class="btn-secondary">Explore My Research</a>
+        </div>
+        <div class="research-image">
+          <img
+            src="/alex-filazzola-2.jpg"
+            alt="Alessandro Filazzola in the field"
+            loading="lazy"
+          />
+        </div>
+      </div>
+    </section>
+
+    <!-- Web Design Section -->
+    <section class="section webdesign-section">
+      <div class="section-header">
+        <h2 class="section-title">Web Design</h2>
+        <p class="section-subtitle">
+          Helping small businesses and researchers find their voice online
         </p>
+      </div>
 
-        <SkillSets />
-      </ScrollInSection>
-      <ScrollInSection client:load>
-        <h2 class="sectionTitle">Projects</h2>
-        <div class="md:text-base">
-          <PortfolioPreview project={featuredProject} />
-        </div>
-        <div class="py-8">
-          <a href="/projects">
-            <Button>Current projects</Button>
-          </a>
-        </div>
-      </ScrollInSection>
-    </main>
+      <div class="webdesign-intro">
+        <p>
+          I work closely with clients to build websites they're proud of.
+          Whether you're a local business looking to connect with your
+          community, or a researcher needing an academic portfolio, I'll help
+          create something that reflects your style and helps people find you.
+        </p>
+      </div>
+
+      <div class="portfolio-grid">
+        {
+          portfolioSites.map((site) => (
+            <article class="portfolio-card">
+              <div class="portfolio-image">
+                <img src={site.image} alt={site.title} loading="lazy" />
+              </div>
+              <div class="portfolio-content">
+                <h3>
+                  <a href={site.url} target="_blank" rel="noopener noreferrer">
+                    {site.title}
+                  </a>
+                </h3>
+                <p>{site.description}</p>
+                <div class="portfolio-tags">
+                  {site.tags.map((tag) => (
+                    <span>{tag}</span>
+                  ))}
+                </div>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+      <div style="text-align: center;">
+        <a href="/portfolio" class="view-all-link">
+          View All Projects
+          <svg
+            width="20"
+            height="20"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+          >
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+          </svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+      <div class="cta-content">
+        <h2>Let's Connect</h2>
+        <p>
+          Whether you're interested in my research or looking for help with a
+          website, I'd be happy to chat.
+        </p>
+        <a href="/contact" class="btn-primary">Get in Touch</a>
+      </div>
+    </section>
+
     <Footer />
   </body>
 </html>

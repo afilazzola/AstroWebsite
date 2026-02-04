@@ -65,9 +65,10 @@ const API_ENDPOINT = import.meta.env.PUBLIC_API_ENDPOINT;
   .form-input {
     width: 100%;
     padding: 0.5rem;
-    border: 1px solid #d1d5db;
+    border: 1px solid rgba(255, 255, 255, 0.2);
     border-radius: 0.375rem;
-    background-color: white;
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #f7f3ed;
     transition:
       border-color 0.15s ease-in-out,
       box-shadow 0.15s ease-in-out;
@@ -75,8 +76,12 @@ const API_ENDPOINT = import.meta.env.PUBLIC_API_ENDPOINT;
 
   .form-input:focus {
     outline: none;
-    border-color: #3b82f6;
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    border-color: #0d9488;
+    box-shadow: 0 0 0 3px rgba(13, 148, 136, 0.2);
+  }
+
+  .form-input::placeholder {
+    color: rgba(247, 243, 237, 0.5);
   }
 
   .form-textarea {

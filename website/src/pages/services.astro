@@ -1,8 +1,28 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Nav from "../components/Nav/index.astro";
-import Footer from "../components/Footer/index.jsx";
-import { SEO } from "astro-seo";
+import Layout from "../layouts/Layout.astro";
+
+const audiences = [
+  {
+    title: "Small Businesses",
+    description:
+      "Local shops, studios, and services that want a professional home online — somewhere customers can find your hours, your offerings, and a way to reach you.",
+  },
+  {
+    title: "Personal Portfolios",
+    description:
+      "Freelancers, artists, and professionals who need a polished place to show their work and make a strong first impression.",
+  },
+  {
+    title: "Non-Profit Organizations",
+    description:
+      "Community groups and non-profits that need to share their mission, promote events, and make it easy for people to get involved or donate.",
+  },
+  {
+    title: "Academics & Researchers",
+    description:
+      "Scientists and labs showcasing publications, projects, and teams — sites that make your work accessible to collaborators, students, and the public.",
+  },
+];
 
 const services = [
   {
@@ -47,462 +67,472 @@ const services = [
   },
 ];
 
-const processSteps = [
+const buildOptions = [
   {
-    number: "01",
-    title: "Conversation",
-    description: "We start by talking about what you need, who you're trying to reach, and what success looks like for you.",
+    label: "Option A",
+    title: "WordPress: you're in the driver's seat",
+    intro:
+      "WordPress is the platform behind roughly 40% of the internet. I design and build your site, then hand you the keys. It has a visual editor — a bit like a word processor — so you can change text, swap photos, add new pages, or publish posts yourself, without touching any code.",
+    pros: [
+      "Edit and grow the site on your own, whenever you want",
+      "Great fit if you post news, events, or articles regularly",
+      "A huge ecosystem of add-ons as your needs expand",
+    ],
+    tradeoff:
+      "It takes a little more to build and maintain, and hosting costs somewhat more, because there's more machinery under the hood.",
+    bestFor:
+      "Organizations that want to make their own updates and keep expanding the site over time.",
   },
   {
-    number: "02",
-    title: "Design",
-    description: "I create mockups and we refine them together until we've got something that feels right.",
-  },
-  {
-    number: "03",
-    title: "Build",
-    description: "Your design comes to life with clean code, tested across devices to make sure everything works.",
-  },
-  {
-    number: "04",
-    title: "Launch",
-    description: "We launch together, and I walk you through how to update your content so you're comfortable managing it.",
+    label: "Option B",
+    title: "Custom-coded: hand-built, fast, and low-maintenance",
+    intro:
+      "I write the site by hand using a modern tool called Astro — the same approach used for this site. There's no editing dashboard; the site is simply a set of very fast, very secure pages. When you want something changed, you send me the new text or photos and I make the update for you.",
+    pros: [
+      "Loads noticeably faster and ranks well with search engines",
+      "Cheaper to host — often just a few dollars a month, sometimes free",
+      "Almost nothing to maintain, update, or break",
+    ],
+    tradeoff:
+      "Day-to-day edits go through me rather than a dashboard.",
+    bestFor:
+      "Sites that change occasionally — portfolios, small business pages, lab websites — where speed and simplicity matter more than self-editing.",
   },
 ];
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <SEO
-      title="Web Design Services Guelph | Custom Websites for Small Business | Alessandro Filazzola"
-      description="Custom web design services in Guelph, Ontario for small businesses, researchers, and professionals. Mobile-friendly, SEO-optimized websites built with care. Free consultation available."
-      openGraph={{
-        basic: {
-          title: "Web Design Services Guelph | Alessandro Filazzola",
-          type: "website",
-          image: "/AfilazzolaHome.jpg",
-        },
-      }}
-    />
-    <MainHead
-      title="Web Design Services Guelph | Custom Websites for Small Business | Alessandro Filazzola"
-      description="Custom web design services in Guelph, Ontario for small businesses, researchers, and professionals. Mobile-friendly, SEO-optimized websites built with care."
-    />
-    <style lang="scss">
-      .page-header {
-        background: linear-gradient(135deg, #0a0a0f 0%, var(--color-gradient-mid) 50%, #0a0a0f 100%);
-        padding: 8rem 2rem 5rem;
-        text-align: center;
-        position: relative;
+<Layout
+  title="Web Design Services Guelph | Custom Websites for Small Business | Alessandro Filazzola"
+  description="Custom web design services in Guelph, Ontario for small businesses, non-profits, researchers, and professionals. WordPress or custom-coded websites, mobile-friendly and SEO-optimized."
+>
+  <header class="page-header">
+    <nav class="breadcrumb" aria-label="Breadcrumb">
+      <a href="/">Home</a>
+      <span>/</span>
+      <span>Services</span>
+    </nav>
+    <h1 class="page-title">Services</h1>
+    <p class="page-subtitle">
+      Custom web design for small businesses and professionals across Canada
+    </p>
+  </header>
+
+  <main>
+    <!-- Who I Work With Section -->
+    <section class="section audience-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Who I Work With</h2>
+          <p class="section-subtitle">
+            Websites for people with something worth showing
+          </p>
+        </div>
+        <div class="audience-grid">
+          {audiences.map((audience, index) => (
+            <div class={`audience-card reveal ${index > 0 ? `reveal-delay-${Math.min(index, 3)}` : ""}`}>
+              <h3>{audience.title}</h3>
+              <p>{audience.description}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="section offer-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">What I Offer</h2>
+          <p class="section-subtitle">
+            Everything you need to get online and stay there
+          </p>
+        </div>
+        <div class="services-grid">
+          {services.map((service, index) => (
+            <div class={`service-card reveal ${index % 2 === 1 ? "reveal-delay-1" : ""}`}>
+              <h3>{service.title}</h3>
+              <p>{service.description}</p>
+              <ul>
+                {service.features.map((feature) => (
+                  <li>{feature}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+
+    <!-- Two Ways to Build Section -->
+    <section class="section build-section">
+      <div class="container">
+        <div class="section-header reveal">
+          <h2 class="section-title">Two Ways to Build</h2>
+          <p class="section-subtitle">
+            Every project starts with the same question: who will update the
+            site after it launches? Your answer decides which of these two
+            approaches fits best.
+          </p>
+        </div>
+        <div class="build-grid">
+          {buildOptions.map((option, index) => (
+            <div class={`build-card reveal ${index === 1 ? "reveal-delay-1" : ""}`}>
+              <span class="build-label">{option.label}</span>
+              <h3>{option.title}</h3>
+              <p>{option.intro}</p>
+              <ul>
+                {option.pros.map((pro) => (
+                  <li>{pro}</li>
+                ))}
+              </ul>
+              <p class="build-tradeoff">The trade-off: {option.tradeoff}</p>
+              <p class="build-best-for"><strong>Best for:</strong> {option.bestFor}</p>
+            </div>
+          ))}
+        </div>
+        <p class="build-footnote reveal">
+          Not sure which fits? That's normal — it's usually a five-minute
+          conversation. Tell me about your project and I'll give you an honest
+          recommendation, even if it's the cheaper option.
+        </p>
+      </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="section cta-section">
+      <div class="container">
+        <div class="cta-card reveal">
+          <h2>Interested in Working Together?</h2>
+          <p>
+            Drop me a line and let's talk about what you're looking for.
+            No pressure, just a conversation.
+          </p>
+          <a href="/contact" class="btn-primary">Get in Touch</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style lang="scss">
+  .page-header {
+    background: var(--color-bg-card);
+    padding: 8rem 2rem 5rem;
+    text-align: center;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: radial-gradient(ellipse at 50% 0%, var(--color-glow) 0%, transparent 60%);
+      pointer-events: none;
+    }
+  }
+
+  .page-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 800;
+    margin: 0 0 1rem;
+    position: relative;
+  }
+
+  .page-subtitle {
+    font-size: 1.25rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .breadcrumb {
+    margin-bottom: 2rem;
+    position: relative;
+
+    a {
+      color: var(--color-text-secondary);
+      text-decoration: none;
+      font-size: 0.875rem;
+
+      &:hover {
+        color: var(--color-primary);
+      }
+    }
+
+    span {
+      color: var(--color-text-muted);
+      margin: 0 0.5rem;
+    }
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .container {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* Who I Work With Section */
+  .audience-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+
+    @media (min-width: 640px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @media (min-width: 1024px) {
+      grid-template-columns: repeat(4, 1fr);
+    }
+  }
+
+  .audience-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 1.75rem;
+    transition: border-color 0.3s ease;
+
+    &:hover {
+      border-color: var(--color-primary);
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      margin: 0 0 0.75rem;
+      color: var(--c-white);
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+
+  /* What I Offer Section */
+  .offer-section {
+    background: var(--color-bg-card);
+  }
+
+  .services-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .service-card {
+    background: var(--color-bg-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      border-color: rgba(255, 255, 255, 0.2);
+      transform: translateY(-4px);
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.5rem;
+      margin: 0 0 1rem;
+      color: var(--c-white);
+    }
+
+    > p {
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin: 0 0 1.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+
+      li {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
+        color: var(--color-text-secondary);
+        font-size: 0.95rem;
 
         &::before {
           content: '';
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: radial-gradient(ellipse at 50% 50%, rgba(13, 148, 136, 0.15) 0%, transparent 60%);
-          pointer-events: none;
+          width: 6px;
+          height: 6px;
+          background: var(--color-primary);
+          border-radius: 50%;
+          flex-shrink: 0;
         }
       }
+    }
+  }
 
-      .page-title {
-        font-family: var(--font-display);
-        font-size: clamp(2.5rem, 6vw, 4rem);
-        font-weight: 800;
-        margin: 0 0 1rem;
-        position: relative;
-      }
+  /* Two Ways to Build Section */
+  .build-section {
+    background: var(--color-bg-elevated);
+  }
 
-      .page-subtitle {
-        font-size: 1.25rem;
+  .build-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: stretch;
+
+    @media (min-width: 900px) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  .build-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    padding: 2.5rem;
+
+    .build-label {
+      display: inline-block;
+      align-self: flex-start;
+      background: var(--color-primary-tint);
+      border: 1px solid var(--color-primary-border);
+      color: var(--color-primary);
+      font-size: 0.8rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      margin-bottom: 1.25rem;
+    }
+
+    h3 {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      margin: 0 0 1rem;
+      color: var(--c-white);
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      line-height: 1.7;
+      margin: 0 0 1.5rem;
+    }
+
+    ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 1.5rem;
+
+      li {
+        display: flex;
+        align-items: baseline;
+        gap: 0.75rem;
+        margin-bottom: 0.75rem;
         color: var(--color-text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-        position: relative;
-      }
+        font-size: 0.95rem;
+        line-height: 1.6;
 
-      .breadcrumb {
-        margin-bottom: 2rem;
-        position: relative;
-
-        a {
-          color: var(--color-text-secondary);
-          text-decoration: none;
-          font-size: 0.875rem;
-
-          &:hover {
-            color: var(--color-primary);
-          }
-        }
-
-        span {
-          color: var(--color-text-muted);
-          margin: 0 0.5rem;
-        }
-      }
-
-      .section {
-        padding: 5rem 0;
-      }
-
-      .container {
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 4rem;
-      }
-
-      .section-title {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 700;
-        margin: 0 0 1rem;
-      }
-
-      .section-subtitle {
-        font-size: 1.125rem;
-        color: var(--color-text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* My Approach Section */
-      .approach-section {
-        background: var(--color-bg-card);
-      }
-
-      .approach-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: center;
-
-        @media (min-width: 768px) {
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-        }
-      }
-
-      .approach-text {
-        h2 {
-          font-family: var(--font-display);
-          font-size: clamp(1.75rem, 4vw, 2.5rem);
+        &::before {
+          content: '✓';
+          color: var(--color-primary);
           font-weight: 700;
-          margin: 0 0 1.5rem;
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 1.1rem;
-          line-height: 1.8;
-          margin: 0 0 1.5rem;
+          flex-shrink: 0;
         }
       }
+    }
 
-      .approach-values {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
+    .build-tradeoff {
+      color: var(--color-text-muted);
+      font-size: 0.95rem;
+      font-style: italic;
+    }
 
-        @media (min-width: 480px) {
-          grid-template-columns: repeat(2, 1fr);
-        }
+    .build-best-for {
+      margin-top: auto;
+      margin-bottom: 0;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--color-border-light);
+      color: var(--color-text-secondary);
+      font-size: 0.95rem;
+
+      strong {
+        color: var(--c-white);
       }
+    }
+  }
 
-      .value-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--color-border);
-        border-radius: 12px;
-        padding: 1.5rem;
-        transition: all 0.3s ease;
+  .build-footnote {
+    text-align: center;
+    color: var(--color-text-secondary);
+    font-size: 1.05rem;
+    line-height: 1.7;
+    max-width: 650px;
+    margin: 3rem auto 0;
+  }
 
-        &:hover {
-          border-color: var(--color-primary);
-        }
+  /* CTA Section */
+  .cta-section {
+    text-align: center;
+    background: var(--color-bg-card);
+  }
 
-        h4 {
-          font-size: 1rem;
-          margin: 0 0 0.5rem;
-          color: var(--c-white);
-        }
+  .cta-card {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--color-border);
+    border-radius: 20px;
+    padding: 4rem 2rem;
+    max-width: 700px;
+    margin: 0 auto;
 
-        p {
-          color: var(--color-text-secondary);
-          font-size: 0.9rem;
-          line-height: 1.6;
-          margin: 0;
-        }
-      }
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+    }
 
-      .services-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-
-        @media (min-width: 768px) {
-          grid-template-columns: repeat(2, 1fr);
-        }
-      }
-
-      .service-card {
-        background: var(--color-bg-card);
-        border: 1px solid var(--color-border);
-        border-radius: 16px;
-        padding: 2.5rem;
-        transition: all 0.3s ease;
-
-        &:hover {
-          border-color: rgba(255, 255, 255, 0.2);
-          transform: translateY(-4px);
-        }
-
-        h3 {
-          font-family: var(--font-display);
-          font-size: 1.5rem;
-          margin: 0 0 1rem;
-          color: var(--c-white);
-        }
-
-        > p {
-          color: var(--color-text-secondary);
-          line-height: 1.7;
-          margin: 0 0 1.5rem;
-        }
-
-        ul {
-          list-style: none;
-          padding: 0;
-          margin: 0;
-
-          li {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            margin-bottom: 0.75rem;
-            color: var(--color-text-secondary);
-            font-size: 0.95rem;
-
-            &::before {
-              content: '';
-              width: 6px;
-              height: 6px;
-              background: var(--color-primary);
-              border-radius: 50%;
-              flex-shrink: 0;
-            }
-          }
-        }
-      }
-
-      .process-section {
-        background: linear-gradient(135deg, var(--color-gradient-mid) 0%, var(--color-bg-dark) 100%);
-      }
-
-      .process-grid {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 2rem;
-
-        @media (min-width: 768px) {
-          grid-template-columns: repeat(4, 1fr);
-        }
-      }
-
-      .process-step {
-        text-align: center;
-        position: relative;
-
-        .step-number {
-          font-family: var(--font-display);
-          font-size: 3rem;
-          font-weight: 800;
-          background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-          margin-bottom: 1rem;
-        }
-
-        h3 {
-          font-family: var(--font-display);
-          font-size: 1.25rem;
-          margin: 0 0 0.75rem;
-          color: var(--c-white);
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 0.95rem;
-          line-height: 1.6;
-          margin: 0;
-        }
-
-        @media (min-width: 768px) {
-          &:not(:last-child)::after {
-            content: '';
-            position: absolute;
-            top: 2rem;
-            right: -1rem;
-            width: 2rem;
-            height: 2px;
-            background: var(--color-border);
-          }
-        }
-      }
-
-      .cta-section {
-        text-align: center;
-        background: var(--color-bg-card);
-      }
-
-      .cta-card {
-        background: rgba(255, 255, 255, 0.03);
-        border: 1px solid var(--color-border);
-        border-radius: 20px;
-        padding: 4rem 2rem;
-        max-width: 700px;
-        margin: 0 auto;
-
-        h2 {
-          font-family: var(--font-display);
-          font-size: clamp(1.75rem, 4vw, 2.5rem);
-          font-weight: 700;
-          margin: 0 0 1rem;
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 1.125rem;
-          margin: 0 0 2rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <Nav />
-
-    <header class="page-header">
-      <nav class="breadcrumb" aria-label="Breadcrumb">
-        <a href="/">Home</a>
-        <span>/</span>
-        <span>Services</span>
-      </nav>
-      <h1 class="page-title">Services</h1>
-      <p class="page-subtitle">
-        Custom web design for small businesses and professionals across Canada
-      </p>
-    </header>
-
-    <main>
-      <!-- My Approach Section -->
-      <section class="section approach-section">
-        <div class="container">
-          <div class="approach-content">
-            <div class="approach-text">
-              <h2>My Approach</h2>
-              <p>
-                I believe a good website starts with understanding who you are and what you need.
-                I work directly with my clients throughout the process, not through layers of project managers
-                or account executives. When you work with me, you work with me.
-              </p>
-              <p>
-                My background in research means I'm comfortable diving deep into understanding your
-                field, whether that's ecology, fitness coaching, or hospitality. I ask questions,
-                I listen, and I build something that actually fits.
-              </p>
-            </div>
-            <div class="approach-values">
-              <div class="value-card">
-                <h4>Personal</h4>
-                <p>Direct communication with no middlemen or corporate overhead</p>
-              </div>
-              <div class="value-card">
-                <h4>Collaborative</h4>
-                <p>Your input shapes the design at every step</p>
-              </div>
-              <div class="value-card">
-                <h4>Honest</h4>
-                <p>Clear pricing and realistic expectations from the start</p>
-              </div>
-              <div class="value-card">
-                <h4>Thoughtful</h4>
-                <p>Clean, purposeful design without unnecessary complexity</p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Services Section -->
-      <section class="section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">What I Offer</h2>
-            <p class="section-subtitle">
-              Everything you need to get online and stay there
-            </p>
-          </div>
-          <div class="services-grid">
-            {services.map((service) => (
-              <div class="service-card">
-                <h3>{service.title}</h3>
-                <p>{service.description}</p>
-                <ul>
-                  {service.features.map((feature) => (
-                    <li>{feature}</li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- Process Section -->
-      <section class="section process-section">
-        <div class="container">
-          <div class="section-header">
-            <h2 class="section-title">How It Works</h2>
-            <p class="section-subtitle">
-              A straightforward process from first conversation to launch
-            </p>
-          </div>
-          <div class="process-grid">
-            {processSteps.map((step) => (
-              <div class="process-step">
-                <div class="step-number">{step.number}</div>
-                <h3>{step.title}</h3>
-                <p>{step.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <!-- CTA Section -->
-      <section class="section cta-section">
-        <div class="container">
-          <div class="cta-card">
-            <h2>Interested in Working Together?</h2>
-            <p>
-              Drop me a line and let's talk about what you're looking for.
-              No pressure, just a conversation.
-            </p>
-            <a href="/contact" class="btn-primary">Get in Touch</a>
-          </div>
-        </div>
-      </section>
-    </main>
-
-    <Footer />
-  </body>
-</html>
+    p {
+      color: var(--color-text-secondary);
+      font-size: 1.125rem;
+      margin: 0 0 2rem;
+    }
+  }
+</style>

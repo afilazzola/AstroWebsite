@@ -1,76 +1,62 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Footer from "../components/Footer/index.jsx";
-import Nav from "../components/Nav/index.astro";
+import Layout from "../layouts/Layout.astro";
 ---
 
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <MainHead title="404 - Page Not Found | Alessandro Filazzola" />
-    <style lang="scss">
-      .error-container {
-        min-height: 80vh;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        text-align: center;
-        padding: 2rem;
-      }
-
-      .error-code {
-        font-family: var(--font-display);
-        font-size: clamp(6rem, 20vw, 12rem);
-        font-weight: 900;
-        background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        line-height: 1;
-        margin-bottom: 1rem;
-      }
-
-      .error-title {
-        font-family: var(--font-display);
-        font-size: clamp(1.5rem, 4vw, 2.5rem);
-        font-weight: 700;
-        margin: 0 0 1rem;
-      }
-
-      .error-message {
-        color: var(--color-text-secondary);
-        font-size: 1.125rem;
-        max-width: 500px;
-        margin: 0 0 2.5rem;
-        line-height: 1.6;
-      }
-
-      .error-buttons {
-        display: flex;
-        gap: 1rem;
-        flex-wrap: wrap;
-        justify-content: center;
-      }
-    </style>
-  </head>
-  <body>
-    <Nav />
-    <div class="error-container">
-      <h1 class="error-code">404</h1>
-      <h2 class="error-title">Page Not Found</h2>
-      <p class="error-message">
-        Sorry, the page you're looking for doesn't exist or has been moved.
-        Let's get you back on track.
-      </p>
-      <div class="error-buttons">
-        <a href="/" class="btn-primary">Go Home</a>
-        <a href="/portfolio" class="btn-secondary">View Portfolio</a>
-        <a href="/contact" class="btn-secondary">Contact Me</a>
-      </div>
+<Layout title="404 - Page Not Found | Alessandro Filazzola">
+  <div class="error-container">
+    <h1 class="error-code">404</h1>
+    <h2 class="error-title">Page Not Found</h2>
+    <p class="error-message">
+      Sorry, the page you're looking for doesn't exist or has been moved.
+      Let's get you back on track.
+    </p>
+    <div class="error-buttons">
+      <a href="/" class="btn-primary">Go Home</a>
+      <a href="/portfolio" class="btn-secondary">View Portfolio</a>
+      <a href="/contact" class="btn-secondary">Contact Me</a>
     </div>
-    <Footer />
-  </body>
-</html>
+  </div>
+</Layout>
+
+<style lang="scss">
+  .error-container {
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+  }
+
+  .error-code {
+    font-family: var(--font-display);
+    font-size: clamp(6rem, 20vw, 12rem);
+    font-weight: 900;
+    color: var(--color-accent);
+    line-height: 1;
+    margin-bottom: 1rem;
+  }
+
+  .error-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+
+  .error-message {
+    color: var(--color-text-secondary);
+    font-size: 1.125rem;
+    max-width: 500px;
+    margin: 0 0 2.5rem;
+    line-height: 1.6;
+  }
+
+  .error-buttons {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+</style>

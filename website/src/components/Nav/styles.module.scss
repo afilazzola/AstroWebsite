@@ -1,22 +1,12 @@
-.social {
-	display: block;
-	margin-left: auto;
-
-	+ .social {
-		margin-left: 0.75rem;
-	}
-}
-
-.socialicon {
-	display: block;
-	width: 1.75rem;
-	height: 1.75rem;
-	fill: var(--t-subdue);
-	transition: fill 200ms ease, transform 200ms ease;
+.brand {
+	font-family: var(--font-display);
+	font-weight: 700;
+	font-size: 1.15rem;
+	color: var(--c-white);
+	transition: color 200ms ease;
 
 	&:hover {
-		fill: var(--color-secondary);
-		transform: translateY(-2px);
+		color: var(--color-accent);
 	}
 }
 

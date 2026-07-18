@@ -1,5 +1,6 @@
 ---
 import "../styles/global.scss";
+import { site } from "../data/site";
 const {
   title = "Alessandro Filazzola",
   description = "Alessandro Filazzola: Computational ecologist and web designer based in Guelph, Canada",
@@ -7,7 +8,7 @@ const {
   type = "website",
 } = Astro.props;
 
-const siteUrl = "https://filazzola.info";
+const siteUrl = site.url;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
@@ -22,7 +23,7 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 </script>
 
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
@@ -86,9 +87,5 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     "addressRegion": "Ontario",
     "addressCountry": "Canada"
   },
-  "sameAs": [
-    "https://github.com/afilazzola",
-    "https://www.linkedin.com/in/afilazzola/",
-    "https://scholar.google.ca/citations?user=mKvIMTYAAAAJ"
-  ]
+  "sameAs": Object.values(site.socials)
 })} />

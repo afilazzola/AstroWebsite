@@ -303,6 +303,7 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
 
   .about-image {
     position: relative;
+    isolation: isolate; // keeps the offset outline above the section bg once the reveal transition ends
 
     img {
       width: 100%;
@@ -380,6 +381,7 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
 
   .research-image {
     position: relative;
+    isolation: isolate;
 
     img {
       width: 100%;

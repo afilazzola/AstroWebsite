@@ -247,6 +247,24 @@ const keyPublications = [
       </div>
     </section>
 
+    <!-- Field Photo -->
+    <section class="field-photo-section">
+      <div class="container">
+        <figure class="field-photo reveal">
+          <img
+            src="/Alex_Mountain_Research.jpg"
+            alt="Alessandro Filazzola conducting a vegetation survey with a quadrat in an alpine meadow in the Canadian Rockies"
+            width="1600"
+            height="1132"
+            loading="lazy"
+          />
+          <figcaption>
+            Vegetation surveys in the alpine meadows of the Canadian Rockies
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
     <!-- Publications Section -->
     <section class="section publications-section">
       <div class="container">
@@ -559,6 +577,29 @@ const keyPublications = [
 
   .themes-section {
     background: var(--color-bg-elevated);
+  }
+
+  .field-photo-section {
+    padding: 5rem 0 0;
+  }
+
+  .field-photo {
+    margin: 0;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    figcaption {
+      text-align: center;
+      color: var(--color-text-muted);
+      font-size: var(--text-sm);
+      margin-top: 1rem;
+    }
   }
 
   .themes-grid {

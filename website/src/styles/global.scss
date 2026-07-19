@@ -1,19 +1,25 @@
 // Tokens
 :root {
-	// New Design System Colors - Earthy Teal Palette
-	--color-bg-dark: #0a0a0f;        // Near-black background
-	--color-bg-card: #141420;        // Card backgrounds
-	--color-primary: #0d9488;        // Teal 600 - nature/ocean feel
+	// Design System Colors - Navy & Orange Palette
+	--color-bg-dark: #0f172a;        // Deep navy background
+	--color-bg-card: #1e293b;        // Card backgrounds
+	--color-bg-elevated: #24324d;    // Elevated/alternating sections
+	--color-primary: #60a5fa;        // Blue 400 - links, tags, accents
 	--color-secondary: #64748b;      // Slate 500 - rocky/earthy
 	--color-accent: #f97316;         // Orange CTAs
 	--color-available: #22c55e;      // Green "available" indicator
-	--color-gradient-mid: #134e4a;   // Teal 900 - for gradients
+
+	// Tints and effects
+	--color-primary-tint: rgba(96, 165, 250, 0.12);   // Tag chips, icon tiles
+	--color-primary-border: rgba(96, 165, 250, 0.3);  // Subtle blue borders
+	--color-glow: rgba(249, 115, 22, 0.07);           // Restrained hero glow
+	--color-hero-overlay: rgba(15, 23, 42, 0.78);     // Navy scrim over hero photo
 
 	// Legacy colors (kept for backward compatibility)
-	--c-black: #0a0a0f;
+	--c-black: #0f172a;
 	--c-blue: #64748b;
-	--c-dblue: #0a0a0f;
-	--c-mblue: #141420;
+	--c-dblue: #0f172a;
+	--c-mblue: #1e293b;
 	--c-gray: #94a3b8;
 	--c-lgray: #f1f5f9;
 	--c-green: #22c55e;
@@ -21,7 +27,7 @@
 	--c-orange: #f97316;
 	--c-yellow: #fbbf24;
 	--c-white: #fff;
-	--c-indigo: #0d9488;
+	--c-indigo: #60a5fa;
 	--c-cyan: #64748b;
 
 	// Typography
@@ -86,7 +92,7 @@
 	--t-active: var(--color-secondary);
 
 	// Semantic color tokens
-	--color-primary-hover: #0f766e;   // Teal 700
+	--color-primary-hover: #93c5fd;   // Blue 300 (lighter on dark bg)
 	--color-secondary-hover: #475569; // Slate 600
 	--color-accent-hover: #ea580c;
 
@@ -340,25 +346,23 @@ $colors: 'black', 'blue', 'white';
 	display: inline-block
 }
 
-.fade-in {
+// Scroll-reveal animation (fade in and up)
+// Gated on html.js so content stays visible without JavaScript
+html.js .reveal {
 	opacity: 0;
-	transform: translateY(-2%);
-	filter: blur(5px);
-	animation: fadeInUp 1s forwards;
-  }
-  
-  @keyframes fadeInUp {
-	0% {
-	  opacity: 0;
-	  transform: translateY(20px);
-	  filter: blur(5px);
-	}
-	100% {
-	  opacity: 1;
-	  transform: translateY(0);
-	  filter: blur(0);
-	}
-  }
+	transform: translateY(24px);
+	transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+html.js .reveal.is-visible {
+	opacity: 1;
+	transform: none;
+}
+
+// Stagger helpers for grid siblings
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
 
   // Smooth scroll behavior
   html {
@@ -370,11 +374,10 @@ $colors: 'black', 'blue', 'white';
 	  scroll-behavior: auto;
 	}
 
-	.fade-in {
-	  animation: none;
+	html.js .reveal {
 	  opacity: 1;
 	  transform: none;
-	  filter: none;
+	  transition: none;
 	}
   }
 

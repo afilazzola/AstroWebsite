@@ -1,75 +1,45 @@
 ---
 import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import Styles from "./styles.module.scss";
+import { site } from "../../data/site";
 
-const currentPath = Astro.url.pathname;
+// Normalize trailing slashes so "/services" and "/services/" both match
+const normalize = (path: string) =>
+  path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
+const currentPath = normalize(Astro.url.pathname);
+const isActive = (href: string) => currentPath === normalize(href);
 ---
 
 <header class="p-2 text-white">
   <div
-    class="container flex justify-between lg:text-lg lg:px-4 tracking-wider font-semibold drop-shadow-md" style="max-width: 100%"
+    class="container flex flex-col lg:flex-row lg:items-center lg:justify-between lg:text-lg lg:px-4 tracking-wider font-semibold drop-shadow-md" style="max-width: 100%"
   >
     <Astronav closeOnClick>
-      <div class="block lg:hidden">
-        <MenuIcon class="w-6 h-6 color: '#f7f3ed' m-2" />
+      <div class="flex justify-between items-center w-full lg:w-auto">
+        <a href="/" class={Styles.brand}>{site.name}</a>
+        <div class="block lg:hidden">
+          <MenuIcon class="w-6 h-6 m-2 text-white" />
+        </div>
       </div>
       <MenuItems class="hidden lg:flex pt-2.5">
         <ul class="flex flex-col lg:flex-row lg:gap-5 lg:items-center">
           <li class={Styles.navItem}>
-            <a href="/" class={currentPath === "/" ? Styles.active : ""}>Home</a>
+            <a href="/" class={isActive("/") ? Styles.active : ""}>Home</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/services" class={currentPath === "/services" ? Styles.active : ""}>Services</a>
+            <a href="/services/" class={isActive("/services/") ? Styles.active : ""}>Services</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/portfolio" class={currentPath === "/portfolio" || currentPath.startsWith("/portfolio/") ? Styles.active : ""}>Portfolio</a>
+            <a href="/portfolio/" class={isActive("/portfolio/") || currentPath.startsWith("/portfolio/") ? Styles.active : ""}>Portfolio</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/research" class={currentPath === "/research" ? Styles.active : ""}>Research</a>
+            <a href="/research/" class={isActive("/research/") ? Styles.active : ""}>Research</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/contact" class={currentPath === "/contact" ? Styles.active : ""}>Contact</a>
+            <a href="/contact/" class={isActive("/contact/") ? Styles.active : ""}>Contact</a>
           </li>
         </ul>
       </MenuItems>
     </Astronav>
-
-    <div class="flex justify-end items-center gap-4">
-      <nav class="flex space-x-2 gap-x-6">
-        <a
-          style="display: block; margin-left: auto;"
-          href="https://github.com/afilazzola"
-          aria-label="Alessandro Filazzola on GitHub"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 16 16"
-            class={Styles.socialicon}
-            aria-hidden="true"
-          >
-            <path
-              d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.012 8.012 0 0 0 16 8c0-4.42-3.58-8-8-8z"
-            ></path>
-          </svg>
-        </a>
-
-        <a
-          style="display: block; margin-left: auto;"
-          href="https://www.linkedin.com/in/afilazzola/"
-          aria-label="Alessandro Filazzola on LinkedIn"
-        >
-          <svg
-            class={Styles.socialicon}
-            xmlns="http://www.w3.org/2000/svg"
-            viewBox="0 0 50 50"
-            aria-hidden="true"
-          >
-            <path
-              d="M 8 3.0097656 C 4.53 3.0097656 2.0097656 5.0892187 2.0097656 7.9492188 C 2.0097656 10.819219 4.59 12.990234 8 12.990234 C 11.47 12.990234 13.990234 10.870625 13.990234 7.890625 C 13.830234 5.020625 11.36 3.0097656 8 3.0097656 z M 3 15 C 2.45 15 2 15.45 2 16 L 2 45 C 2 45.55 2.45 46 3 46 L 13 46 C 13.55 46 14 45.55 14 45 L 14 16 C 14 15.45 13.55 15 13 15 L 3 15 z M 18 15 C 17.45 15 17 15.45 17 16 L 17 45 C 17 45.55 17.45 46 18 46 L 27 46 C 27.552 46 28 45.552 28 45 L 28 30 L 28 29.75 L 28 29.5 C 28 27.13 29.820625 25.199531 32.140625 25.019531 C 32.260625 24.999531 32.38 25 32.5 25 C 32.62 25 32.739375 24.999531 32.859375 25.019531 C 35.179375 25.199531 37 27.13 37 29.5 L 37 45 C 37 45.552 37.448 46 38 46 L 47 46 C 47.55 46 48 45.55 48 45 L 48 28 C 48 21.53 44.529063 15 36.789062 15 C 33.269062 15 30.61 16.360234 29 17.490234 L 29 16 C 29 15.45 28.55 15 28 15 L 18 15 z"
-            ></path>
-          </svg>
-        </a>
-      </nav>
-    </div>
   </div>
 </header>

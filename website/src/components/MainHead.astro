@@ -1,13 +1,15 @@
 ---
 import "../styles/global.scss";
+import { site } from "../data/site";
 const {
   title = "Alessandro Filazzola",
   description = "Alessandro Filazzola: Computational ecologist and web designer based in Guelph, Canada",
-  image = "/AfilazzolaHome.jpg",
+  image = "/og/home.jpg",
   type = "website",
+  noindex = false,
 } = Astro.props;
 
-const siteUrl = "https://filazzola.info";
+const siteUrl = site.url;
 const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 ---
 
@@ -22,14 +24,14 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 </script>
 
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width" />
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
 <meta name="generator" content={Astro.generator} />
 <title>{title}</title>
 
 <!-- SEO Meta Tags -->
 <meta name="description" content={description} />
 <meta name="author" content="Alessandro Filazzola" />
-<meta name="robots" content="index, follow" />
+<meta name="robots" content={noindex ? "noindex, nofollow" : "index, follow"} />
 <link rel="canonical" href={canonicalUrl} />
 
 <!-- Geographic Meta Tags -->
@@ -42,6 +44,8 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
 <meta property="og:type" content={type} />
 <meta property="og:url" content={canonicalUrl} />
 <meta property="og:image" content={`${siteUrl}${image}`} />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
 <meta property="og:site_name" content="Alessandro Filazzola" />
 <meta property="og:locale" content="en_CA" />
 
@@ -86,9 +90,5 @@ const canonicalUrl = new URL(Astro.url.pathname, siteUrl).toString();
     "addressRegion": "Ontario",
     "addressCountry": "Canada"
   },
-  "sameAs": [
-    "https://github.com/afilazzola",
-    "https://www.linkedin.com/in/afilazzola/",
-    "https://scholar.google.ca/citations?user=mKvIMTYAAAAJ"
-  ]
+  "sameAs": Object.values(site.socials)
 })} />

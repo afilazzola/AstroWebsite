@@ -1,651 +1,581 @@
 ---
-import MainHead from "../components/MainHead.astro";
-import Nav from "../components/Nav/index.astro";
-import Footer from "../components/Footer/index.jsx";
-import { SEO } from "astro-seo";
+import Layout from "../layouts/Layout.astro";
+import { portfolioSites } from "../data/portfolio";
 
-// Portfolio websites data
-const portfolioSites = [
-  {
-    title: "La Poche",
-    url: "https://lapoche.ca/",
-    description:
-      "A multifunctional venue in downtown Guelph featuring a barbershop, co-working space, and intimate evening bar.",
-    image: "/assets/la-poche.jpg",
-    tags: ["Business", "Hospitality"],
-  },
-  {
-    title: "Amanda Liczner",
-    url: "https://www.amandaliczner.ca/",
-    description:
-      "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration.",
-    image: "/assets/amanda-liczner.jpg",
-    tags: ["Portfolio", "Academic"],
-  },
-  {
-    title: "Armstrong Coaching",
-    url: "https://armstrong-coaching.com/",
-    description:
-      "Personal training and lifestyle coaching practice combining strength training with holistic wellness guidance.",
-    image: "/assets/armstrong-coaching.jpg",
-    tags: ["Coaching", "Fitness"],
-  },
-  {
-    title: "Legendary DnD",
-    url: "https://legendarydnd.ca/",
-    description:
-      "An online platform for Dungeons & Dragons enthusiasts featuring campaign resources, character tools, and community content.",
-    image: "/assets/legendary-dnd.jpg",
-    tags: ["Gaming", "Community"],
-  },
-];
+const featuredSites = portfolioSites.filter((site) => site.featured);
 ---
 
-<!doctype html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, shrink-to-fit=no"
-    />
-    <SEO
-      title="Alessandro Filazzola - Computational Ecologist & Web Designer"
-      description="Computational ecologist and web designer helping small businesses and researchers build websites that reflect who they are. Based in Guelph, Canada."
-      openGraph={{
-        basic: {
-          title:
-            "Alessandro Filazzola - Computational Ecologist & Web Designer",
-          type: "website",
-          image: "/AfilazzolaHome.jpg",
-        },
-      }}
-    />
-    <MainHead
-      title="Alessandro Filazzola - Computational Ecologist & Web Designer"
-      description="Computational ecologist and web designer based in Guelph, Canada."
-    />
-    <style lang="scss">
-      .hero {
-        position: relative;
-        min-height: 100vh;
-        display: flex;
-        align-items: center;
-        background-image: url("/assets/header.jpg");
-        background-size: cover;
-        background-position: center;
-        background-repeat: no-repeat;
-        overflow: hidden;
+<Layout
+  title="Alessandro Filazzola - Computational Ecologist & Web Designer"
+  description="Computational ecologist and web designer helping small businesses and researchers build websites that reflect who they are. Based in Guelph, Canada."
+>
+  <link slot="head" rel="preload" as="image" href="/assets/header.jpg" />
 
-        &::before {
-          content: "";
-          position: absolute;
-          top: 0;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: linear-gradient(
-            135deg,
-            rgba(10, 10, 15, 0.85) 0%,
-            rgba(19, 78, 74, 0.7) 50%,
-            rgba(10, 10, 15, 0.85) 100%
-          );
-          pointer-events: none;
-        }
-      }
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="hero-name">Alessandro Filazzola</p>
+      <h1 class="hero-title">
+        Computational Ecologist<br />
+        <span class="highlight">& Web Designer</span>
+      </h1>
+      <p class="hero-subtitle">
+        I study climate change and ecosystems by day, and help small
+        businesses and researchers build websites that reflect who they are.
+        Based in Guelph, Canada.
+      </p>
+      <div class="hero-buttons">
+        <a href="/research/" class="btn-secondary">View My Research</a>
+        <a href="/portfolio/" class="btn-primary">See My Web Work</a>
+      </div>
+    </div>
+  </section>
 
-      .hero-content {
-        position: relative;
-        z-index: 1;
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 2rem;
-        text-align: center;
-
-        @media (min-width: 768px) {
-          text-align: left;
-          padding: 4rem 2rem;
-        }
-      }
-
-      .hero-name {
-        font-family: var(--font-display);
-        font-size: clamp(1.25rem, 3vw, 1.5rem);
-        font-weight: 500;
-        color: var(--color-text-secondary);
-        margin: 0 0 0.75rem;
-        letter-spacing: 0.05em;
-      }
-
-      .hero-title {
-        font-family: var(--font-display);
-        font-size: clamp(2.25rem, 7vw, 4.5rem);
-        font-weight: 800;
-        line-height: 1.1;
-        margin: 0 0 1.5rem;
-        color: var(--c-white);
-
-        .highlight {
-          background: linear-gradient(
-            135deg,
-            var(--color-primary) 0%,
-            var(--color-secondary) 100%
-          );
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-          background-clip: text;
-        }
-      }
-
-      .hero-subtitle {
-        font-size: clamp(1.125rem, 2vw, 1.375rem);
-        color: var(--color-text-secondary);
-        max-width: 650px;
-        margin: 0 0 2.5rem;
-        line-height: 1.7;
-
-        @media (min-width: 768px) {
-          margin: 0 0 2.5rem;
-        }
-
-        @media (max-width: 767px) {
-          margin: 0 auto 2.5rem;
-        }
-      }
-
-      .hero-buttons {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 1rem;
-        justify-content: center;
-
-        @media (min-width: 768px) {
-          justify-content: flex-start;
-        }
-      }
-
-      .section {
-        padding: 5rem 0;
-      }
-
-      .section-header {
-        text-align: center;
-        margin-bottom: 3rem;
-      }
-
-      .section-title {
-        font-family: var(--font-display);
-        font-size: clamp(2rem, 5vw, 3rem);
-        font-weight: 700;
-        margin: 0 0 1rem;
-      }
-
-      .section-subtitle {
-        font-size: 1.125rem;
-        color: var(--color-text-secondary);
-        max-width: 600px;
-        margin: 0 auto;
-      }
-
-      /* About Preview Section */
-      .about-preview {
-        background: var(--color-bg-card);
-      }
-
-      .about-content {
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: center;
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 0 2rem;
-
-        @media (min-width: 768px) {
-          grid-template-columns: 1fr 1fr;
-          gap: 4rem;
-        }
-      }
-
-      .about-image {
-        position: relative;
-
-        img {
-          width: 100%;
-          border-radius: 16px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: -15px;
-          right: -15px;
-          width: 100%;
-          height: 100%;
-          border: 2px solid var(--color-primary);
-          border-radius: 16px;
-          z-index: -1;
-
-          @media (max-width: 767px) {
-            display: none;
-          }
-        }
-      }
-
-      .about-text {
-        h2 {
-          font-family: var(--font-display);
-          font-size: clamp(1.75rem, 4vw, 2.5rem);
-          font-weight: 700;
-          margin: 0 0 1.5rem;
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 1.1rem;
-          line-height: 1.8;
-          margin: 0 0 1.5rem;
-        }
-      }
-
-      /* Research/Ecology Section */
-      .research-section {
-        background: linear-gradient(
-          135deg,
-          var(--color-gradient-mid) 0%,
-          var(--color-bg-dark) 100%
-        );
-      }
-
-      .research-content {
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 0 2rem;
-        display: grid;
-        grid-template-columns: 1fr;
-        gap: 3rem;
-        align-items: center;
-
-        @media (min-width: 768px) {
-          grid-template-columns: 1fr 1fr;
-        }
-      }
-
-      .research-text {
-        h2 {
-          font-family: var(--font-display);
-          font-size: clamp(2rem, 5vw, 2.5rem);
-          font-weight: 700;
-          margin: 0 0 1.5rem;
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 1.125rem;
-          line-height: 1.8;
-          margin: 0 0 1.5rem;
-        }
-      }
-
-      .research-image {
-        position: relative;
-
-        img {
-          width: 100%;
-          border-radius: 16px;
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-        }
-
-        &::before {
-          content: "";
-          position: absolute;
-          top: -15px;
-          left: -15px;
-          width: 100%;
-          height: 100%;
-          border: 2px solid var(--color-primary);
-          border-radius: 16px;
-          z-index: -1;
-
-          @media (max-width: 767px) {
-            display: none;
-          }
-        }
-      }
-
-      .research-highlights {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-        gap: 1rem;
-        margin-bottom: 2rem;
-
-        .highlight-item {
-          background: rgba(255, 255, 255, 0.05);
-          border: 1px solid var(--color-border);
-          border-radius: 12px;
-          padding: 1rem;
-          text-align: center;
-
-          .number {
-            font-family: var(--font-display);
-            font-size: 1.75rem;
-            font-weight: 700;
-            color: var(--color-primary);
-            margin-bottom: 0.25rem;
-          }
-
-          .label {
-            color: var(--color-text-secondary);
-            font-size: 0.875rem;
-          }
-        }
-      }
-
-      /* Web Design Section */
-      .webdesign-section {
-        background: var(--color-bg-card);
-      }
-
-      .webdesign-intro {
-        max-width: 800px;
-        margin: 0 auto 3rem;
-        text-align: center;
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 1.125rem;
-          line-height: 1.8;
-        }
-      }
-
-      .portfolio-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-        gap: 2rem;
-        max-width: 80rem;
-        margin: 0 auto;
-        padding: 0 2rem;
-      }
-
-      .portfolio-card {
-        background: var(--color-bg-dark);
-        border: 1px solid var(--color-border);
-        border-radius: 16px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-
-        &:hover {
-          transform: translateY(-8px);
-          border-color: rgba(255, 255, 255, 0.2);
-          box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-
-          .portfolio-image img {
-            transform: scale(1.05);
-          }
-        }
-      }
-
-      .portfolio-image {
-        width: 100%;
-        height: 180px;
-        overflow: hidden;
-
-        img {
-          width: 100%;
-          height: 100%;
-          object-fit: cover;
-          transition: transform 0.3s ease;
-        }
-      }
-
-      .portfolio-content {
-        padding: 1.5rem;
-
-        h3 {
-          font-size: 1.25rem;
-          margin: 0 0 0.5rem;
-
-          a {
-            color: var(--c-white);
-            text-decoration: none;
-            transition: color 0.3s ease;
-
-            &:hover {
-              color: var(--color-primary);
-            }
-          }
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 0.9rem;
-          line-height: 1.6;
-          margin: 0 0 1rem;
-        }
-      }
-
-      .portfolio-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.5rem;
-
-        span {
-          background: rgba(13, 148, 136, 0.1);
-          color: var(--color-primary);
-          padding: 0.25rem 0.75rem;
-          border-radius: 9999px;
-          font-size: 0.75rem;
-          font-weight: 500;
-        }
-      }
-
-      .view-all-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: var(--color-primary);
-        font-weight: 600;
-        text-decoration: none;
-        margin-top: 2rem;
-        transition: all 0.3s ease;
-
-        &:hover {
-          gap: 0.75rem;
-        }
-      }
-
-      /* CTA Section */
-      .cta-section {
-        border-top: 1px solid var(--color-border);
-        border-bottom: 1px solid var(--color-border);
-      }
-
-      .cta-content {
-        max-width: 800px;
-        margin: 0 auto;
-        padding: 0 2rem;
-        text-align: center;
-
-        h2 {
-          font-family: var(--font-display);
-          font-size: clamp(2rem, 5vw, 2.5rem);
-          font-weight: 700;
-          margin: 0 0 1rem;
-        }
-
-        p {
-          color: var(--color-text-secondary);
-          font-size: 1.125rem;
-          margin: 0 0 2rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <Nav />
-
-    <!-- Hero Section -->
-    <section class="hero">
-      <div class="hero-content">
-        <p class="hero-name">Alessandro Filazzola</p>
-        <h1 class="hero-title">
-          Computational Ecologist<br />
-          <span class="highlight">& Web Designer</span>
-        </h1>
-        <p class="hero-subtitle">
-          I study climate change and ecosystems by day, and help small
-          businesses and researchers build websites that reflect who they are.
-          Based in Guelph, Canada.
+  <!-- About Preview Section -->
+  <section class="section about-preview">
+    <div class="about-content reveal">
+      <div class="about-image">
+        <img
+          src="/alex-filazzola-1.jpg"
+          alt="Alessandro Filazzola"
+          width="1400"
+          height="933"
+          loading="lazy"
+        />
+      </div>
+      <div class="about-text">
+        <h2>Hi, I'm Alex</h2>
+        <p>
+          I'm a computational ecologist with a Ph.D. in biology and over a
+          decade of research experience. My academic work focuses on climate
+          change impacts, plant ecology, and developing better methods for
+          ecological data science.
         </p>
-        <div class="hero-buttons">
-          <a href="/research" class="btn-secondary">View My Research</a>
-          <a href="/portfolio" class="btn-primary">See My Web Work</a>
-        </div>
+        <p>
+          On the side, I've discovered a passion for building websites. What
+          started as helping fellow researchers create academic portfolios has
+          grown into working with small businesses and professionals in Canada
+          who want a web presence that feels authentic to who they are.
+        </p>
+        <a href="/research/" class="btn-secondary">Learn More</a>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- About Preview Section -->
-    <section class="section about-preview">
-      <div class="about-content">
-        <div class="about-image">
-          <img
-            src="/alex-filazzola-1.jpg"
-            alt="Alessandro Filazzola"
-            loading="lazy"
-          />
-        </div>
-        <div class="about-text">
-          <h2>Hi, I'm Alex</h2>
-          <p>
-            I'm a computational ecologist with a Ph.D. in biology and over a
-            decade of research experience. My academic work focuses on climate
-            change impacts, plant ecology, and developing better methods for
-            ecological data science.
-          </p>
-          <p>
-            On the side, I've discovered a passion for building websites. What
-            started as helping fellow researchers create academic portfolios has
-            grown into working with small businesses and professionals in Canada
-            who want a web presence that feels authentic to who they are.
-          </p>
-          <a href="/research" class="btn-secondary">Learn More</a>
-        </div>
-      </div>
-    </section>
-
-    <!-- Research/Ecology Section -->
-    <section class="section research-section">
-      <div class="research-content">
-        <div class="research-text">
-          <h2>Ecology & Data Science</h2>
-          <p>
-            I work as a Data Scientist at ApexRMS, where I develop tools for
-            environmental decision-making. My research spans climate change
-            impacts on lakes, forecasting land cover change, plant facilitation,
-            and improving how we do science with better code and workflows.
-          </p>
-          <div class="research-highlights">
-            <div class="highlight-item">
-              <div class="number">50+</div>
-              <div class="label">Publications</div>
-            </div>
-            <div class="highlight-item">
-              <div class="number">10+</div>
-              <div class="label">Years Research</div>
-            </div>
-            <div class="highlight-item">
-              <div class="number">Ph.D.</div>
-              <div class="label">York University</div>
-            </div>
-            <div class="highlight-item">
-              <div class="number">Adjunct Faculty</div>
-              <div class="label">Western University</div>
-            </div>
+  <!-- Research/Ecology Section -->
+  <section class="section research-section">
+    <div class="research-content reveal">
+      <div class="research-text">
+        <h2>Ecology & Data Science</h2>
+        <p>
+          I work as a Data Scientist at ApexRMS, where I develop tools for
+          environmental decision-making. My research spans climate change
+          impacts on lakes, forecasting land cover change, plant facilitation,
+          and improving how we do science with better code and workflows.
+        </p>
+        <div class="research-highlights">
+          <div class="highlight-item">
+            <div class="number">50+</div>
+            <div class="label">Publications</div>
           </div>
-          <a href="/research" class="btn-secondary">Explore My Research</a>
+          <div class="highlight-item">
+            <div class="number">10+</div>
+            <div class="label">Years Research</div>
+          </div>
+          <div class="highlight-item">
+            <div class="number">Ph.D.</div>
+            <div class="label">York University</div>
+          </div>
+          <div class="highlight-item">
+            <div class="number">Adjunct Faculty</div>
+            <div class="label">Western University</div>
+          </div>
         </div>
-        <div class="research-image">
-          <img
-            src="/alex-filazzola-2.jpg"
-            alt="Alessandro Filazzola in the field"
-            loading="lazy"
-          />
-        </div>
+        <a href="/research/" class="btn-secondary">Explore My Research</a>
       </div>
-    </section>
-
-    <!-- Web Design Section -->
-    <section class="section webdesign-section">
-      <div class="section-header">
-        <h2 class="section-title">Web Design</h2>
-        <p class="section-subtitle">
-          Helping small businesses and researchers find their voice online
-        </p>
+      <div class="research-image">
+        <img
+          src="/alex-filazzola-2.jpg"
+          alt="Alessandro Filazzola in the field"
+          width="880"
+          height="616"
+          loading="lazy"
+        />
       </div>
+    </div>
+  </section>
 
-      <div class="webdesign-intro">
-        <p>
-          I work closely with clients to build websites they're proud of.
-          Whether you're a local business looking to connect with your
-          community, or a researcher needing an academic portfolio, I'll help
-          create something that reflects your style and helps people find you.
-        </p>
-      </div>
+  <!-- Web Design Section -->
+  <section class="section webdesign-section">
+    <div class="section-header reveal">
+      <h2 class="section-title">Web Design</h2>
+      <p class="section-subtitle">
+        Helping small businesses and researchers find their voice online
+      </p>
+    </div>
 
-      <div class="portfolio-grid">
-        {
-          portfolioSites.map((site) => (
-            <article class="portfolio-card">
-              <div class="portfolio-image">
-                <img src={site.image} alt={site.title} loading="lazy" />
+    <div class="webdesign-intro reveal">
+      <p>
+        I work closely with clients to build websites they're proud of.
+        Whether you're a local business looking to connect with your
+        community, or a researcher needing an academic portfolio, I'll help
+        create something that reflects your style and helps people find you.
+      </p>
+    </div>
+
+    <div class="portfolio-grid">
+      {
+        featuredSites.map((site, index) => (
+          <article class={`portfolio-card reveal ${index > 0 ? `reveal-delay-${Math.min(index, 3)}` : ""}`}>
+            <div class="portfolio-image">
+              <img src={site.image} alt={site.title} loading="lazy" />
+            </div>
+            <div class="portfolio-content">
+              <h3>
+                <a href={site.url} target="_blank" rel="noopener noreferrer">
+                  {site.title}
+                </a>
+              </h3>
+              <p>{site.shortDescription}</p>
+              <div class="portfolio-tags">
+                {site.tags.slice(0, 2).map((tag) => (
+                  <span>{tag}</span>
+                ))}
               </div>
-              <div class="portfolio-content">
-                <h3>
-                  <a href={site.url} target="_blank" rel="noopener noreferrer">
-                    {site.title}
-                  </a>
-                </h3>
-                <p>{site.description}</p>
-                <div class="portfolio-tags">
-                  {site.tags.map((tag) => (
-                    <span>{tag}</span>
-                  ))}
-                </div>
-              </div>
-            </article>
-          ))
+            </div>
+          </article>
+        ))
+      }
+    </div>
+    <div style="text-align: center;">
+      <a href="/portfolio/" class="view-all-link">
+        View All Projects
+        <svg
+          width="20"
+          height="20"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
+          <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </a>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="section cta-section">
+    <div class="cta-content reveal">
+      <h2>Let's Connect</h2>
+      <p>
+        Whether you're interested in my research or looking for help with a
+        website, I'd be happy to chat.
+      </p>
+      <a href="/contact/" class="btn-primary">Get in Touch</a>
+    </div>
+  </section>
+</Layout>
+
+<style lang="scss">
+  .hero {
+    position: relative;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url("/assets/header.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    overflow: hidden;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: var(--color-hero-overlay);
+      pointer-events: none;
+    }
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 2rem;
+    text-align: center;
+
+    @media (min-width: 768px) {
+      text-align: left;
+      padding: 4rem 2rem;
+    }
+  }
+
+  .hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 3vw, 1.5rem);
+    font-weight: 500;
+    color: #cbd5e1;
+    margin: 0 0 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .hero-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.25rem, 7vw, 4.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin: 0 0 1.5rem;
+    color: var(--c-white);
+
+    .highlight {
+      color: var(--color-accent);
+    }
+  }
+
+  .hero-subtitle {
+    font-size: clamp(1.125rem, 2vw, 1.375rem);
+    color: #cbd5e1;
+    max-width: 650px;
+    margin: 0 0 2.5rem;
+    line-height: 1.7;
+
+    @media (min-width: 768px) {
+      margin: 0 0 2.5rem;
+    }
+
+    @media (max-width: 767px) {
+      margin: 0 auto 2.5rem;
+    }
+  }
+
+  .hero-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+
+    @media (min-width: 768px) {
+      justify-content: flex-start;
+    }
+  }
+
+  .section {
+    padding: 5rem 0;
+  }
+
+  .section-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .section-title {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+
+  .section-subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-secondary);
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  /* About Preview Section */
+  .about-preview {
+    background: var(--color-bg-card);
+  }
+
+  .about-content {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+    }
+  }
+
+  .about-image {
+    position: relative;
+    isolation: isolate; // keeps the offset outline above the section bg once the reveal transition ends
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--color-primary);
+      border-radius: 16px;
+      z-index: -1;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+
+  .about-text {
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(1.75rem, 4vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 1.5rem;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 1.1rem;
+      line-height: 1.8;
+      margin: 0 0 1.5rem;
+    }
+  }
+
+  /* Research/Ecology Section */
+  .research-section {
+    background: var(--color-bg-elevated);
+  }
+
+  .research-content {
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 3rem;
+    align-items: center;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 1fr 1fr;
+    }
+  }
+
+  .research-text {
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 1.5rem;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 1.125rem;
+      line-height: 1.8;
+      margin: 0 0 1.5rem;
+    }
+  }
+
+  .research-image {
+    position: relative;
+    isolation: isolate;
+
+    img {
+      width: 100%;
+      border-radius: 16px;
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      width: 100%;
+      height: 100%;
+      border: 2px solid var(--color-primary);
+      border-radius: 16px;
+      z-index: -1;
+
+      @media (max-width: 767px) {
+        display: none;
+      }
+    }
+  }
+
+  .research-highlights {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin-bottom: 2rem;
+
+    .highlight-item {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--color-border);
+      border-radius: 12px;
+      padding: 1rem;
+      text-align: center;
+
+      .number {
+        font-family: var(--font-display);
+        font-size: 1.75rem;
+        font-weight: 700;
+        color: var(--color-primary);
+        margin-bottom: 0.25rem;
+      }
+
+      .label {
+        color: var(--color-text-secondary);
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  /* Web Design Section */
+  .webdesign-section {
+    background: var(--color-bg-card);
+  }
+
+  .webdesign-intro {
+    max-width: 800px;
+    margin: 0 auto 3rem;
+    text-align: center;
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 1.125rem;
+      line-height: 1.8;
+    }
+  }
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    max-width: 80rem;
+    margin: 0 auto;
+    padding: 0 2rem;
+  }
+
+  .portfolio-card {
+    background: var(--color-bg-dark);
+    border: 1px solid var(--color-border);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+
+    &:hover {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.2);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+
+      .portfolio-image img {
+        transform: scale(1.05);
+      }
+    }
+  }
+
+  .portfolio-image {
+    width: 100%;
+    height: 180px;
+    overflow: hidden;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.3s ease;
+    }
+  }
+
+  .portfolio-content {
+    padding: 1.5rem;
+
+    h3 {
+      font-size: 1.25rem;
+      margin: 0 0 0.5rem;
+
+      a {
+        color: var(--c-white);
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: var(--color-primary);
         }
-      </div>
-      <div style="text-align: center;">
-        <a href="/portfolio" class="view-all-link">
-          View All Projects
-          <svg
-            width="20"
-            height="20"
-            viewBox="0 0 24 24"
-            fill="none"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path d="M5 12h14M12 5l7 7-7 7"></path>
-          </svg>
-        </a>
-      </div>
-    </section>
+      }
+    }
 
-    <!-- CTA Section -->
-    <section class="section cta-section">
-      <div class="cta-content">
-        <h2>Let's Connect</h2>
-        <p>
-          Whether you're interested in my research or looking for help with a
-          website, I'd be happy to chat.
-        </p>
-        <a href="/contact" class="btn-primary">Get in Touch</a>
-      </div>
-    </section>
+    p {
+      color: var(--color-text-secondary);
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0 0 1rem;
+    }
+  }
 
-    <Footer />
-  </body>
-</html>
+  .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+
+    span {
+      background: var(--color-primary-tint);
+      color: var(--color-primary);
+      padding: 0.25rem 0.75rem;
+      border-radius: 9999px;
+      font-size: 0.75rem;
+      font-weight: 500;
+    }
+  }
+
+  .view-all-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--color-primary);
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 2rem;
+    transition: all 0.3s ease;
+
+    &:hover {
+      gap: 0.75rem;
+    }
+  }
+
+  /* CTA Section */
+  .cta-section {
+    border-top: 1px solid var(--color-border);
+    border-bottom: 1px solid var(--color-border);
+  }
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 0 2rem;
+    text-align: center;
+
+    h2 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 5vw, 2.5rem);
+      font-weight: 700;
+      margin: 0 0 1rem;
+    }
+
+    p {
+      color: var(--color-text-secondary);
+      font-size: 1.125rem;
+      margin: 0 0 2rem;
+    }
+  }
+</style>

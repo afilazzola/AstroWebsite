@@ -14,9 +14,9 @@ export const site = {
   },
   navLinks: [
     { label: "Home", href: "/" },
-    { label: "Services", href: "/services" },
-    { label: "Portfolio", href: "/portfolio" },
-    { label: "Research", href: "/research" },
-    { label: "Contact", href: "/contact" },
+    { label: "Services", href: "/services/" },
+    { label: "Portfolio", href: "/portfolio/" },
+    { label: "Research", href: "/research/" },
+    { label: "Contact", href: "/contact/" },
   ],
 };

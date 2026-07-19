@@ -1,5 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import { site } from "../data/site";
 
 const audiences = [
   {
@@ -105,13 +106,51 @@ const buildOptions = [
   title="Web Design Services Guelph | Custom Websites for Small Business | Alessandro Filazzola"
   description="Custom web design services in Guelph, Ontario for small businesses, non-profits, researchers, and professionals. WordPress or custom-coded websites, mobile-friendly and SEO-optimized."
 >
+  <script
+    slot="head"
+    type="application/ld+json"
+    set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Alessandro Filazzola Web Design",
+      "url": `${site.url}/services/`,
+      "image": `${site.url}/og/home.jpg`,
+      "description":
+        "Custom web design for small businesses, personal portfolios, non-profit organizations, and academics. WordPress or custom-coded websites.",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Guelph",
+        "addressRegion": "Ontario",
+        "addressCountry": "Canada",
+      },
+      "areaServed": ["Guelph", "Ontario", "Canada"],
+      "founder": {
+        "@type": "Person",
+        "name": site.name,
+        "url": site.url,
+      },
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "Web Design Services",
+        "itemListElement": services.map((service) => ({
+          "@type": "Offer",
+          "itemOffered": {
+            "@type": "Service",
+            "name": service.title,
+            "description": service.description,
+          },
+        })),
+      },
+    })}
+  />
+
   <header class="page-header">
     <nav class="breadcrumb" aria-label="Breadcrumb">
       <a href="/">Home</a>
       <span>/</span>
       <span>Services</span>
     </nav>
-    <h1 class="page-title">Services</h1>
+    <h1 class="page-title">Web Design Services in Guelph</h1>
     <p class="page-subtitle">
       Custom web design for small businesses and professionals across Canada
     </p>
@@ -207,7 +246,7 @@ const buildOptions = [
             Drop me a line and let's talk about what you're looking for.
             No pressure, just a conversation.
           </p>
-          <a href="/contact" class="btn-primary">Get in Touch</a>
+          <a href="/contact/" class="btn-primary">Get in Touch</a>
         </div>
       </div>
     </section>

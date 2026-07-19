@@ -9,6 +9,8 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
   title="Alessandro Filazzola - Computational Ecologist & Web Designer"
   description="Computational ecologist and web designer helping small businesses and researchers build websites that reflect who they are. Based in Guelph, Canada."
 >
+  <link slot="head" rel="preload" as="image" href="/assets/header.jpg" />
+
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
@@ -23,8 +25,8 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
         Based in Guelph, Canada.
       </p>
       <div class="hero-buttons">
-        <a href="/research" class="btn-secondary">View My Research</a>
-        <a href="/portfolio" class="btn-primary">See My Web Work</a>
+        <a href="/research/" class="btn-secondary">View My Research</a>
+        <a href="/portfolio/" class="btn-primary">See My Web Work</a>
       </div>
     </div>
   </section>
@@ -36,6 +38,8 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
         <img
           src="/alex-filazzola-1.jpg"
           alt="Alessandro Filazzola"
+          width="1400"
+          height="933"
           loading="lazy"
         />
       </div>
@@ -53,7 +57,7 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
           grown into working with small businesses and professionals in Canada
           who want a web presence that feels authentic to who they are.
         </p>
-        <a href="/research" class="btn-secondary">Learn More</a>
+        <a href="/research/" class="btn-secondary">Learn More</a>
       </div>
     </div>
   </section>
@@ -87,12 +91,14 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
             <div class="label">Western University</div>
           </div>
         </div>
-        <a href="/research" class="btn-secondary">Explore My Research</a>
+        <a href="/research/" class="btn-secondary">Explore My Research</a>
       </div>
       <div class="research-image">
         <img
           src="/alex-filazzola-2.jpg"
           alt="Alessandro Filazzola in the field"
+          width="880"
+          height="616"
           loading="lazy"
         />
       </div>
@@ -142,7 +148,7 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
       }
     </div>
     <div style="text-align: center;">
-      <a href="/portfolio" class="view-all-link">
+      <a href="/portfolio/" class="view-all-link">
         View All Projects
         <svg
           width="20"
@@ -166,7 +172,7 @@ const featuredSites = portfolioSites.filter((site) => site.featured);
         Whether you're interested in my research or looking for help with a
         website, I'd be happy to chat.
       </p>
-      <a href="/contact" class="btn-primary">Get in Touch</a>
+      <a href="/contact/" class="btn-primary">Get in Touch</a>
     </div>
   </section>
 </Layout>

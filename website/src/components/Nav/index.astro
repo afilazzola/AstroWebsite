@@ -3,7 +3,11 @@ import { Astronav, MenuItems, MenuIcon } from "astro-navbar";
 import Styles from "./styles.module.scss";
 import { site } from "../../data/site";
 
-const currentPath = Astro.url.pathname;
+// Normalize trailing slashes so "/services" and "/services/" both match
+const normalize = (path: string) =>
+  path.length > 1 && path.endsWith("/") ? path.slice(0, -1) : path;
+const currentPath = normalize(Astro.url.pathname);
+const isActive = (href: string) => currentPath === normalize(href);
 ---
 
 <header class="p-2 text-white">
@@ -20,19 +24,19 @@ const currentPath = Astro.url.pathname;
       <MenuItems class="hidden lg:flex pt-2.5">
         <ul class="flex flex-col lg:flex-row lg:gap-5 lg:items-center">
           <li class={Styles.navItem}>
-            <a href="/" class={currentPath === "/" ? Styles.active : ""}>Home</a>
+            <a href="/" class={isActive("/") ? Styles.active : ""}>Home</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/services" class={currentPath === "/services" ? Styles.active : ""}>Services</a>
+            <a href="/services/" class={isActive("/services/") ? Styles.active : ""}>Services</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/portfolio" class={currentPath === "/portfolio" || currentPath.startsWith("/portfolio/") ? Styles.active : ""}>Portfolio</a>
+            <a href="/portfolio/" class={isActive("/portfolio/") || currentPath.startsWith("/portfolio/") ? Styles.active : ""}>Portfolio</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/research" class={currentPath === "/research" ? Styles.active : ""}>Research</a>
+            <a href="/research/" class={isActive("/research/") ? Styles.active : ""}>Research</a>
           </li>
           <li class={Styles.navItem}>
-            <a href="/contact" class={currentPath === "/contact" ? Styles.active : ""}>Contact</a>
+            <a href="/contact/" class={isActive("/contact/") ? Styles.active : ""}>Contact</a>
           </li>
         </ul>
       </MenuItems>

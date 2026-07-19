@@ -37,18 +37,6 @@ export const portfolioSites: PortfolioSite[] = [
     featured: true,
   },
   {
-    title: "Amanda Liczner",
-    url: "https://www.amandaliczner.ca/",
-    description:
-      "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration research. The site showcases academic publications, research projects, and professional experience in an accessible format.",
-    shortDescription:
-      "Professional portfolio for a conservation biologist specializing in bumble bee ecology and ecosystem restoration.",
-    image: "/assets/amanda-liczner.jpg",
-    tags: ["Portfolio", "Research", "Academic"],
-    features: ["Publication showcase", "Research gallery", "CV integration", "Clean typography"],
-    featured: true,
-  },
-  {
     title: "Armstrong Coaching",
     url: "https://armstrong-coaching.com/",
     description:
